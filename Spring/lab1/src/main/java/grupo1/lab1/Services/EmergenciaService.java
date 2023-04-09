@@ -2,9 +2,7 @@ package grupo1.lab1.Services;
 
 import grupo1.lab1.Models.Emergencia;
 import grupo1.lab1.Repositories.EmergenciaRepository;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
 import java.util.Date;
@@ -62,6 +60,23 @@ public class EmergenciaService {
         }catch (Exception e){
             System.out.println("Ingrese una fecha valida");
             return null;
+        }
+    }
+
+    @PostMapping("/emergencia")
+    @ResponseBody
+    public Emergencia save(@RequestBody Emergencia emergencia){
+        return emergenciaRepository.save(emergencia);
+    }
+
+    @DeleteMapping("/emergencia/{id}")
+    public void delete(@PathParam("id") String id_str){
+        Integer id;
+        try{
+            id = Integer.parseInt(id_str);
+            emergenciaRepository.delete(id);
+        }catch (Exception e){
+            System.out.println("Ingrese un id valido");
         }
     }
 }

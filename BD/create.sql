@@ -48,7 +48,8 @@ CREATE TABLE Voluntario (
     apellidos_voluntario VARCHAR(255),
     fecha_nac_voluntario DATE,
     disponibilidad_voluntario VARCHAR(255),
-    telefono_voluntario VARCHAR(12)
+    telefono_voluntario VARCHAR(12),
+    contrasena_voluntario VARCHAR(255)
 );
 
 -- Tabla de Estado_tarea

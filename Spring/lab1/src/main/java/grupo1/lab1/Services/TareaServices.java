@@ -20,7 +20,7 @@ public class TareaServices {
     }
 
     @GetMapping("/tarea/{id}")
-    Tarea findById(@PathVariable("id") String id_str){
+    public Tarea findById(@PathVariable("id") String id_str){
         Integer id;
         try{
             id = Integer.parseInt(id_str);
@@ -32,7 +32,7 @@ public class TareaServices {
     }
 
     @GetMapping("/tarea/nombre/{nombre}")
-    Tarea findByNombre(@PathVariable("nombre") String nombre){
+    public Tarea findByNombre(@PathVariable("nombre") String nombre){
         try {
             return tareaRepository.findByNombre(nombre);
         }catch(Exception e){
@@ -42,7 +42,7 @@ public class TareaServices {
     }
 
     @GetMapping("/tarea/emergencia/{id}")
-    Tarea findByEmergencia(@PathVariable("id") String id_str){
+    public Tarea findByEmergencia(@PathVariable("id") String id_str){
         Integer id;
         try{
             id = Integer.parseInt(id_str);

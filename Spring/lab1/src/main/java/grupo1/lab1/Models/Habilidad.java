@@ -5,7 +5,7 @@ package grupo1.lab1.Models;
  */
 public class Habilidad {
     private Integer id_habilidad;
-    private String name_habilidad;
+    private String nombre_habilidad;
     private Integer puntaje_habilidad;
 
     /**
@@ -18,7 +18,7 @@ public class Habilidad {
 
     /**
      * setea el id de una habilidad
-     * @param id_ability
+     * @param id_habilidad
      */
     public void setId_habilidad(Integer id_habilidad) {
         this.id_habilidad = id_habilidad;
@@ -28,16 +28,16 @@ public class Habilidad {
      * Obtiene el nombre de una Habilidad
      * @return String
      */
-    public String getName_habilidad() {
-        return name_habilidad;
+    public String getNombre_habilidad() {
+        return nombre_habilidad;
     }
 
     /**
      * setea el nombre de una habilidad
-     * @param name_ability
+     * @param nombre_habilidad
      */
-    public void setName_habilidad(String name_habilidad) {
-        this.name_habilidad = name_habilidad;
+    public void setName_habilidad(String nombre_habilidad) {
+        this.nombre_habilidad = nombre_habilidad;
     }
 
     /**
@@ -50,10 +50,10 @@ public class Habilidad {
 
     /**
      * setea el puntaje de una habilidad
-     * @param description_ability
+     * @param puntaje_habilidad
      */
 
-     public void setPuntaje_habilidad(Integer puntaje_habilidad){
+    public void setPuntaje_habilidad(Integer puntaje_habilidad){
     this.puntaje_habilidad = puntaje_habilidad;
     }
 }

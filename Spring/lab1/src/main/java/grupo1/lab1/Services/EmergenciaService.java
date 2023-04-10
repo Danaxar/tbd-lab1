@@ -22,7 +22,7 @@ public class EmergenciaService {
     }
 
     @GetMapping("/emergencia/{id}")
-    public Emergencia findById(@PathParam("id") String id_str){
+    public Emergencia findById(@PathVariable("id") String id_str){
         Integer id;
         try{
             id = Integer.parseInt(id_str);
@@ -34,7 +34,7 @@ public class EmergenciaService {
     }
 
     @GetMapping("/emergencia/nombre/{nombre}")
-    public Emergencia findByNombre(@PathParam("nombre") String nombre){
+    public Emergencia findByNombre(@PathVariable("nombre") String nombre){
         try{
             return emergenciaRepository.findByNombre(nombre);
         }catch (Exception e){

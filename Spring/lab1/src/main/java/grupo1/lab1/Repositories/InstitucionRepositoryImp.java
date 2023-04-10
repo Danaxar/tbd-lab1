@@ -42,7 +42,7 @@ public class InstitucionRepositoryImp implements InstitucionRepository{
     @Override
     public Institucion save(Institucion institucion) {
         Institucion agregada;
-        String query = "INSERT INTO instituciones (nombre) VALUES (:nombre)";
+        String query = "INSERT INTO institucion (nombre) VALUES (:nombre)";
         try (Connection con = sql2o.open()) {
             agregada = con.createQuery(query, true)
                     .addParameter("nombre", institucion.getNombre())

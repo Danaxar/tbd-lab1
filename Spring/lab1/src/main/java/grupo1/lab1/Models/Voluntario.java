@@ -1,15 +1,25 @@
 package grupo1.lab1.Models;
 
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.time.LocalDate;
 
 public class Voluntario {
+    @JsonProperty("id_voluntario")
     private Integer id_voluntario;
+    @JsonProperty("rut_voluntario")
     private String rut_voluntario;
-    private String nombre_voluntario;
-    private String apellido_voluntario;
-    private Date fecha_nacimiento_voluntario;
+    @JsonProperty("nombres_voluntario")
+    private String nombres_voluntario;
+    @JsonProperty("apellidos_voluntario")
+    private String apellidos_voluntario;
+    @JsonProperty("fecha_nac_voluntario")
+    private LocalDate fecha_nac_voluntario;
+    @JsonProperty("disponibilidad_voluntario")
     private String disponibilidad_voluntario;
+    @JsonProperty("telefono_voluntario")
     private String telefono_voluntario;
+    @JsonProperty("contrasena_voluntario")
     private String contrasena_voluntario;
 
     // Getters
@@ -18,15 +28,15 @@ public class Voluntario {
     }
 
     public String getNombre() {
-        return nombre_voluntario;
+        return this.nombres_voluntario;
     }
 
     public String getApellido() {
-        return apellido_voluntario;
+        return this.apellidos_voluntario;
     }
 
-    public Date getFechaNacimiento() {
-        return fecha_nacimiento_voluntario;
+    public LocalDate getFechaNacimiento() {
+        return fecha_nac_voluntario;
     }
 
     public String getDisponibilidad() {
@@ -49,16 +59,16 @@ public class Voluntario {
         this.id_voluntario = id_voluntario;
     }
 
-    public void setNombre(String nombre_voluntario) {
-        this.nombre_voluntario = nombre_voluntario;
+    public void setNombre(String nombres_voluntario) {
+        this.nombres_voluntario = nombres_voluntario;
     }
 
-    public void setApellido(String apellido_voluntario) {
-        this.apellido_voluntario = apellido_voluntario;
+    public void setApellido(String apellidos_voluntario) {
+        this.apellidos_voluntario = apellidos_voluntario;
     }
 
-    public void setFechaNacimiento(Date fecha_nacimiento_voluntario) {
-        this.fecha_nacimiento_voluntario = fecha_nacimiento_voluntario;
+    public void setFechaNacimiento(LocalDate fecha_nac_voluntario) {
+        this.fecha_nac_voluntario = fecha_nac_voluntario;
     }
 
     public void setDisponibilidad(String disponibilidad_voluntario) {
@@ -73,4 +83,13 @@ public class Voluntario {
         this.contrasena_voluntario = contrasena_voluntario;
     }
     public void setRut(String rut_voluntario) {this.rut_voluntario = rut_voluntario;}
+
+    public String toString() {
+        return "Voluntario [id_voluntario=" + id_voluntario + ", rut_voluntario=" + rut_voluntario +
+                ", nombres_voluntario=" + nombres_voluntario + ", apellidos_voluntario=" + apellidos_voluntario +
+                ", fecha_nac_voluntario=" + fecha_nac_voluntario + ", disponibilidad_voluntario=" +
+                disponibilidad_voluntario + ", telefono_voluntario=" + telefono_voluntario +
+                ", contrasena_voluntario=" + contrasena_voluntario + "]";
+    }
+
 }

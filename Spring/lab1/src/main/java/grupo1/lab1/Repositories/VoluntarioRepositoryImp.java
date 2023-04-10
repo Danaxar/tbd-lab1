@@ -135,7 +135,7 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository{
 
     @Override
     public Voluntario save(Voluntario voluntario) {
-        String query = "INSERT INTO Voluntario (nombre, apellido, telefono, contrasena, fecha_nacimiento, disponibilidad) VALUES (:nombre, :apellido, :telefono, :contrasena, :fecha_nacimiento, :disponibilidad)";
+        String query = "INSERT INTO Voluntario (nombres_voluntario, apellidos_voluntario, telefono_voluntario, contrasena_voluntario, fecha_nac_voluntario, disponibilidad_voluntario, rut_voluntario) VALUES (:nombre, :apellido, :telefono, :contrasena, :fecha_nacimiento, :disponibilidad, :rut)";
         try(Connection conn = sql2o.open()){
             voluntario.setId((int) conn.createQuery(query, true)
                     .addParameter("nombre", voluntario.getNombre())
@@ -144,6 +144,7 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository{
                     .addParameter("contrasena", voluntario.getContrasena())
                     .addParameter("fecha_nacimiento", voluntario.getFechaNacimiento())
                     .addParameter("disponibilidad", voluntario.getDisponibilidad())
+                    .addParameter("rut", voluntario.getRut())
                     .executeUpdate()
                     .getKey());
             return voluntario;

@@ -94,7 +94,6 @@ public class VoluntarioService {
     }
 
     @PostMapping("/voluntario")
-    @ResponseBody
     public Voluntario createVoluntario(@RequestBody Voluntario voluntario){
         return voluntarioRepository.save(voluntario);
     }

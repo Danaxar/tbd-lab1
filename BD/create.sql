@@ -1,15 +1,24 @@
 DROP TABLE IF EXISTS Vol_habilidad;
-DROP TABLE IF EXISTS Tarea_habilidad;
-DROP TABLE IF EXISTS Ranking;
-DROP TABLE IF EXISTS Tarea;
-DROP TABLE IF EXISTS Estado_tarea;
-DROP TABLE IF EXISTS Voluntario;
-DROP TABLE IF EXISTS eme_habilidad;
-DROP TABLE IF EXISTS Habilidad;
-DROP TABLE IF EXISTS Emergencia;
-DROP TABLE IF EXISTS Institucion;
-DROP TABLE IF EXISTS log_queries;
 
+DROP TABLE IF EXISTS Tarea_habilidad;
+
+DROP TABLE IF EXISTS Ranking;
+
+DROP TABLE IF EXISTS Tarea;
+
+DROP TABLE IF EXISTS Estado_tarea;
+
+DROP TABLE IF EXISTS Voluntario;
+
+DROP TABLE IF EXISTS eme_habilidad;
+
+DROP TABLE IF EXISTS Habilidad;
+
+DROP TABLE IF EXISTS Emergencia;
+
+DROP TABLE IF EXISTS Institucion;
+
+DROP TABLE IF EXISTS log_queries;
 
 -- Tabla de Institucion
 CREATE TABLE Institucion (
@@ -44,6 +53,7 @@ CREATE TABLE Eme_habilidad (
 -- Tabla de Voluntario
 CREATE TABLE Voluntario (
     id_voluntario SERIAL PRIMARY KEY,
+    rut_voluntario VARCHAR(255),
     nombres_voluntario VARCHAR(255),
     apellidos_voluntario VARCHAR(255),
     fecha_nac_voluntario DATE,

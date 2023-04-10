@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Voluntario {
     private Integer id_voluntario;
+    private String rut_voluntario;
     private String nombre_voluntario;
     private String apellido_voluntario;
     private Date fecha_nacimiento_voluntario;
@@ -40,6 +41,8 @@ public class Voluntario {
         return contrasena_voluntario;
     }
 
+    public String getRut() {return rut_voluntario;}
+
     // Setters
 
     public void setId(Integer id_voluntario) {
@@ -69,4 +72,5 @@ public class Voluntario {
     public void setContrasena(String contrasena_voluntario) {
         this.contrasena_voluntario = contrasena_voluntario;
     }
+    public void setRut(String rut_voluntario) {this.rut_voluntario = rut_voluntario;}
 }

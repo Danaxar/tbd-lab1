@@ -35,7 +35,7 @@ public class EmergenciaService {
     }
 
     @GetMapping("/emergencia/nombre/{nombre}")
-    public Emergencia findByNombre(@PathVariable("nombre") String nombre){
+    public List<Emergencia> findByNombre(@PathVariable("nombre") String nombre){
         try{
             return emergenciaRepository.findByNombre(nombre);
         }catch (Exception e){
@@ -45,7 +45,7 @@ public class EmergenciaService {
     }
 
     @GetMapping("/emergencia/gravedad/{gravedad}")
-    public Emergencia findByGravedad(@PathParam("gravedad") String gravedad){
+    public List<Emergencia> findByGravedad(@PathVariable("gravedad") String gravedad){
         try{
             return emergenciaRepository.findByGravedad(gravedad);
         }catch (Exception e){
@@ -54,10 +54,10 @@ public class EmergenciaService {
         }
     }
 
-    @GetMapping("/emergencia/fecha/{fecha}")
-    public Emergencia findByFecha(@PathParam("fecha") Date fecha){
+    @GetMapping("/emergencia/fecha/{fecha_emergencia}")
+    public List<Emergencia> findByFecha(@PathVariable("fecha_emergencia") String fecha_emergencia){
         try{
-            return emergenciaRepository.findByFecha(fecha);
+            return emergenciaRepository.findByFecha(fecha_emergencia);
         }catch (Exception e){
             System.out.println("Ingrese una fecha valida");
             return null;
@@ -75,12 +75,15 @@ public class EmergenciaService {
     }
 
     @DeleteMapping("/emergencia/{id}")
-    public void delete(@PathParam("id") String id_str){
+    public void delete(@PathVariable("id") String id_str){
         Integer id;
         try{
             id = Integer.parseInt(id_str);
             emergenciaRepository.delete(id);
+            System.out.println("Emergencia eliminada con exito");
         }catch (Exception e){
+            System.out.println(id_str);
+            System.out.println(e);
             System.out.println("Ingrese un id valido");
         }
     }

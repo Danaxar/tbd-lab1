@@ -10,9 +10,9 @@ import java.util.List;
 public interface EmergenciaRepository {
     public List<Emergencia> findAll();
     public Emergencia findById(Integer id);
-    public Emergencia findByNombre(String nombre);
-    public Emergencia findByGravedad(String gravedad);
-    public Emergencia findByFecha(Date fecha);
+    public List<Emergencia> findByNombre(String nombre);
+    public List<Emergencia> findByGravedad(String gravedad);
+    public List<Emergencia> findByFecha(String fecha);
     public Emergencia save(Emergencia emergencia);
     public void delete(Integer id);
 }

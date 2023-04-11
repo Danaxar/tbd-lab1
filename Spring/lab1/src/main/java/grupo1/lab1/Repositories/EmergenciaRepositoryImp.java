@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -43,13 +44,13 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository{
     }
 
     @Override
-    public Emergencia findByNombre(String nombre) {
-        Emergencia encontrada;
-        String query = "SELECT * FROM Emergencia WHERE nombre = :nombre";
+    public List<Emergencia> findByNombre(String nombre) {
+        List<Emergencia> encontrada;
+        String query = "SELECT * FROM Emergencia WHERE nombre_emergencia = :nombre";
         try (Connection conn = sql2o.open()) {
             encontrada = conn.createQuery(query)
                     .addParameter("nombre", nombre)
-                    .executeAndFetchFirst(Emergencia.class);
+                    .executeAndFetch(Emergencia.class);
             return encontrada;
         } catch (Exception e) {
             System.out.println(e);
@@ -58,13 +59,13 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository{
     }
 
     @Override
-    public Emergencia findByGravedad(String gravedad) {
-        Emergencia encontrada;
-        String query = "SELECT * FROM Emergencia WHERE gravedad = :gravedad";
+    public List<Emergencia> findByGravedad(String gravedad) {
+        List<Emergencia> encontrada;
+        String query = "SELECT * FROM Emergencia WHERE gravedad_emergencia = :gravedad";
         try (Connection conn = sql2o.open()) {
             encontrada = conn.createQuery(query)
                     .addParameter("gravedad", gravedad)
-                    .executeAndFetchFirst(Emergencia.class);
+                    .executeAndFetch(Emergencia.class);
             return encontrada;
         } catch (Exception e) {
             System.out.println(e);
@@ -73,13 +74,15 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository{
     }
 
     @Override
-    public Emergencia findByFecha(Date fecha) {
-        Emergencia encontrada;
-        String query = "SELECT * FROM Emergencia WHERE fecha = :fecha";
+    public List<Emergencia> findByFecha(String fecha) {
+        List<Emergencia> encontrada;
+        String query = "SELECT * FROM Emergencia WHERE fecha_emergencia = :fecha";
         try (Connection conn = sql2o.open()) {
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+            Date fechaDate = formato.parse(fecha);
             encontrada = conn.createQuery(query)
-                    .addParameter("fecha", fecha)
-                    .executeAndFetchFirst(Emergencia.class);
+                    .addParameter("fecha", fechaDate)
+                    .executeAndFetch(Emergencia.class);
             return encontrada;
         } catch (Exception e) {
             System.out.println(e);

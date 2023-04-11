@@ -9,7 +9,7 @@
           <div id="formEmergencia">
             <label
               >Nombre:
-              <input type="text" value="emergencia1" />
+              <input type="text" value="" />
             </label>
             <div id="gravedad">
               <h3 style="margin-top: 20px">Gravedad</h3>

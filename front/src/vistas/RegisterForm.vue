@@ -5,39 +5,39 @@
       <div id="form">
         <label>
           Rut:
-          <input value="111" type="text" />
+          <input value="12345678-9" type="text" />
         </label>
 
         <label>
           Nombres:
-          <input value="222" type="text" name="nombres" />
+          <input value="Juan" type="text" name="nombres" />
         </label>
 
         <label>
           Apellidos:
-          <input value="333" type="text" name="apellidos" />
+          <input value="Perez" type="text" name="apellidos" />
         </label>
 
         <label
           >Fecha de nacimiento:
-          <input value="2001-01-25" type="date" name="fecha de nacimiento" />
+          <input value="2000-01-25" type="date" name="fecha de nacimiento" />
         </label>
 
         <label
           >Disponibilidad:
-          <input value="555" type="text" name="disponibilidad" />
+          <input value="Todos los días" type="text" name="disponibilidad" />
         </label>
 
         <label
-          >Telefono:
-          <input value="666" type="number" name="telefono" />
+          >Telefono: +569
+          <input value="12345678" type="number" name="telefono" />
         </label>
 
         <label>Contraseña: </label>
-        <input value="777" type="password" name="password" />
+        <input value="password" type="password" name="password" />
 
         <label>Repita su contraseña: </label>
-        <input value="888" type="password" name="password2" />
+        <input value="password" type="password" name="password2" />
         <br />
         <button id="enviarRegister" @click="enviar">Registrarse</button>
       </div>

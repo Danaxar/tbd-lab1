@@ -4,11 +4,11 @@
     <div id="loginForm">
       <label>
         Rut:
-        <input value="20675871-6" type="text" />
+        <input value="admin" type="text" />
       </label>
       <br />
       <label
-        >Contraseña: <input value="rucio025" type="password" name="password"
+        >Contraseña: <input value="admin" type="password" name="password"
       /></label>
       <br />
       <button id="loginButton" @click="login">Entrar</button>

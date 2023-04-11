@@ -1,5 +1,7 @@
 import RegisterForm from './vistas/RegisterForm.vue'
 import HomePage from './vistas/HomePage.vue'
+import LoginView from './vistas/LoginView.vue'
+import DashBoard from './vistas/DashBoard.vue'
 export default [
     {
         path: '/',
@@ -8,5 +10,13 @@ export default [
     {
         path: '/register',
         component: RegisterForm
+    },
+    {
+        path: '/login',
+        component: LoginView
+    },
+    {
+        path: '/dashboard',
+        component: DashBoard
     }
 ]

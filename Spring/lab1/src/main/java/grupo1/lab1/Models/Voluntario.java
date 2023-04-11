@@ -3,6 +3,7 @@ package grupo1.lab1.Models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class Voluntario {
     @JsonProperty("id_voluntario")
@@ -14,7 +15,7 @@ public class Voluntario {
     @JsonProperty("apellidos_voluntario")
     private String apellidos_voluntario;
     @JsonProperty("fecha_nac_voluntario")
-    private LocalDate fecha_nac_voluntario;
+    private Date fecha_nac_voluntario;
     @JsonProperty("disponibilidad_voluntario")
     private String disponibilidad_voluntario;
     @JsonProperty("telefono_voluntario")
@@ -35,7 +36,7 @@ public class Voluntario {
         return this.apellidos_voluntario;
     }
 
-    public LocalDate getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fecha_nac_voluntario;
     }
 
@@ -67,7 +68,7 @@ public class Voluntario {
         this.apellidos_voluntario = apellidos_voluntario;
     }
 
-    public void setFechaNacimiento(LocalDate fecha_nac_voluntario) {
+    public void setFechaNacimiento(Date fecha_nac_voluntario) {
         this.fecha_nac_voluntario = fecha_nac_voluntario;
     }
 

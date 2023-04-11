@@ -98,6 +98,11 @@ public class VoluntarioService {
         return voluntarioRepository.save(voluntario);
     }
 
+    @GetMapping("/voluntario/{rut}/{pass}")
+    public Voluntario findByRutAndContrasena(@PathVariable("rut") String rut, @PathVariable("pass") String pass){
+        return voluntarioRepository.findByRutAndContrasena(rut, pass);
+    }
+
     @DeleteMapping("/voluntario/{id}")
     public void deleteVoluntario(@PathVariable("id") String id_str){
         Integer id;

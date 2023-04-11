@@ -165,4 +165,22 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository{
             System.out.println(e);
         }
     }
+
+    @Override
+    public Voluntario findByRutAndContrasena(String rut, String contrasena){
+        Voluntario encontrado;
+        String query = "SELECT * FROM voluntario WHERE rut_voluntario = :rut AND contrasena_voluntario = :contrasena";
+        try(Connection conn = sql2o.open()){
+            encontrado = conn.createQuery(query)
+                    .addParameter("rut", rut)
+                    .addParameter("contrasena", contrasena)
+                    .executeAndFetchFirst(Voluntario.class);
+            return encontrado;
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
+
+
 }

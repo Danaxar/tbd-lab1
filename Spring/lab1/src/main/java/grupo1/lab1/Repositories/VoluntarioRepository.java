@@ -16,4 +16,6 @@ public interface VoluntarioRepository {
     public List<Voluntario> findAll();
     public Voluntario save(Voluntario voluntario);
     public void delete(Integer id);
+
+    public Voluntario findByRutAndContrasena(String rut, String contrasena);
 }

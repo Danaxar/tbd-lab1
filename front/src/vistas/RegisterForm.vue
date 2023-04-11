@@ -47,7 +47,6 @@
 
 <script>
 import axios from "axios";
-console.log("hola mundo");
 
 export default {
   name: "RegisterForm",

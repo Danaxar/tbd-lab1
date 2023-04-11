@@ -2,7 +2,6 @@ package grupo1.lab1.Models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 public class Voluntario {

@@ -64,8 +64,12 @@ public class EmergenciaService {
     }
 
     @PostMapping("/emergencia")
-    @ResponseBody
     public Emergencia save(@RequestBody Emergencia emergencia){
+        System.out.println(
+                emergencia.getId() + " " +
+                emergencia.getNombre() + " " +
+                emergencia.getGravedad() + " "
+        );
         return emergenciaRepository.save(emergencia);
     }
 

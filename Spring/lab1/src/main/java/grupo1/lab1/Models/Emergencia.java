@@ -1,14 +1,20 @@
 package grupo1.lab1.Models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
 
 /**
  * Clase que representa una emergencia
  */
 public class Emergencia{
+    @JsonProperty("id_emergencia")
     private Integer id_emergencia;
+    @JsonProperty("nombre_emergencia")
     private String nombre_emergencia;
+    @JsonProperty("gravedad_emergencia")
     private String gravedad_emergencia;
+    @JsonProperty("fecha_emergencia")
     private Date fecha_emergencia;
 
     //Getters

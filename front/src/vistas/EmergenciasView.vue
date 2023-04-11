@@ -36,6 +36,20 @@
 
         <section>
           <h2>Emergencias activas</h2>
+          <table bgcolor:black>
+            <tr>
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Fecha</th>
+              <th>Gravedad</th>
+            </tr>
+            <tr v-for="(objeto, indice) in emergencias" :key="indice">
+              <td>{{ indice }}</td>
+              <td>{{ objeto.nombre }}</td>
+              <td>{{ objeto.fecha }}</td>
+              <td>{{ objeto.gravedad }}</td>
+            </tr>
+          </table>
         </section>
       </div>
     </div>
@@ -47,6 +61,11 @@ import axios from "axios";
 export default {
   name: "EmergenciasView",
   components: { MenuBar },
+  data() {
+    return {
+      emergencias: [],
+    };
+  },
   methods: {
     enviarEmergencia() {
       const inputs = document.getElementsByTagName("input"); // Botones del DOM
@@ -71,7 +90,22 @@ export default {
           },
         }
       );
+
+      window.location.reload();
     },
+    async cargarEmergencias() {
+      try {
+        console.log("Cargando emergencias");
+        const response = await axios.get("http://localhost:8081/emergencia");
+        this.emergencias = response.data;
+        console.log(this.emergencias);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  },
+  created() {
+    this.cargarEmergencias();
   },
 };
 </script>
@@ -102,5 +136,19 @@ export default {
 
 button {
   background-color: rgb(40, 218, 40);
+}
+
+table {
+  margin: auto;
+  margin-top: 25px;
+  border: 1px solid white;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table th,
+table td {
+  border: 1px solid white;
+  padding: 5px;
 }
 </style>

@@ -19,7 +19,7 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository{
         List<Emergencia> salida;
         String query = "SELECT * FROM Emergencia";
         try (Connection conn = sql2o.open()) {
-            salida = conn.createQuery(query).setAutoDeriveColumnNames(true).executeAndFetch(Emergencia.class);
+            salida = conn.createQuery(query).executeAndFetch(Emergencia.class);
             return salida;
         } catch (Exception e) {
             System.out.println(e);

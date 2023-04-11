@@ -18,6 +18,7 @@ public class EmergenciaService {
 
     @GetMapping("/emergencia")
     public List<Emergencia> getAllEmergencia() {
+        System.out.println("Ejectando esto");
         return emergenciaRepository.findAll();
     }
 

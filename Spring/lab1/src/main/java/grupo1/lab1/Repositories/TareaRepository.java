@@ -7,8 +7,9 @@ import java.util.List;
 public interface TareaRepository {
     public List<Tarea> findAll();
     public Tarea findById(Integer id);
-    public Tarea findByNombre(String nombre);
-    public Tarea findByEmergencia(Integer id_emergencia);
+    public List<Tarea> findByNombre(String nombre);
+    public List<Tarea> findByEmergencia(Integer id_emergencia);
     public Tarea save(Tarea tarea);
-    public void delete(Integer id);
+    public Tarea update(Tarea tarea);
+    public boolean delete(Integer id);
 }

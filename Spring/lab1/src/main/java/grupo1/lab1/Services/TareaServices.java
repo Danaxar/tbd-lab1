@@ -1,5 +1,6 @@
 package grupo1.lab1.Services;
 
+import grupo1.lab1.Models.EstadoTarea;
 import grupo1.lab1.Models.Tarea;
 import grupo1.lab1.Repositories.TareaRepository;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +33,7 @@ public class TareaServices {
     }
 
     @GetMapping("/tarea/nombre/{nombre}")
-    public Tarea findByNombre(@PathVariable("nombre") String nombre){
+    public List<Tarea> findByNombre(@PathVariable("nombre") String nombre){
         try {
             return tareaRepository.findByNombre(nombre);
         }catch(Exception e){
@@ -42,7 +43,7 @@ public class TareaServices {
     }
 
     @GetMapping("/tarea/emergencia/{id}")
-    public Tarea findByEmergencia(@PathVariable("id") String id_str){
+    public List<Tarea> findByEmergencia(@PathVariable("id") String id_str){
         Integer id;
         try{
             id = Integer.parseInt(id_str);
@@ -59,12 +60,21 @@ public class TareaServices {
         return tareaRepository.save(tarea);
     }
 
+    @PutMapping("/tarea")
+    @ResponseBody
+    public Tarea update(@RequestBody Tarea tarea){ return tareaRepository.update(tarea); }
+
+
     @DeleteMapping("/tarea/{id}")
     public void delete(@PathVariable("id") String id_str){
         Integer id;
         try{
             id = Integer.parseInt(id_str);
-            tareaRepository.delete(id);
+            if (tareaRepository.delete(id)) {System.out.println("Tarea eliminada con exito");
+
+            }else{
+                System.out.println("La tarea no fue eliminada");
+            }
         }catch(Exception e){
             System.out.println("Ingrese un id valido");
         }

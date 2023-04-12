@@ -5,7 +5,7 @@ package grupo1.lab1.Models;
  * Clase que representa una tabla intermedia entre tarea y habilidad
  */
 
-public class TareaHabilidad {
+public class  TareaHabilidad {
     private Integer id_tarea_habilidad;
 
     /**

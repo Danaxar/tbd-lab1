@@ -84,14 +84,16 @@ public class EstadoTareaRepositoryImp implements EstadoTareaRepository {
 
     }
     @Override
-    public void delete(Integer id){
+    public boolean delete(Integer id){
         String query = "DELETE FROM Estado_Tarea WHERE id_estado_tarea = :id";
         try(Connection conn = sql2o.open()){
             conn.createQuery(query)
                     .addParameter("id", id)
                     .executeUpdate();
+            return true;
         } catch (Exception e){
             System.out.println(e);
+            return false;
         }
     }
 }

@@ -1,5 +1,6 @@
 package grupo1.lab1.Services;
 
+import grupo1.lab1.Models.EstadoTarea;
 import grupo1.lab1.Models.Ranking;
 import grupo1.lab1.Repositories.RankingRepository;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class RankingService {
     }
 
     @GetMapping("/ranking/{id}")
-    Ranking findById(@PathVariable("id") String id_str){
+    public Ranking findById(@PathVariable("id") String id_str){
         Integer id;
         try{
             id = Integer.parseInt(id_str);
@@ -31,7 +32,7 @@ public class RankingService {
     }
 
     @GetMapping("/ranking/puntaje/{puntaje}")
-    Ranking findByPuntaje(@PathVariable("puntaje") String puntaje_str){
+    public List<Ranking> findByPuntaje(@PathVariable("puntaje") String puntaje_str){
         Integer puntaje;
         try{
             puntaje = Integer.parseInt(puntaje_str);
@@ -42,18 +43,8 @@ public class RankingService {
         }
     }
 
-    @GetMapping("/ranking/nombre/{nombre}")
-    Ranking findByNombre(@PathVariable("nombre") String nombre){
-        try {
-            return rankingRepository.findByNombre(nombre);
-        }catch(Exception e){
-            System.out.println("Ingrese un nombre valido");
-            return null;
-        }
-    }
-
     @GetMapping("/ranking/voluntario/{id}")
-    Ranking findByVoluntario(@PathVariable("id") String id_str){
+    public List<Ranking> findByVoluntario(@PathVariable("id") String id_str){
         Integer id;
         try{
             id = Integer.parseInt(id_str);
@@ -65,7 +56,7 @@ public class RankingService {
     }
 
     @GetMapping("/ranking/tarea/{id}")
-    Ranking findByTarea(@PathVariable("id") String id_str){
+    public List<Ranking> findByTarea(@PathVariable("id") String id_str){
         Integer id;
         try{
             id = Integer.parseInt(id_str);
@@ -78,16 +69,25 @@ public class RankingService {
 
     @PostMapping("/ranking")
     @ResponseBody
-    public Ranking saveRanking(@RequestBody Ranking ranking){
+    public Ranking save(@RequestBody Ranking ranking){
         return rankingRepository.save(ranking);
     }
+
+    @PutMapping("/ranking")
+    @ResponseBody
+    public Ranking update(@RequestBody Ranking ranking){ return rankingRepository.update(ranking); }
+
 
     @DeleteMapping("/ranking/{id}")
     public void deleteRanking(@PathVariable("id") String id_str){
         Integer id;
         try{
             id = Integer.parseInt(id_str);
-            rankingRepository.delete(id);
+            if (rankingRepository.delete(id)) {System.out.println("fila eliminada con exito");
+
+            }else{
+                System.out.println("La fila no fue eliminada");
+            }
         }catch(Exception e){
             System.out.println("Ingrese un id valido");
         }

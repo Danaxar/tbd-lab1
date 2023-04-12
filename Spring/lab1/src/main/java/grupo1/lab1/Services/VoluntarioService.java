@@ -34,7 +34,7 @@ public class VoluntarioService {
     }
 
     @GetMapping("/voluntario/nombre/{nombre}")
-    public Voluntario findByNombre(@PathVariable("nombre") String nombre){
+    public List<Voluntario> findByNombre(@PathVariable("nombre") String nombre){
         try {
             return voluntarioRepository.findByNombre(nombre);
         }catch(Exception e){
@@ -44,7 +44,7 @@ public class VoluntarioService {
     }
 
     @GetMapping("/voluntario/apellido/{apellido}")
-    public Voluntario findByApellido(@PathVariable("apellido") String apellido){
+    public List<Voluntario> findByApellido(@PathVariable("apellido") String apellido){
         try {
             return voluntarioRepository.findByApellido(apellido);
         }catch(Exception e){
@@ -63,18 +63,8 @@ public class VoluntarioService {
         }
     }
 
-    @GetMapping("/voluntario/Contrasena/{contrasena}")
-    public Voluntario findByContrasena(@PathVariable("contrasena") String contrasena){
-        try{
-            return voluntarioRepository.findByContrasena(contrasena);
-        }catch(Exception e){
-            System.out.println("Ingrese una contrasena valida");
-            return null;
-        }
-    }
-
     @GetMapping("/voluntario/FechaNacimiento/{fechaNacimiento}")
-    public Voluntario findByFechaNacimiento(@PathVariable("fechaNacimiento") Date fechaNacimiento){
+    public List<Voluntario> findByFechaNacimiento(@PathVariable("fechaNacimiento") String fechaNacimiento){
         try{
             return voluntarioRepository.findByFechaNacimiento(fechaNacimiento);
         }catch(Exception e){
@@ -84,7 +74,7 @@ public class VoluntarioService {
     }
 
     @GetMapping("/voluntario/Disponibilidad/{disponibilidad}")
-    public Voluntario findByDisponibilidad(@PathVariable("disponibilidad") String disponibilidad){
+    public List<Voluntario> findByDisponibilidad(@PathVariable("disponibilidad") String disponibilidad){
         try{
             return voluntarioRepository.findByDisponibilidad(disponibilidad);
         }catch(Exception e){
@@ -93,9 +83,26 @@ public class VoluntarioService {
         }
     }
 
+    @GetMapping("/voluntario/Rol/{rol}")
+    public List<Voluntario> findByRol(@PathVariable("rol") String rol){
+        try{
+            return voluntarioRepository.findByRol(rol);
+        }catch(Exception e){
+            System.out.println("Ingrese un rol valido");
+            return null;
+        }
+    }
+
     @PostMapping("/voluntario")
-    public Voluntario createVoluntario(@RequestBody Voluntario voluntario){
+    @ResponseBody
+    public Voluntario save(@RequestBody Voluntario voluntario){
         return voluntarioRepository.save(voluntario);
+    }
+
+    @PutMapping("/voluntario")
+    @ResponseBody
+    public Voluntario update(@RequestBody Voluntario voluntario){
+        return voluntarioRepository.update(voluntario);
     }
 
     @GetMapping("/voluntario/{rut}/{pass}")
@@ -108,7 +115,12 @@ public class VoluntarioService {
         Integer id;
         try{
             id = Integer.parseInt(id_str);
-            voluntarioRepository.delete(id);
+            if (voluntarioRepository.delete(id)) {System.out.println("Voluntario eliminado con exito");
+
+            }else{
+                System.out.println("el voluntario no fue eliminado");
+            }
+
         }catch(Exception e){
             System.out.println("Ingrese un id valido");
         }

@@ -58,6 +58,7 @@ CREATE TABLE Voluntario (
     apellidos_voluntario VARCHAR(255),
     fecha_nac_voluntario DATE,
     disponibilidad_voluntario VARCHAR(255),
+	rol_voluntario VARCHAR(255),
     telefono_voluntario VARCHAR(12),
     contrasena_voluntario VARCHAR(255)
 );
@@ -102,9 +103,9 @@ CREATE TABLE Vol_habilidad (
 CREATE TABLE Tarea_habilidad (
     id_tarea_habilidad SERIAL PRIMARY KEY,
     id_tarea INT,
-    id_habilidad INT,
+    id_eme_Habilidad INT,
     FOREIGN KEY (id_tarea) REFERENCES Tarea(id_tarea),
-    FOREIGN KEY (id_habilidad) REFERENCES Habilidad(id_habilidad)
+    FOREIGN KEY (id_eme_Habilidad) REFERENCES eme_habilidad(id_eme_habilidad)
 );
 
 CREATE TABLE log_queries (

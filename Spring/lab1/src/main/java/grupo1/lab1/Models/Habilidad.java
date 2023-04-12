@@ -1,11 +1,16 @@
 package grupo1.lab1.Models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Clase que representa una habilidad
  */
 public class Habilidad {
+    @JsonProperty("id_habilidad")
     private Integer id_habilidad;
+    @JsonProperty("nombre_habilidad")
     private String nombre_habilidad;
+    @JsonProperty("puntaje_habilidad")
     private Integer puntaje_habilidad;
 
     /**

@@ -13,10 +13,12 @@ public class HabilidadService {
     HabilidadService(HabilidadRepository habilidadRepository){
         this.habilidadRepository = habilidadRepository;
     }
+
     @GetMapping("/habilidad")
     public List<Habilidad> getAllHabilidad() {
         return habilidadRepository.findAll();
     }
+
     @GetMapping("/habilidad/{id}")
     public Habilidad findById(@PathVariable("id") String id_str){
         Integer id;
@@ -37,17 +39,27 @@ public class HabilidadService {
             return null;
         }
     }
+
     @PostMapping("/habilidad")
     @ResponseBody
     public Habilidad save(@RequestBody Habilidad habilidad){
         return habilidadRepository.save(habilidad);
     }
+
+    @PutMapping("/habilidad")
+    @ResponseBody
+    public Habilidad update(@RequestBody Habilidad habilidad){
+        return habilidadRepository.update(habilidad);
+    }
+
+
     @DeleteMapping("/habilidad/{id}")
     public void delete(@PathVariable("id") String id_str){
         Integer id;
         try{
             id = Integer.parseInt(id_str);
             habilidadRepository.delete(id);
+            System.out.println("Habilidad Borrada con exito");
         }catch(Exception e){
             System.out.println("Ingrese un id valido");
         }

@@ -9,5 +9,6 @@ public interface HabilidadRepository {
     public Habilidad findById(Integer id);
     public Habilidad findByNombre(String nombre);
     public Habilidad save(Habilidad habilidad);
+    public Habilidad update(Habilidad habilidad);
     public void delete(Integer id);
 }

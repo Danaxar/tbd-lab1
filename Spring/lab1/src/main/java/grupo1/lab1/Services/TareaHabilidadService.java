@@ -21,7 +21,7 @@ public class TareaHabilidadService {
 
     @GetMapping("/tareaHabilidad/{id}")
     public TareaHabilidad findById(@PathVariable("id") String id_str){
-        int id;
+        Integer id;
         try{
             id = Integer.parseInt(id_str);
             return tareaHabilidadRepository.findById(id);
@@ -30,17 +30,53 @@ public class TareaHabilidadService {
         }
         return null;
     }
+
+    @GetMapping("/tareaHabilidad/id_eme_habilidad/{id_eme_Habilidad}")
+    public List<TareaHabilidad> findById_eme_Habilidad(@PathVariable("id_eme_Habilidad") String id_str){
+        int id;
+        try{
+            id = Integer.parseInt(id_str);
+            return tareaHabilidadRepository.findById_eme_Habilidad(id);
+        }catch(Exception e){
+            System.out.println("Ingrese un id valido");
+        }
+        return null;
+    }
+
+    @GetMapping("/tareaHabilidad/id_tarea/{id_tarea}")
+    public List<TareaHabilidad> findById_tarea(@PathVariable("id_tarea") String id_str){
+        int id;
+        try{
+            id = Integer.parseInt(id_str);
+            return tareaHabilidadRepository.findById_tarea(id);
+        }catch(Exception e){
+            System.out.println("Ingrese un id valido");
+        }
+        return null;
+    }
+
     @PostMapping("/tareaHabilidad")
     @ResponseBody
-    public TareaHabilidad createTareaHabilidad(@RequestBody TareaHabilidad tareaHabilidad){
+    public TareaHabilidad save(@RequestBody TareaHabilidad tareaHabilidad){
         return tareaHabilidadRepository.save(tareaHabilidad);
     }
+
+    @PutMapping("/tareaHabilidad")
+    @ResponseBody
+    public TareaHabilidad update(@RequestBody TareaHabilidad tareaHabilidad){
+        return tareaHabilidadRepository.update(tareaHabilidad);
+    }
+
     @DeleteMapping("/tareaHabilidad/{id}")
     public void deleteTareaHabilidad(@PathVariable("id") String id_str){
         int id;
         try{
             id = Integer.parseInt(id_str);
-            tareaHabilidadRepository.delete(id);
+            if (tareaHabilidadRepository.delete(id)) {System.out.println("Fila eliminada con exito");
+
+            }else{
+                System.out.println("La fila no fue eliminada");
+            }
         }catch(Exception e){
             System.out.println("Ingrese un id valido");
         }

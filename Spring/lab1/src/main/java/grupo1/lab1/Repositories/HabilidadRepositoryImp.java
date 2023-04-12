@@ -58,7 +58,7 @@ public class HabilidadRepositoryImp implements HabilidadRepository{
     public Habilidad save(Habilidad habilidad) {
         String query = "INSERT INTO Habilidad (nombre_habilidad, puntaje_habilidad) VALUES (:nombre, :puntaje)";
         try (Connection conn = sql2o.open()) {
-            int id = (int) conn.createQuery(query, true)
+            Integer id = (int) conn.createQuery(query, true)
                     .addParameter("nombre", habilidad.getNombre_habilidad())
                     .addParameter("puntaje", habilidad.getPuntaje_habilidad())
                     .executeUpdate()

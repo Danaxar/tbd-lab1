@@ -6,7 +6,9 @@ import java.util.List;
 public interface EstadoTareaRepository {
     public List<EstadoTarea> findAll();
     public EstadoTarea findById(Integer id);
-    public EstadoTarea findByNombre(String nombre);
+    public List<EstadoTarea> findByNombre(String nombre);
     public EstadoTarea save(EstadoTarea estadoTarea);
+
+    public EstadoTarea update(EstadoTarea estadoTarea);
     public void delete(Integer id);
 }

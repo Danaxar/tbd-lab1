@@ -1,10 +1,14 @@
 package grupo1.lab1.Models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Clase que representa una emergencia
  */
 public class EstadoTarea{
+    @JsonProperty("id_estado_tarea")
     private Integer id_estado_tarea;
+    @JsonProperty("nombre_estado_tarea")
     private String nombre_estado_tarea;
 
 

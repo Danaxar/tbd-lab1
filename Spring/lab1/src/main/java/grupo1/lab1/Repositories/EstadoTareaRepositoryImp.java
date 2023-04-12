@@ -15,9 +15,9 @@ public class EstadoTareaRepositoryImp implements EstadoTareaRepository {
     @Override
     public List<EstadoTarea> findAll(){
         List<EstadoTarea> estadosTareas;
-        String query = "SELECT * FROM EstadoTarea";
+        String query = "SELECT * FROM Estado_Tarea";
         try (Connection conn = sql2o.open()) {
-            estadosTareas = conn.createQuery(query).setAutoDeriveColumnNames(true).executeAndFetch(EstadoTarea.class);
+            estadosTareas = conn.createQuery(query).executeAndFetch(EstadoTarea.class);
             return estadosTareas;
         } catch (Exception e) {
             System.out.println(e);
@@ -27,7 +27,7 @@ public class EstadoTareaRepositoryImp implements EstadoTareaRepository {
     @Override
     public EstadoTarea findById(Integer id){
         EstadoTarea estadoTarea;
-        String query = "SELECT * FROM EstadoTarea WHERE id_estado_tarea = :id";
+        String query = "SELECT * FROM Estado_Tarea WHERE id_estado_tarea = :id";
         try(Connection conn = sql2o.open()){
             estadoTarea = conn.createQuery(query)
                     .addParameter("id", id)
@@ -39,13 +39,13 @@ public class EstadoTareaRepositoryImp implements EstadoTareaRepository {
         return null;
     }
     @Override
-    public EstadoTarea findByNombre(String nombre){
-        EstadoTarea estadoTarea;
-        String query = "SELECT * FROM EstadoTarea WHERE nombre_estado_tarea = :nombre";
+    public List<EstadoTarea> findByNombre(String nombre){
+        List<EstadoTarea> estadoTarea;
+        String query = "SELECT * FROM Estado_Tarea WHERE nombre_estado_tarea = :nombre";
         try(Connection conn = sql2o.open()){
             estadoTarea = conn.createQuery(query)
                     .addParameter("nombre", nombre)
-                    .executeAndFetchFirst(EstadoTarea.class);
+                    .executeAndFetch(EstadoTarea.class);
             return estadoTarea;
         } catch (Exception e){
             System.out.println(e);
@@ -54,7 +54,7 @@ public class EstadoTareaRepositoryImp implements EstadoTareaRepository {
     }
     @Override
     public EstadoTarea save(EstadoTarea estadoTarea){
-        String query = "INSERT INTO EstadoTarea (nombre) VALUES (:nombre)";
+        String query = "INSERT INTO Estado_Tarea (nombre_estado_tarea) VALUES (:nombre)";
         try(Connection conn = sql2o.open()){
             Integer id = (int) conn.createQuery(query, true)
                     .addParameter("nombre", estadoTarea.getNombre_Estado_tarea())
@@ -67,9 +67,24 @@ public class EstadoTareaRepositoryImp implements EstadoTareaRepository {
         }
         return null;
     }
+
+    public EstadoTarea update(EstadoTarea estadoTarea){
+        String query = "UPDATE Estado_Tarea SET nombre_estado_tarea = :nombre WHERE id_estado_Tarea = :id";
+        try(Connection conn = sql2o.open()){
+            conn.createQuery(query, true)
+                    .addParameter("nombre", estadoTarea.getNombre_Estado_tarea())
+                    .addParameter("id", estadoTarea.getId_Estado_tarea())
+                    .executeUpdate();
+            return estadoTarea;
+        } catch (Exception e){
+            System.out.println(e);
+        }
+        return null;
+
+    }
     @Override
     public void delete(Integer id){
-        String query = "DELETE FROM EstadoTarea WHERE id_estado_tarea = :id";
+        String query = "DELETE FROM Estado_Tarea WHERE id_estado_tarea = :id";
         try(Connection conn = sql2o.open()){
             conn.createQuery(query)
                     .addParameter("id", id)

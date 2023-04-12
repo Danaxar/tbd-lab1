@@ -59,8 +59,12 @@ public class InstitucionService {
         int id;
         try{
             id = Integer.parseInt(id_str);
-            institucionRepository.delete(id);
-            System.out.println("Estado eliminado con exito");
+
+            if (institucionRepository.delete(id)) {System.out.println("institucion eliminada con exito");
+
+            }else{
+                System.out.println("la institucion no fue eliminada");
+            }
         } catch (Exception e){
             System.out.println("Ingrese un id valido");
         }

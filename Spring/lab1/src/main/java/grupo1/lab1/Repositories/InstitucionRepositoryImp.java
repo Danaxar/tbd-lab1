@@ -88,14 +88,16 @@ public class InstitucionRepositoryImp implements InstitucionRepository{
 
     }
     @Override
-    public void delete(Integer id) {
+    public boolean delete(Integer id) {
         String sql = "DELETE FROM institucion WHERE id_institucion = :id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("id", id)
                     .executeUpdate();
+            return true;
         }catch(Exception e){
             System.out.println(e);
+            return false;
         }
     }
 }

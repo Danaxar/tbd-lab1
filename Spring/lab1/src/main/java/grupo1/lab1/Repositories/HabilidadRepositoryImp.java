@@ -88,14 +88,16 @@ public class HabilidadRepositoryImp implements HabilidadRepository{
     }
 
     @Override
-    public void delete(Integer id) {
+    public boolean delete(Integer id) {
         String query = "DELETE FROM Habilidad WHERE id_habilidad = :id";
         try (Connection conn = sql2o.open()) {
             conn.createQuery(query)
                     .addParameter("id", id)
                     .executeUpdate();
+            return true;
         } catch (Exception e) {
             System.out.println(e);
+            return false;
         }
     }
 }

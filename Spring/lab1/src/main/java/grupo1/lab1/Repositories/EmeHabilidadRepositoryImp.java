@@ -41,13 +41,13 @@ public class EmeHabilidadRepositoryImp implements EmeHabilidadRepository {
     }
 
     @Override
-    public EmeHabilidad findByEmergencia(Integer id) {
-        EmeHabilidad encontrada;
+    public List<EmeHabilidad> findByEmergencia(Integer id) {
+        List<EmeHabilidad> encontrada;
         String query = "SELECT * FROM Eme_habilidad WHERE id_emergencia = :id";
         try (Connection conn = sql2o.open()) {
             encontrada = conn.createQuery(query)
                     .addParameter("id", id)
-                    .executeAndFetchFirst(EmeHabilidad.class);
+                    .executeAndFetch(EmeHabilidad.class);
             return encontrada;
         } catch (Exception e) {
             System.out.println(e);
@@ -56,13 +56,13 @@ public class EmeHabilidadRepositoryImp implements EmeHabilidadRepository {
     }
 
     @Override
-    public EmeHabilidad findByHabilidad(Integer id) {
-        EmeHabilidad encontrada;
+    public List<EmeHabilidad> findByHabilidad(Integer id) {
+        List<EmeHabilidad> encontrada;
         String query = "SELECT * FROM Eme_habilidad WHERE id_habilidad = :id";
         try (Connection conn = sql2o.open()) {
             encontrada = conn.createQuery(query)
                     .addParameter("id", id)
-                    .executeAndFetchFirst(EmeHabilidad.class);
+                    .executeAndFetch(EmeHabilidad.class);
             return encontrada;
         } catch (Exception e) {
             System.out.println(e);
@@ -73,13 +73,13 @@ public class EmeHabilidadRepositoryImp implements EmeHabilidadRepository {
     @Override
     public EmeHabilidad save(EmeHabilidad emeHabilidad){
         String query = "INSERT INTO Eme_habilidad (id_emergencia, id_habilidad) VALUES (:id_emergencia, :id_habilidad)";
-        try{
-            Connection conn = sql2o.open();
-            emeHabilidad.setId_emergencia((int) conn.createQuery(query, true)
+        try(Connection conn = sql2o.open()){
+            Integer id = (int) conn.createQuery(query, true)
                     .addParameter("id_emergencia", emeHabilidad.getId_emergencia())
                     .addParameter("id_habilidad", emeHabilidad.getId_habilidad())
-                    .executeUpdate().getKey());
-            conn.close();
+                    .executeUpdate()
+                    .getKey();
+            emeHabilidad.setId(id);
             return emeHabilidad;
         }catch (Exception e){
             System.out.println(e);
@@ -88,14 +88,16 @@ public class EmeHabilidadRepositoryImp implements EmeHabilidadRepository {
     }
 
     @Override
-    public void delete(Integer id) {
+    public boolean delete(Integer id) {
         String sql = "DELETE FROM Eme_habilidad WHERE id_eme_habilidad = :id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("id", id)
                     .executeUpdate();
+            return true;
         } catch (Exception e) {
             System.out.println(e);
+            return false;
         }
     }
 }

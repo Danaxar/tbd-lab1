@@ -1,13 +1,18 @@
 package grupo1.lab1.Models;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Clase que representa una tabla intermedia entre Emergencia y habilidad
  */
 
 public class EmeHabilidad {
+    @JsonProperty("id_eme_habilidad")
     private Integer id_eme_habilidad;
+    @JsonProperty("id_emergencia")
     private Integer id_emergencia;
+    @JsonProperty("id_habilidad")
     private Integer id_habilidad;
 
     // Getters

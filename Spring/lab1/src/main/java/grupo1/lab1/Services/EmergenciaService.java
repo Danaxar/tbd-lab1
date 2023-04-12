@@ -79,8 +79,11 @@ public class EmergenciaService {
         Integer id;
         try{
             id = Integer.parseInt(id_str);
-            emergenciaRepository.delete(id);
-            System.out.println("Emergencia eliminada con exito");
+            if (emergenciaRepository.delete(id)) {System.out.println("Estado eliminado con exito");
+
+            }else{
+                System.out.println("el estado no fue eliminado");
+            }
         }catch (Exception e){
             System.out.println(id_str);
             System.out.println(e);

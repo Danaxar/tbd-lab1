@@ -109,14 +109,16 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository{
     }
 
     @Override
-    public void delete(Integer id) {
+    public boolean delete(Integer id) {
         String query = "DELETE FROM Emergencia WHERE id_emergencia = :id";
         try (Connection conn = sql2o.open()) {
             conn.createQuery(query)
                     .addParameter("id", id)
                     .executeUpdate();
+            return true;
         } catch (Exception e) {
             System.out.println(e);
+            return false;
         }
     }
 }

@@ -9,5 +9,6 @@ public interface InstitucionRepository {
     public List<Institucion> findAll();
     public Institucion save(Institucion institucion);
     public void delete(Integer id);
-    public Institucion findByNombre(String nombre);
+    public Institucion update(Institucion institucion);
+    public List<Institucion> findByNombre(String nombre);
 }

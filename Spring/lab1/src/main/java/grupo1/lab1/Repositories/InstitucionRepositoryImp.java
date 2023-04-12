@@ -1,5 +1,6 @@
 package grupo1.lab1.Repositories;
 
+import grupo1.lab1.Models.EstadoTarea;
 import grupo1.lab1.Models.Institucion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -11,6 +12,19 @@ import java.util.List;
 public class InstitucionRepositoryImp implements InstitucionRepository{
     @Autowired
     private Sql2o sql2o;
+
+    @Override
+    public List<Institucion> findAll() {
+        List<Institucion> institucions;
+        String query = "SELECT * FROM Institucion";
+        try(Connection conn = sql2o.open()){
+            institucions = conn.createQuery(query).executeAndFetch(Institucion.class);
+            return institucions;
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
 
     @Override
     public Institucion findById(Integer id) {
@@ -28,35 +42,54 @@ public class InstitucionRepositoryImp implements InstitucionRepository{
     }
 
     @Override
-    public List<Institucion> findAll() {
-        List<Institucion> salida;
-        String query = "SELECT * FROM Institucion";
-        try(Connection conn = sql2o.open()){
-            salida = conn.createQuery(query).setAutoDeriveColumnNames(true).executeAndFetch(Institucion.class);
-            return salida;
+    public List<Institucion> findByNombre(String nombre) {
+        List<Institucion> instituciones;
+        String query = "SELECT * FROM institucion WHERE nombre_institucion = :nombre";
+        try (Connection con = sql2o.open()) {
+            instituciones = con.createQuery(query)
+                    .addParameter("nombre", nombre)
+                    .executeAndFetch(Institucion.class);
+            return instituciones;
         }catch(Exception e){
             System.out.println(e);
         }
         return null;
     }
+
     @Override
     public Institucion save(Institucion institucion) {
-        Institucion agregada;
-        String query = "INSERT INTO institucion (nombre) VALUES (:nombre)";
-        try (Connection con = sql2o.open()) {
-            agregada = con.createQuery(query, true)
-                    .addParameter("nombre", institucion.getNombre())
-                    .executeAndFetchFirst(Institucion.class);
-            institucion.setId(agregada.getId());
-            return agregada;
+        String query = "INSERT INTO institucion (nombre_institucion) VALUES (:nombre)";
+        try (Connection conn = sql2o.open()) {
+            Integer id = (int) conn.createQuery(query, true)
+                    .addParameter("nombre", institucion.getNombre_institucion())
+                    .executeUpdate()
+                    .getKey();
+            institucion.setId_institucion(id);
+            return institucion;
         }catch(Exception e){
             System.out.println(e);
         }
         return null;
+    }
+
+    @Override
+    public Institucion update(Institucion institucion){
+        String query = "UPDATE institucion SET nombre_institucion = :nombre WHERE id_institucion = :id";
+        try(Connection conn = sql2o.open()){
+            conn.createQuery(query, true)
+                    .addParameter("nombre", institucion.getNombre_institucion())
+                    .addParameter("id", institucion.getId_institucion())
+                    .executeUpdate();
+            return institucion;
+        } catch (Exception e){
+            System.out.println(e);
+        }
+        return null;
+
     }
     @Override
     public void delete(Integer id) {
-        String sql = "DELETE FROM instituciones WHERE id = :id";
+        String sql = "DELETE FROM institucion WHERE id_institucion = :id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("id", id)
@@ -64,18 +97,5 @@ public class InstitucionRepositoryImp implements InstitucionRepository{
         }catch(Exception e){
             System.out.println(e);
         }
-    }
-
-    @Override
-    public Institucion findByNombre(String nombre) {
-        String sql = "SELECT * FROM instituciones WHERE nombre = :nombre";
-        try (Connection con = sql2o.open()) {
-            return con.createQuery(sql)
-                    .addParameter("nombre", nombre)
-                    .executeAndFetchFirst(Institucion.class);
-        }catch(Exception e){
-            System.out.println(e);
-        }
-        return null;
     }
 }

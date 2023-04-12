@@ -68,6 +68,7 @@ public class EstadoTareaRepositoryImp implements EstadoTareaRepository {
         return null;
     }
 
+    @Override
     public EstadoTarea update(EstadoTarea estadoTarea){
         String query = "UPDATE Estado_Tarea SET nombre_estado_tarea = :nombre WHERE id_estado_Tarea = :id";
         try(Connection conn = sql2o.open()){

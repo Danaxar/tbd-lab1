@@ -19,7 +19,7 @@ public class RankingRepositoryImp implements RankingRepository {
         List<Ranking> salida;
         String query = "SELECT * FROM Ranking";
         try (Connection conn = sql2o.open()) {
-            salida = conn.createQuery(query).setAutoDeriveColumnNames(true).executeAndFetch(Ranking.class);
+            salida = conn.createQuery(query).executeAndFetch(Ranking.class);
             return salida;
         } catch (Exception e) {
             System.out.println(e);
@@ -113,7 +113,7 @@ public class RankingRepositoryImp implements RankingRepository {
                     .addParameter("puntaje", ranking.getPuntaje())
                     .addParameter("id_voluntario", ranking.getIdVoluntario())
                     .addParameter("id_tarea", ranking.getIdTarea())
-                    .addParameter("id_ranking", ranking.getId())
+                    .addParameter("id", ranking.getId())
                     .executeUpdate();
             return ranking;
         } catch (Exception e){

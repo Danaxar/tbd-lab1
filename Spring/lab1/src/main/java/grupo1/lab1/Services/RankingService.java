@@ -79,7 +79,7 @@ public class RankingService {
 
 
     @DeleteMapping("/ranking/{id}")
-    public void deleteRanking(@PathVariable("id") String id_str){
+    public void delete(@PathVariable("id") String id_str){
         Integer id;
         try{
             id = Integer.parseInt(id_str);

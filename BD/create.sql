@@ -31,7 +31,8 @@ CREATE TABLE Emergencia (
     id_emergencia SERIAL PRIMARY KEY,
     nombre_emergencia VARCHAR(255),
     gravedad_emergencia VARCHAR(255),
-    fecha_emergencia DATE
+    fecha_emergencia DATE,
+    institucion_emergencia VARCHAR(255)
 );
 
 -- Tabla de Habilidad

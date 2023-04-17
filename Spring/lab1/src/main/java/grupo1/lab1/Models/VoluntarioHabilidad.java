@@ -1,32 +1,40 @@
 package grupo1.lab1.Models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Clase que representa la habilidad de un voluntario
  */
 public class VoluntarioHabilidad {
-    private Integer id_voluntario_habilidad;
+    @JsonProperty("id_vol_habilidad")
+    private Integer id_vol_habilidad;
+    @JsonProperty("id_voluntario")
+    private Integer id_voluntario;
+    @JsonProperty("id_habilidad")
+    private Integer id_habilidad;
 
-    /**
-     * Constructor vacio
-     * @param id_voluntario_habilidad
-     */
-    public VoluntarioHabilidad(Integer id_voluntario_habilidad) {
-        this.id_voluntario_habilidad = id_voluntario_habilidad;
+    public Integer getId_vol_habilidad() {
+        return id_vol_habilidad;
     }
 
-    /**
-     * Obtiene el id de la habilidad del voluntario
-     * @return
-     */
-    public Integer getId_voluntario_habilidad() {
-        return id_voluntario_habilidad;
+    public void setId_vol_habilidad(Integer id_vol_habilidad) {
+        this.id_vol_habilidad = id_vol_habilidad;
     }
 
-    /**
-     * Modifica el id de la habilidad del voluntario
-     * @param id_voluntario_habilidad
-     */
-    public void setId_voluntario_habilidad(Integer id_voluntario_habilidad) {
-        this.id_voluntario_habilidad = id_voluntario_habilidad;
+    public Integer getId_Voluntario() {
+        return id_voluntario;
+    }
+
+    public void setId_voluntario(Integer id_voluntario) {
+        this.id_voluntario = id_voluntario;
+    }
+
+    public Integer getId_Habilidad() {
+        return id_habilidad;
+    }
+
+    public void setId_habilidad(Integer id_habilidad) {
+        this.id_habilidad = id_habilidad;
     }
 }
+

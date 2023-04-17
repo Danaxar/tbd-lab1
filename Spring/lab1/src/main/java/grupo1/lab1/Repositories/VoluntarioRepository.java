@@ -6,16 +6,17 @@ import java.util.Date;
 import java.util.List;
 
 public interface VoluntarioRepository {
-    public Voluntario findById(Integer id);
-    public Voluntario findByNombre(String nombre);
-    public Voluntario findByApellido(String apellido);
-    public Voluntario findByTelefono(String telefono);
-    public Voluntario findByContrasena(String contrasena);
-    public Voluntario findByFechaNacimiento(Date fecha_nacimiento);
-    public Voluntario findByDisponibilidad(String disponibilidad);
     public List<Voluntario> findAll();
+    public Voluntario findById(Integer id);
+    public List<Voluntario> findByNombre(String nombre);
+    public List<Voluntario> findByApellido(String apellido);
+    public Voluntario findByTelefono(String telefono);
+    public List<Voluntario> findByFechaNacimiento(String fecha_nacimiento);
+    public List<Voluntario> findByDisponibilidad(String disponibilidad);
+    public List<Voluntario> findByRol(String rol);
     public Voluntario save(Voluntario voluntario);
-    public void delete(Integer id);
+    public Voluntario update(Voluntario voluntario);
+    public boolean delete(Integer id);
 
     public Voluntario findByRutAndContrasena(String rut, String contrasena);
 }

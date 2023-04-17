@@ -20,7 +20,7 @@ public class EmeHabilidadService {
     }
 
     @GetMapping("/emehabilidad/{id}")
-    EmeHabilidad findById(@PathVariable("id") String id_str){
+    public EmeHabilidad findById(@PathVariable("id") String id_str){
         Integer id;
         try{
             id = Integer.parseInt(id_str);
@@ -32,7 +32,7 @@ public class EmeHabilidadService {
     }
 
     @GetMapping("/emehabilidad/emergencia/{id}")
-    EmeHabilidad findByEmergencia(@PathVariable("id") String id_str){
+    public List<EmeHabilidad> findByEmergencia(@PathVariable("id") String id_str){
         Integer id;
         try{
             id = Integer.parseInt(id_str);
@@ -44,7 +44,7 @@ public class EmeHabilidadService {
     }
 
     @GetMapping("/emehabilidad/habilidad/{id}")
-    EmeHabilidad findByHabilidad(@PathVariable("id") String id_str){
+    public List<EmeHabilidad> findByHabilidad(@PathVariable("id") String id_str){
         Integer id;
         try{
             id = Integer.parseInt(id_str);
@@ -65,7 +65,11 @@ public class EmeHabilidadService {
         Integer id;
         try{
             id = Integer.parseInt(id_str);
-            emeHabilidadRepository.delete(id);
+            if (emeHabilidadRepository.delete(id)) {System.out.println("fila eliminada con exito");
+
+            }else{
+                System.out.println("La fila no fue eliminada");
+            }
         }catch (Exception e){
             System.out.println("Ingrese un id valido");
         }

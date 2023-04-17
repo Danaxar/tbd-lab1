@@ -19,8 +19,14 @@ public class Voluntario {
     private String disponibilidad_voluntario;
     @JsonProperty("telefono_voluntario")
     private String telefono_voluntario;
+    @JsonProperty("rol_voluntario")
+    private String rol_voluntario;
     @JsonProperty("contrasena_voluntario")
     private String contrasena_voluntario;
+
+    public String getRol_voluntario() {
+        return rol_voluntario;
+    }
 
     // Getters
     public Integer getId() {
@@ -84,12 +90,7 @@ public class Voluntario {
     }
     public void setRut(String rut_voluntario) {this.rut_voluntario = rut_voluntario;}
 
-    public String toString() {
-        return "Voluntario [id_voluntario=" + id_voluntario + ", rut_voluntario=" + rut_voluntario +
-                ", nombres_voluntario=" + nombres_voluntario + ", apellidos_voluntario=" + apellidos_voluntario +
-                ", fecha_nac_voluntario=" + fecha_nac_voluntario + ", disponibilidad_voluntario=" +
-                disponibilidad_voluntario + ", telefono_voluntario=" + telefono_voluntario +
-                ", contrasena_voluntario=" + contrasena_voluntario + "]";
+    public void setRol_voluntario(String rol_voluntario) {
+        this.rol_voluntario = rol_voluntario;
     }
-
 }

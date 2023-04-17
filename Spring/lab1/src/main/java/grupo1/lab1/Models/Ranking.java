@@ -1,10 +1,16 @@
 package grupo1.lab1.Models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Ranking {
+
+    @JsonProperty("id_ranking")
     private Integer id_ranking;
-    private String nombre_ranking;
+    @JsonProperty("puntaje_ranking")
     private Integer puntaje_ranking;
+    @JsonProperty("id_voluntario")
     private Integer id_voluntario;
+    @JsonProperty("id_tarea")
     private Integer id_tarea;
 
     // Getters
@@ -15,10 +21,6 @@ public class Ranking {
 
     public Integer getPuntaje() {
         return puntaje_ranking;
-    }
-
-    public String getNombre() {
-        return nombre_ranking;
     }
 
     public Integer getIdVoluntario() {
@@ -37,10 +39,6 @@ public class Ranking {
 
     public void setPuntaje(Integer puntaje_ranking) {
         this.puntaje_ranking = puntaje_ranking;
-    }
-
-    public void setNombre(String nombre_ranking) {
-        this.nombre_ranking = nombre_ranking;
     }
 
     public void setIdVoluntario(Integer id_voluntario) {

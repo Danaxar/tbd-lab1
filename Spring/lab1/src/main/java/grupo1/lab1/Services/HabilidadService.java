@@ -58,8 +58,11 @@ public class HabilidadService {
         Integer id;
         try{
             id = Integer.parseInt(id_str);
-            habilidadRepository.delete(id);
-            System.out.println("Habilidad Borrada con exito");
+            if (habilidadRepository.delete(id)) {System.out.println("Habilidad eliminada con exito");
+
+            }else{
+                System.out.println("la habilidad no fue eliminada");
+            }
         }catch(Exception e){
             System.out.println("Ingrese un id valido");
         }

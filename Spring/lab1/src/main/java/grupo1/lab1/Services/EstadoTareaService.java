@@ -22,7 +22,7 @@ public class EstadoTareaService {
 
     @GetMapping("/estadoTarea/{id}")
     public EstadoTarea findById(@PathVariable("id") String id_str){
-        int id;
+        Integer id;
         try{
             id = Integer.parseInt(id_str);
             return estadoTareaRepository.findById(id);
@@ -57,8 +57,11 @@ public class EstadoTareaService {
         int id;
         try{
             id = Integer.parseInt(id_str);
-            estadoTareaRepository.delete(id);
-            System.out.println("Estado eliminado con exito");
+            if (estadoTareaRepository.delete(id)) {System.out.println("Estado eliminado con exito");
+
+            }else{
+                System.out.println("el estado no fue eliminado");
+            }
         } catch (Exception e){
             System.out.println("Ingrese un id valido");
         }

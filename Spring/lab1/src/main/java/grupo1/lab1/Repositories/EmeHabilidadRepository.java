@@ -7,8 +7,8 @@ import java.util.List;
 public interface EmeHabilidadRepository {
     public List<EmeHabilidad> findAll();
     public EmeHabilidad findById(Integer id);
-    public EmeHabilidad findByHabilidad(Integer id_habilidad);
-    public EmeHabilidad findByEmergencia(Integer id_emergencia);
+    public List<EmeHabilidad> findByHabilidad(Integer id_habilidad);
+    public List<EmeHabilidad> findByEmergencia(Integer id_emergencia);
     public EmeHabilidad save(EmeHabilidad emeHabilidad);
-    public void delete(Integer id);
+    public boolean delete(Integer id);
 }

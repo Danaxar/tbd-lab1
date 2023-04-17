@@ -10,5 +10,5 @@ public interface EstadoTareaRepository {
     public EstadoTarea save(EstadoTarea estadoTarea);
 
     public EstadoTarea update(EstadoTarea estadoTarea);
-    public void delete(Integer id);
+    public boolean delete(Integer id);
 }

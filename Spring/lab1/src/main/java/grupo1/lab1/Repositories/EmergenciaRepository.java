@@ -14,5 +14,5 @@ public interface EmergenciaRepository {
     public List<Emergencia> findByGravedad(String gravedad);
     public List<Emergencia> findByFecha(String fecha);
     public Emergencia save(Emergencia emergencia);
-    public void delete(Integer id);
+    public boolean delete(Integer id);
 }

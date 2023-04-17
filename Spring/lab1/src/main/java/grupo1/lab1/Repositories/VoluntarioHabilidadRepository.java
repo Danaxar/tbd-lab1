@@ -7,6 +7,8 @@ import java.util.List;
 public interface VoluntarioHabilidadRepository {
     public List<VoluntarioHabilidad> findAll();
     public VoluntarioHabilidad findById(Integer id);
+    public List<VoluntarioHabilidad> findById_Habilidad(Integer id_habilidad);
+    public List<VoluntarioHabilidad> findById_Voluntario(Integer id_voluntario);
     public VoluntarioHabilidad save(VoluntarioHabilidad voluntarioHabilidad);
-    public void delete(Integer id);
+    public boolean delete(Integer id);
 }

@@ -68,6 +68,7 @@ public class EstadoTareaRepositoryImp implements EstadoTareaRepository {
         return null;
     }
 
+    @Override
     public EstadoTarea update(EstadoTarea estadoTarea){
         String query = "UPDATE Estado_Tarea SET nombre_estado_tarea = :nombre WHERE id_estado_Tarea = :id";
         try(Connection conn = sql2o.open()){
@@ -80,17 +81,18 @@ public class EstadoTareaRepositoryImp implements EstadoTareaRepository {
             System.out.println(e);
         }
         return null;
-
     }
     @Override
-    public void delete(Integer id){
+    public boolean delete(Integer id){
         String query = "DELETE FROM Estado_Tarea WHERE id_estado_tarea = :id";
         try(Connection conn = sql2o.open()){
             conn.createQuery(query)
                     .addParameter("id", id)
                     .executeUpdate();
+            return true;
         } catch (Exception e){
             System.out.println(e);
+            return false;
         }
     }
 }

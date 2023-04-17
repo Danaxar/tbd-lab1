@@ -1,17 +1,25 @@
 <template>
   <div id="loginContent">
     <h1 style="text-align: center">Iniciar sesión</h1>
-    <div id="loginForm">
-      <label>
-        Rut:
-        <input value="admin" type="text" />
-      </label>
-      <br />
-      <label
-        >Contraseña: <input value="admin" type="password" name="password"
-      /></label>
-      <br />
-      <button id="loginButton" @click="login">Entrar</button>
+    <div class="flex">
+      <div id="loginForm">
+        <table>
+          <tr>
+            <td><label>Rut:</label></td>
+            <td><input value="admin" type="text" /></td>
+          </tr>
+          <tr>
+            <td><label>Contraseña: </label></td>
+            <td><input value="admin" type="password" name="password" /></td>
+          </tr>
+          <tr>
+            <button class="btn-completed" @click="login">Entrar</button>
+          </tr>
+        </table>
+      </div>
+      <img
+        src="https://www.encancha.cl/resizer/NzUMCjlD6iyqLHUM3Vh9i-6d27c=/980x640/smart/cloudfront-us-east-1.images.arcpublishing.com/palco/CMJ6YNIQJJCBXCBL3CLHH2EGYQ.jpg"
+      />
     </div>
   </div>
 </template>
@@ -70,30 +78,50 @@ export default {
 };
 </script>
 
-<style>
-#loginContent {
-  height: 50vh;
-}
+<style scoped>
 #loginForm {
-  width: 50vw;
-  margin: auto;
+  width: 25%;
+  /* margin: auto; */
   margin-top: 24px;
   border-color: white;
   border-style: solid;
-  border-radius: 30px 30px;
+  border-radius: 15px;
+  border-width: 1px;
   padding: 25px;
-}
-
-#loginButton {
-  margin: 25px;
-  background-color: green;
-  border-radius: 30px 30px;
-  font-size: 20px;
-  color: white;
-  width: 15%;
+  background-color: rgba(30, 86, 101, 0.5);
 }
 
 #loginForm input {
   margin: 10px;
+}
+
+.btn-completed {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  display: inline-block;
+  text-align: center;
+  font-size: 16px;
+  margin: 10px;
+  border-radius: 7px;
+  cursor: pointer; /* Cambia el cursor cuando se pasa sobre el botón */
+}
+
+.btn-completed:hover {
+  background-color: #3e8e41;
+}
+
+.flex {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: nowrap;
+}
+
+img {
+  border-radius: 15px;
+  background-color: black;
+  width: 40%;
 }
 </style>

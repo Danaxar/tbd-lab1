@@ -86,7 +86,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #centerRegisterContainer h1 {
   text-align: center;
   margin: 2%;

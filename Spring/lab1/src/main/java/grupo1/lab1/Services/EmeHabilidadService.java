@@ -1,7 +1,6 @@
 package grupo1.lab1.Services;
 
 import grupo1.lab1.Models.EmeHabilidad;
-import grupo1.lab1.Models.Emergencia;
 import grupo1.lab1.Repositories.EmeHabilidadRepository;
 import org.springframework.web.bind.annotation.*;
 
@@ -57,7 +56,6 @@ public class EmeHabilidadService {
     }
 
     @PostMapping("/emehabilidad")
-    @ResponseBody
     public EmeHabilidad saveEmeHabilidad(@RequestBody EmeHabilidad emeHabilidad){
         return emeHabilidadRepository.save(emeHabilidad);
     }

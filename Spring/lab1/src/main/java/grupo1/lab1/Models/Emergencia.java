@@ -17,6 +17,10 @@ public class Emergencia{
     @JsonProperty("fecha_emergencia")
     private Date fecha_emergencia;
 
+    // FK
+    @JsonProperty("id_institucion")
+    private Integer id_institucion;
+
     //Getters
 
     /**
@@ -49,6 +53,10 @@ public class Emergencia{
      */
     public Date getFecha() {
         return fecha_emergencia;
+    }
+
+    public Integer getId_institucion(){
+        return id_institucion;
     }
 
     // Setters
@@ -84,4 +92,13 @@ public class Emergencia{
     public void setGravedad(String gravedad_emergencia) {
         this.gravedad_emergencia = gravedad_emergencia;
     }
+
+    public void print() {
+        System.out.println("Id de emergencia: " + this.id_emergencia);
+        System.out.println("Nombre de emergencia: " + this.nombre_emergencia);
+        System.out.println("Gravedad de emergencia: " + this.gravedad_emergencia);
+        System.out.println("Fecha de emergencia: " + this.fecha_emergencia);
+        System.out.println("Id de institución: " + this.id_institucion);
+    }
+
 }

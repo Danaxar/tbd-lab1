@@ -21,3 +21,6 @@ values
     ('Bomberos'),
     ('Carabineros'),
     ('Armada');
+
+insert into voluntario(rut_voluntario, contrasena_voluntario)
+values ('admin', 'admin');

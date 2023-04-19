@@ -22,6 +22,19 @@
                 <input type="date" value="2023-04-16" />
               </td>
             </tr>
+            <tr>
+              <td>Institución:</td>
+              <td>
+                <select name="institucion" id="institucion">
+                  <option
+                    v-for="(objeto, indice) in instituciones"
+                    :key="indice"
+                  >
+                    {{ objeto.nombre_institucion }}
+                  </option>
+                </select>
+              </td>
+            </tr>
           </table>
           <h2 style="text-align: center">Gravedad 🌡️</h2>
           <table>
@@ -92,6 +105,8 @@
               Completar
             </button>
           </div>
+
+          <button @click="test">Test</button>
         </section>
 
         <section>
@@ -102,12 +117,19 @@
               <th>Nombre</th>
               <th>Fecha</th>
               <th>Gravedad</th>
+              <th>Institucion</th>
             </tr>
             <tr v-for="(objeto, indice) in emergencias" :key="indice">
               <td>{{ indice }}</td>
               <td>{{ objeto.nombre }}</td>
               <td>{{ objeto.fecha }}</td>
               <td>{{ objeto.gravedad }}</td>
+              <td>
+                {{
+                  objeto.id_institucion &&
+                  instituciones[objeto.id_institucion - 1]?.nombre_institucion
+                }}
+              </td>
             </tr>
           </table>
         </section>
@@ -127,6 +149,7 @@ export default {
       emergencias: [],
       habilidades: [],
       habilidadesSeleccionadas: [],
+      instituciones: [],
     };
   },
   methods: {
@@ -135,7 +158,12 @@ export default {
         alert("Debe seleccionar al menos una habilidad");
         return;
       }
+
       const inputs = document.getElementsByTagName("input");
+      const id_institucion =
+        Array.from(document.getElementById("institucion")).findIndex(
+          (e) => e.selected === true
+        ) + 1;
 
       // Construir objeto Emergencia
       const respuestas = {
@@ -144,7 +172,10 @@ export default {
           (elemento) => elemento.checked === true
         ).value,
         fecha_emergencia: inputs[1].value,
+        id_institucion: id_institucion,
       };
+
+      console.log("Emergencia: ", respuestas);
 
       //!! Enviar a backend
       const respuestaEmergencia = await axios.post(
@@ -156,7 +187,6 @@ export default {
       console.log("Id obtenido:", id);
 
       // Enviar emergencia_habilidad
-      //! No se agrega el último elemento
       this.habilidadesSeleccionadas.forEach((element, index) => {
         axios.post("http://localhost:8081/emehabilidad", {
           id_emergencia: id,
@@ -164,7 +194,7 @@ export default {
         });
       });
 
-      window.location.reload();
+      // window.location.reload();
     },
     async cargarEmergencias() {
       try {
@@ -194,10 +224,22 @@ export default {
     quitarHabilidad(indice) {
       this.habilidadesSeleccionadas.splice(indice, 1);
     },
+    async cargarInstituciones() {
+      try {
+        const respuesta = await axios.get("http://localhost:8081/institucion");
+        this.instituciones = respuesta.data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    test() {
+      console.log(this.instituciones[0].nombre_institucion);
+    },
   },
   created() {
     this.cargarEmergencias();
     this.cargarHabilidades();
+    this.cargarInstituciones();
   },
 };
 </script>

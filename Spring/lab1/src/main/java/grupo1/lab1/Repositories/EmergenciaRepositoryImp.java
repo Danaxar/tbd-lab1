@@ -92,12 +92,13 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository{
 
     @Override
     public Emergencia save(Emergencia emergencia) {
-        String query = "INSERT INTO Emergencia (nombre_emergencia, gravedad_emergencia, fecha_emergencia) VALUES (:nombre, :gravedad, :fecha)";
+        String query = "INSERT INTO Emergencia (nombre_emergencia, gravedad_emergencia, fecha_emergencia, id_institucion) VALUES (:nombre, :gravedad, :fecha, :institucion)";
         try (Connection conn = sql2o.open()) {
             Integer id = (int) conn.createQuery(query, true)
                     .addParameter("nombre", emergencia.getNombre())
                     .addParameter("gravedad", emergencia.getGravedad())
                     .addParameter("fecha", emergencia.getFecha())
+                    .addParameter("institucion", emergencia.getId_institucion())
                     .executeUpdate()
                     .getKey();
             emergencia.setId(id);

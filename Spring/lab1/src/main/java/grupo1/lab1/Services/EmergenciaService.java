@@ -65,6 +65,7 @@ public class EmergenciaService {
 
     @PostMapping("/emergencia")
     public Emergencia save(@RequestBody Emergencia emergencia){
+        emergencia.print();
         return emergenciaRepository.save(emergencia);
     }
 

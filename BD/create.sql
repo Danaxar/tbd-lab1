@@ -32,7 +32,8 @@ CREATE TABLE Emergencia (
     nombre_emergencia VARCHAR(255),
     gravedad_emergencia VARCHAR(255),
     fecha_emergencia DATE,
-    institucion_emergencia VARCHAR(255)
+    id_institucion INT,
+    FOREIGN KEY (id_institucion) REFERENCES Institucion(id_institucion)
 );
 
 -- Tabla de Habilidad
@@ -59,7 +60,7 @@ CREATE TABLE Voluntario (
     apellidos_voluntario VARCHAR(255),
     fecha_nac_voluntario DATE,
     disponibilidad_voluntario VARCHAR(255),
-	rol_voluntario VARCHAR(255),
+    rol_voluntario VARCHAR(255),
     telefono_voluntario VARCHAR(12),
     contrasena_voluntario VARCHAR(255)
 );

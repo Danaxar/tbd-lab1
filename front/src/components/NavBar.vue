@@ -4,6 +4,8 @@
       <img id="logo" src="../assets/logo.png" />
       <span id="namepage">esQ</span>
     </a>
+    <button @click="logout" v-if="sesion">Cerrar sesión</button>
+    <!-- <button @click="test">test</button> -->
   </div>
 </template>
 
@@ -12,7 +14,33 @@ export default {
   data() {
     return {
       titulo: "NavBar",
+      sesion: null,
     };
+  },
+  methods: {
+    logout() {
+      const login = JSON.parse(localStorage.getItem("login"));
+      if (login) {
+        // Cerrar sesión
+        localStorage.setItem("login", String(false));
+        localStorage.setItem("client", JSON.stringify({}));
+        this.sesion = false;
+        alert("Sesión cerrada.");
+        console.log("Sesión cerrada.");
+        window.location.href = "/";
+      }
+    },
+    test() {
+      console.log(JSON.parse(localStorage.getItem("login")));
+    },
+    cargarStatus() {
+      console.log("Cargando status...", this.status);
+      this.sesion = JSON.parse(localStorage.getItem("login"));
+    },
+  },
+
+  mounted() {
+    this.cargarStatus();
   },
 };
 </script>

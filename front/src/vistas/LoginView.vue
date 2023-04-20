@@ -74,6 +74,14 @@ export default {
         })
         .catch((error) => console.log(error));
     },
+    checkLogin() {
+      JSON.parse(localStorage.getItem("login")) === true
+        ? window.location.replace("http://localhost:8080/#/dashboard")
+        : null;
+    },
+  },
+  created() {
+    this.checkLogin();
   },
 };
 </script>

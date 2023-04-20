@@ -11,6 +11,16 @@ export default {
   components: {
     MenuBar,
   },
+  methods: {
+    checkLogin() {
+      JSON.parse(localStorage.getItem("login")) === true
+        ? window.location.replace("http://localhost:8080/#/dashboard")
+        : window.location.replace("http://localhost:8080/");
+    },
+  },
+  created() {
+    this.checkLogin();
+  },
 };
 </script>
 <style scoped></style>

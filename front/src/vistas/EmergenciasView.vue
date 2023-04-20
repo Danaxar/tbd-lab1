@@ -194,7 +194,7 @@ export default {
         });
       });
 
-      // window.location.reload();
+      window.location.reload();
     },
     async cargarEmergencias() {
       try {
@@ -232,14 +232,20 @@ export default {
         console.log(error);
       }
     },
-    test() {
-      console.log(this.instituciones[0].nombre_institucion);
+    checkLogin() {
+      JSON.parse(localStorage.getItem("login")) === true
+        ? window.location.replace("http://localhost:8080/#/dashboard")
+        : window.location.replace("http://localhost:8080/");
     },
+    // test() {
+    //   console.log(this.instituciones[0].nombre_institucion);
+    // },
   },
   created() {
     this.cargarEmergencias();
     this.cargarHabilidades();
     this.cargarInstituciones();
+    this.checkLogin();
   },
 };
 </script>

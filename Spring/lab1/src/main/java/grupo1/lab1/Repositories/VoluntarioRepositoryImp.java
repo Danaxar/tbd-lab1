@@ -220,5 +220,20 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository{
         return null;
     }
 
+    @Override
+    public Voluntario findByRut(String rut){
+        Voluntario encontrado;
+        String query = "SELECT * FROM voluntario WHERE rut_voluntario = :rut";
+        try(Connection conn = sql2o.open()){
+            encontrado = conn.createQuery(query)
+                    .addParameter("rut", rut)
+                    .executeAndFetchFirst(Voluntario.class);
+            return encontrado;
+        }catch (Exception e){
+            System.out.println(e);
+            return null;
+        }
+    }
+
 
 }

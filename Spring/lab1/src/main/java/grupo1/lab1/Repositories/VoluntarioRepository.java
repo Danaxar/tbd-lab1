@@ -19,4 +19,5 @@ public interface VoluntarioRepository {
     public boolean delete(Integer id);
 
     public Voluntario findByRutAndContrasena(String rut, String contrasena);
+    public Voluntario findByRut(String rut);
 }

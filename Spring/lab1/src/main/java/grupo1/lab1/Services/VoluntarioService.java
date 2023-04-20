@@ -110,6 +110,11 @@ public class VoluntarioService {
         return voluntarioRepository.findByRutAndContrasena(rut, pass);
     }
 
+    @GetMapping("/voluntario/rut/{rut}")
+    public Voluntario findByRut(@PathVariable("rut") String rut){
+        return voluntarioRepository.findByRut(rut);
+    }
+
     @DeleteMapping("/voluntario/{id}")
     public void deleteVoluntario(@PathVariable("id") String id_str){
         Integer id;

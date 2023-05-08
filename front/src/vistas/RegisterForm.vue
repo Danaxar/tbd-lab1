@@ -76,7 +76,10 @@ export default {
           },
         })
         .then((response) => {
-          console.log(response.data);
+          console.log(response);
+          if (response.status == 200) {
+            window.location.replace("/register");
+          }
         })
         .catch((error) => {
           console.log(error);

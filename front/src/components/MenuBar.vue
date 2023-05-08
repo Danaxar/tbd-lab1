@@ -10,10 +10,10 @@
       <div id="profileData">
         <table>
           <tr>
-            <h4>Admin</h4>
+            <h4 v-if="client">{{ client.nombre + " " + client.apellido }}</h4>
           </tr>
           <tr>
-            <h6>Admin</h6>
+            <h6 v-if="client">{{ client.telefono }}</h6>
           </tr>
         </table>
       </div>
@@ -36,17 +36,44 @@
         <td><a href="#/tareas">Tareas </a></td>
       </tr>
     </table>
-    <ul>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
+    <button class="logout-button" @click="logout" v-if="sesion">
+      Cerrar sesión
+    </button>
   </div>
 </template>
+
 <script>
 export default {
   name: "MenuBar",
+  data() {
+    return {
+      sesion: null,
+      client: null,
+    };
+  },
+  methods: {
+    logout() {
+      const login = JSON.parse(localStorage.getItem("login"));
+      if (login) {
+        // Cerrar sesión
+        localStorage.setItem("login", String(false));
+        localStorage.setItem("client", JSON.stringify({}));
+        this.sesion = false;
+        alert("Sesión cerrada.");
+        console.log("Sesión cerrada.");
+        window.location.href = "/";
+      }
+    },
+    cargarStatus() {
+      this.sesion = JSON.parse(localStorage.getItem("login"));
+      console.log("Login: ", this.sesion);
+      this.client = JSON.parse(localStorage.getItem("client"));
+      console.log("Cliente: ", this.client);
+    },
+  },
+  mounted() {
+    this.cargarStatus();
+  },
 };
 </script>
 <style scoped>
@@ -72,11 +99,28 @@ export default {
 }
 
 #content table tr a:hover {
-  color: #db2b39;
+  /* color: #db2b39; */
+  color: #099d35;
   transition: 0.2s;
 }
 
 #profilePhoto img {
   width: 100%;
+}
+
+/* Botton logout */
+button.logout-button {
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.logout-button:hover {
+  background-color: #7b0000;
 }
 </style>

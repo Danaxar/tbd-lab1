@@ -57,14 +57,18 @@ export default {
         .then((response) => {
           if (response.data) {
             console.log("El usuario existe");
+            console.log(response.data);
             // Guardar en persistencia la sesión activa
             localStorage.setItem("login", true);
+
+            // Guardar datos en persistencia
             localStorage.setItem(
               "client",
-              JSON.stringify({
-                rut: form.rut_voluntario,
-                pass: form.contrasena_voluntario,
-              })
+              // JSON.stringify({
+              //   rut: form.rut_voluntario,
+              //   pass: form.contrasena_voluntario,
+              // })
+              JSON.stringify(response.data)
             );
             this.$router.push("/dashboard"); // Redireccionar
           } else {

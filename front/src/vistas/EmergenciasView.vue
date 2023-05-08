@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 style="text-align: center; font-size: 50px">Emergencias</h1>
+    <h1 style="text-align: center; font-size: 50px">Emergencias 🆘</h1>
     <div class="contenedor">
       <MenuBar></MenuBar>
 
@@ -105,8 +105,6 @@
               Completar
             </button>
           </div>
-
-          <button @click="test">Test</button>
         </section>
 
         <section>
@@ -233,13 +231,10 @@ export default {
       }
     },
     checkLogin() {
-      JSON.parse(localStorage.getItem("login")) === true
-        ? window.location.replace("http://localhost:8080/#/dashboard")
-        : window.location.replace("http://localhost:8080/");
+      JSON.parse(localStorage.getItem("login")) === false
+        ? window.location.replace("http://localhost:8080/#/")
+        : null;
     },
-    // test() {
-    //   console.log(this.instituciones[0].nombre_institucion);
-    // },
   },
   created() {
     this.cargarEmergencias();

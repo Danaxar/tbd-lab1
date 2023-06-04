@@ -1,4 +1,4 @@
-# tbd-lab1
+# TBD entrga 1 + 2
 
 # Versiones de las tecnologías
 - PostgreSQL: 12

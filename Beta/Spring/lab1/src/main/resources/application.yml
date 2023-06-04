@@ -1,0 +1,7 @@
+db:
+  username: "postgres"
+  password: "1212"
+  url: "jdbc:postgresql://localhost:5432/lab1tbd"
+# Crear una base de datos llamada lab1tbd
+server:
+  port: 8081

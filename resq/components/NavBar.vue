@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-      <a class="navbar-brand" href="#">ResQ</a>
+      <a class="navbar-brand" href="/home">ResQ</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -19,15 +19,26 @@
             <a class="nav-link" href="/perfil">Perfil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/emergencias">Emergencias</a>
+            <a class="nav-link" href="/emergencia">Emergencias</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Cerrar sesión</a>
+            <button @click="logout" class="btn btn-danger">
+              Cerrar sesión
+            </button>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 </template>
-<script></script>
+<script>
+export default {
+  methods: {
+    logout() {
+      localStorage.clear()
+      window.location.href = '/'
+    },
+  },
+}
+</script>
 <style></style>

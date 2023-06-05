@@ -155,6 +155,11 @@ export default {
         'http://localhost:8080/api/voluntarios',
         form
       )
+
+      if (response.status == 201) {
+        alert('Registrado con exito')
+        window.location.href = '/'
+      }
       console.log(response)
     },
   },

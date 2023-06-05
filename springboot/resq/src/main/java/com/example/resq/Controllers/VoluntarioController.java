@@ -8,11 +8,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/voluntarios")
-@CrossOrigin
+//@CrossOrigin("*")
 public class VoluntarioController {
 
     private final VoluntarioService voluntarioService;
@@ -60,4 +61,26 @@ public class VoluntarioController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<Voluntario> login(@RequestBody Map<String, Object> json) {
+        String rut = (String) json.get("rut");
+        String contrasena = (String) json.get("contrasena");
+
+        Optional<Voluntario> voluntario = voluntarioService.findByRut(rut);
+        if (voluntario.isPresent()) {
+            // Verificar si las contraseñas son iguales
+            if (voluntario.get().getContrasena().equals(contrasena)) {
+                System.out.println("Autentificado");
+                return ResponseEntity.ok(voluntario.get());
+            } else {
+                System.out.println("Contrasena incorrecta");
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            }
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
 }

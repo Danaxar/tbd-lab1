@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
       <a class="navbar-brand" href="/home">ResQ</a>
       <button
@@ -41,4 +41,8 @@ export default {
   },
 }
 </script>
-<style></style>
+<style scoped>
+nav {
+  background-color: aqua;
+}
+</style>

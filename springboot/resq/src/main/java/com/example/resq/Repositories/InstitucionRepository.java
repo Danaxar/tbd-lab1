@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface InstitucionRepository extends JpaRepository<Institucion, Integer> {
+    Institucion getByNombre(String nombre);
 }

@@ -42,4 +42,8 @@ public class InstitucionService {
     public void deleteInstitucion(Integer id) {
         institucionRepository.deleteById(id);
     }
+
+    public Institucion getByName(String nombre){
+        return institucionRepository.getByNombre(nombre);
+    }
 }

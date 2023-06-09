@@ -161,14 +161,35 @@ export default {
         console.log(error)
       }
     },
-    async enviar() {},
+    async enviar() {
+      // Enviar emergencia
+      const emergencia = {
+        nombre: this.nombre,
+        gravedad: this.gravedad,
+        fecha: this.fecha,
+        institucion: this.institucion,
+        habilidades: this.habilidadesSeleccionadas
+      }
+
+      try{
+        const response = await axios.post(
+          "http://localhost:8080/api/emergencias",
+            emergencia,
+        )
+        console.log(response)
+      }catch(error){
+        console.log(error)
+      }
+    },
     async test() {
       console.log(this.nombre)
       console.log(this.fecha)
-      console.log(this.institucion)
+      console.log(this.institucion)   
       console.log(this.gravedad)
       console.log(this.habilidades)
       console.log(this.habilidadesSeleccionadas)
+
+      this.enviar();
     },
   },
   created() {

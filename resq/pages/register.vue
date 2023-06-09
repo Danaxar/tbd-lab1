@@ -130,8 +130,12 @@ export default {
     obtenerValoresInputs() {
       var inputs = document.getElementsByTagName('input')
       var valores = {}
-      var rol = document.querySelectorAll('input[type="radio"]:checked')[0]
-        .value
+      var roles = document.querySelectorAll('input[type="radio"]:checked')
+      if (roles.length == 0) {
+        alert('Debe escoger un rol')
+        return -1
+      }
+      var rol = roles[0].value
 
       for (var i = 0; i < inputs.length; i++) {
         var input = inputs[i]
@@ -148,6 +152,10 @@ export default {
     async register() {
       // Recuperar valores de inputs
       const form = this.obtenerValoresInputs()
+
+      if (form == -1) {
+        return
+      }
       console.log(form)
 
       // Enviar al backend

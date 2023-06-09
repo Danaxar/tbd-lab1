@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 @Entity
 @Data
-public class Emergencia_Habilidad {
+public class EmergenciaHabilidad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idEmergencia;

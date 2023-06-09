@@ -168,28 +168,46 @@ export default {
         gravedad: this.gravedad,
         fecha: this.fecha,
         institucion: this.institucion,
-        habilidades: this.habilidadesSeleccionadas
+        habilidades: this.habilidadesSeleccionadas,
       }
 
-      try{
+      try {
         const response = await axios.post(
-          "http://localhost:8080/api/emergencias",
-            emergencia,
+          'http://localhost:8080/api/emergencias',
+          emergencia
         )
         console.log(response)
-      }catch(error){
+        var idEmergencia = resonse.data.id
+      } catch (error) {
         console.log(error)
+      }
+
+      // Enviar habilidades
+      for (let i = 0; i < this.habilidadesSeleccionadas.length; i++) {
+        // Buscar el id de la habilidad seleccionada
+        const idHabilidad = this.habilidades.find(
+          (e) => e.nombre == this.habilidadesSeleccionadas[i]
+        ).idHabilidad
+        console.log('idHabilidad: ', idHabilidad)
+
+        // Hacer petición a backend
+        const responseHabilidad = await axios.post(
+          'http://localhost:8080/api/emergencia-habilidades',
+          {
+            idHabilidad: idHabilidad,
+            idEmergencia: idEmergencia,
+          }
+        )
+        console.log(responseHabilidad)
       }
     },
     async test() {
       console.log(this.nombre)
       console.log(this.fecha)
-      console.log(this.institucion)   
+      console.log(this.institucion)
       console.log(this.gravedad)
-      console.log(this.habilidades)
-      console.log(this.habilidadesSeleccionadas)
-
-      this.enviar();
+      console.log('Habilidades:', this.habilidades)
+      console.log('Seleccionadas: ', this.habilidadesSeleccionadas)
     },
   },
   created() {

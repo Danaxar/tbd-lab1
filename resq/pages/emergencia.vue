@@ -161,6 +161,15 @@ export default {
         console.log(error)
       }
     },
+    async cargarEmergencias() {
+      try {
+        const response = await axios.get(
+          'http://localhost:8080/api/emergencias'
+        )
+        console.log(response)
+        this.emergencias = response.data
+      } catch (error) {}
+    },
     async enviar() {
       // Enviar emergencia
       const emergencia = {
@@ -213,6 +222,7 @@ export default {
   created() {
     this.cargarInstituciones()
     this.cargarHabilidades()
+    this.cargarEmergencias()
   },
 }
 </script>

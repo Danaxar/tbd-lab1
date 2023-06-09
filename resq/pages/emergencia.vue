@@ -102,10 +102,7 @@
               <td>{{ objeto.fecha }}</td>
               <td>{{ objeto.gravedad }}</td>
               <td>
-                {{
-                  objeto.id_institucion &&
-                  instituciones[objeto.id_institucion - 1]?.nombre_institucion
-                }}
+                {{ instituciones[objeto.idInstitucion - 1].nombre }}
               </td>
             </tr>
           </table>
@@ -217,6 +214,7 @@ export default {
       console.log(this.gravedad)
       console.log('Habilidades:', this.habilidades)
       console.log('Seleccionadas: ', this.habilidadesSeleccionadas)
+      console.log('Instituciones: ', this.instituciones)
     },
   },
   created() {

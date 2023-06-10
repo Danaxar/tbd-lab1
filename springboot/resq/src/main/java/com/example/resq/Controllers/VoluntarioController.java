@@ -45,9 +45,8 @@ public class VoluntarioController {
 
 
     @PostMapping
-    public ResponseEntity<Voluntario> createVoluntario(@RequestBody Voluntario voluntario) {
-        Voluntario savedVoluntario = voluntarioService.saveVoluntario(voluntario);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedVoluntario);
+    public void createVoluntario(@RequestBody Voluntario voluntario) {
+        voluntarioService.saveVoluntario(voluntario);
     }
 
     @DeleteMapping("/{id}")

@@ -20,4 +20,10 @@ public class Voluntario {
     private String telefono;
     private String rol;
     private String contrasena;
+    private String region;
+    private Double longitud;
+    private Double latitud;
+
+    @Column(name = "geom", columnDefinition = "geometry(Point,0)")
+    private String geom;
 }

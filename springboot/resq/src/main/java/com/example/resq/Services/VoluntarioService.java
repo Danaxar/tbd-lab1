@@ -5,6 +5,7 @@ import com.example.resq.Repositories.VoluntarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,8 +29,12 @@ public class VoluntarioService {
         return voluntarioRepository.findById(id);
     }
 
-    public Voluntario saveVoluntario(Voluntario voluntario) {
-        return voluntarioRepository.save(voluntario);
+
+    @Transactional
+    public void saveVoluntario(Voluntario voluntario) {
+        voluntarioRepository.crearVoluntario(voluntario.getRut(), voluntario.getNombres(), voluntario.getApellidos(), voluntario.getFecha_nac(),
+                voluntario.getDisponibilidad(), voluntario.getTelefono(), voluntario.getRol(), voluntario.getContrasena(), voluntario.getRegion(), voluntario.getLongitud(),
+                voluntario.getLatitud());
     }
 
     public void deleteVoluntario(Integer id) {

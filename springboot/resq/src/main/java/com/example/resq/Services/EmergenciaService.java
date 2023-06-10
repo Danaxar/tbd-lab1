@@ -5,6 +5,7 @@ import com.example.resq.Repositories.EmergenciaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -24,8 +25,11 @@ public class EmergenciaService {
         return emergenciaRepository.findById(id).orElse(null);
     }
 
-    public Emergencia saveEmergencia(Emergencia emergencia) {
-        return emergenciaRepository.save(emergencia);
+    @Transactional
+    public void saveEmergencia(Emergencia emergencia) {
+
+        emergenciaRepository.crearEmergencia(emergencia.getNombre(), emergencia.getGravedad(), emergencia.getFecha(), emergencia.getEstado(),
+                                            emergencia.getRegion(), emergencia.getLongitud(), emergencia.getLatitud(), emergencia.getIdInstitucion());
     }
 
     public void deleteEmergencia(Integer id) {

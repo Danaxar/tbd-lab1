@@ -38,20 +38,26 @@ public class EmergenciaController {
     }
 
     @PostMapping
-    public Emergencia saveEmergencia(@RequestBody Map<String, Object> json) {
+    public void saveEmergencia(@RequestBody Map<String, Object> json) {
         String nombre = (String) json.get("nombre");
         String gravedad = (String) json.get("gravedad");
         LocalDate fecha = LocalDate.parse((String) json.get("fecha"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         String institucion = (String) json.get("institucion");
         String estado = (String) json.get("estado");
-        ArrayList<String> habilidades = (ArrayList<String>) json.get("habilidades");
+        String region = (String) json.get("region");
+        Double longitud = (Double) json.get("longitud");
+        Double latitud = (Double) json.get("latitud");
+
         System.out.println("Nombre: " + nombre);
         System.out.println("Gravedad: " + gravedad);
         System.out.println("Fecha: " + fecha.toString());
         System.out.println("Institucion: " + institucion);
-        System.out.println("Habilidades " + habilidades);
+        System.out.println("Region: " + region);
+        System.out.println("Longitud: " + longitud);
+        System.out.println("Latitud: " + latitud);
 
         // Buscar id de la institucion
+
         Integer idInstitucion = institucionService.getByName(institucion).getIdInstitucion();
 
         Emergencia salida = new Emergencia();
@@ -60,7 +66,10 @@ public class EmergenciaController {
         salida.setFecha(fecha);
         salida.setIdInstitucion(idInstitucion);
         salida.setEstado(estado);
-        return emergenciaService.saveEmergencia(salida);
+        salida.setRegion(region);
+        salida.setLongitud(longitud);
+        salida.setLatitud(latitud);
+        emergenciaService.saveEmergencia(salida);
     }
 
     @DeleteMapping("/{id}")

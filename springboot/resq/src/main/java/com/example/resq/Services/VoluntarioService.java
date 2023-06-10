@@ -37,6 +37,6 @@ public class VoluntarioService {
     }
 
     public Optional<Voluntario> findByRut(String rut){
-        return voluntarioRepository.findByRut(rut);
+        return voluntarioRepository.findFirstByRut(rut);
     }
 }

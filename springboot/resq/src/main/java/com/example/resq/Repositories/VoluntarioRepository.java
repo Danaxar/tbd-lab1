@@ -9,5 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface VoluntarioRepository extends JpaRepository<Voluntario, Integer> {
-    Optional<Voluntario> findByRut(String rut);
+    Optional<Voluntario> findFirstByRut(String rut);
 }

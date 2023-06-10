@@ -2,6 +2,7 @@ package com.example.resq.Controllers;
 
 import com.example.resq.Entities.Voluntario;
 import com.example.resq.Services.VoluntarioService;
+import com.example.resq.Util.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,9 @@ public class VoluntarioController {
     public VoluntarioController(VoluntarioService voluntarioService) {
         this.voluntarioService = voluntarioService;
     }
+
+    @Autowired
+    public JwtUtils jwtUtils;
 
     @GetMapping
     public ResponseEntity<List<Voluntario>> getAllVoluntarios() {
@@ -63,7 +67,7 @@ public class VoluntarioController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Voluntario> login(@RequestBody Map<String, Object> json) {
+    public ResponseEntity<String> login(@RequestBody Map<String, Object> json) {
         String rut = (String) json.get("rut");
         String contrasena = (String) json.get("contrasena");
 
@@ -72,7 +76,11 @@ public class VoluntarioController {
             // Verificar si las contraseñas son iguales
             if (voluntario.get().getContrasena().equals(contrasena)) {
                 System.out.println("Autentificado");
-                return ResponseEntity.ok(voluntario.get());
+                // Generar jwt
+                String token = jwtUtils.generateJwt(voluntario.get());
+                System.out.println("JWT generado: " + token);
+                //return ResponseEntity.ok(voluntario.get());
+                return ResponseEntity.ok(token);
             } else {
                 System.out.println("Contrasena incorrecta");
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
@@ -80,6 +88,22 @@ public class VoluntarioController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/client")
+    public ResponseEntity<Voluntario> getClient(@RequestParam("rut") String rut) {
+        Optional<Voluntario> voluntario = voluntarioService.findByRut(rut);
+        if (voluntario.isPresent()) {
+            return ResponseEntity.ok(voluntario.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping("/test")
+    public ResponseEntity<String> test(@RequestHeader String headers) throws Exception{
+        System.out.println(headers);
+        return null;
     }
 
 

@@ -16,10 +16,12 @@
     "bootstrap": "^4.6.2",
     "bootstrap-vue": "^2.22.0",
     "core-js": "^3.25.3",
+    "leaflet": "^1.9.4",
     "nuxt": "^2.16.3",
     "vue": "^2.7.10",
     "vue-server-renderer": "^2.7.10",
-    "vue-template-compiler": "^2.7.10"
+    "vue-template-compiler": "^2.7.10",
+    "vue2-leaflet": "^2.7.1"
   },
   "devDependencies": {
     "eslint-config-prettier": "^8.5.0",

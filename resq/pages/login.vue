@@ -72,12 +72,23 @@ export default {
         console.log('respuesta: ', response)
         if (response.status === 200) {
           console.log('Sesión iniciada con éxito')
-          // Guardar en memoria local la sesión
-          localStorage.setItem('client', JSON.stringify(response.data))
-          window.location.href = '/home'
+          localStorage.setItem('jwt', response.data)
         }
       } catch (error) {
         alert('Datos incorrectos')
+        return
+      }
+
+      try {
+        console.log('Pidiendo datos de cliente...')
+        const response = await axios.get(
+          'http://localhost:8080/api/voluntarios/client',
+          { params: { rut: this.rut } }
+        )
+        localStorage.setItem('client', JSON.stringify(response.data))
+        window.location.href = '/home'
+      } catch (error) {
+        console.log(error)
       }
     },
   },

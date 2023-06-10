@@ -94,15 +94,26 @@
               <th>Nombre</th>
               <th>Fecha</th>
               <th>Gravedad</th>
+              <th>Estado</th>
               <th>Institucion</th>
+              <th></th>
             </tr>
             <tr v-for="(objeto, indice) in emergencias" :key="indice">
               <td>{{ indice }}</td>
               <td>{{ objeto.nombre }}</td>
               <td>{{ objeto.fecha }}</td>
               <td>{{ objeto.gravedad }}</td>
+              <td>{{ objeto.estado }}</td>
               <td>
                 {{ instituciones[objeto.idInstitucion - 1].nombre }}
+              </td>
+              <td>
+                <button
+                  class="btn btn-info"
+                  @click="detallesEmergencia(objeto)"
+                >
+                  Ver detalles 🔍
+                </button>
               </td>
             </tr>
           </table>
@@ -167,16 +178,21 @@ export default {
         this.emergencias = response.data
       } catch (error) {}
     },
+    detallesEmergencia(objeto) {
+      console.log(objeto)
+      localStorage.setItem('emergencia', JSON.stringify(objeto))
+      window.location.href = '/detallesEmergencia'
+    },
     async enviar() {
-      // Enviar emergencia
       const emergencia = {
         nombre: this.nombre,
         gravedad: this.gravedad,
         fecha: this.fecha,
         institucion: this.institucion,
         habilidades: this.habilidadesSeleccionadas,
+        estado: 'Activa',
       }
-
+      // Enviar emergencia
       try {
         const response = await axios.post(
           'http://localhost:8080/api/emergencias',
@@ -205,6 +221,7 @@ export default {
           }
         )
         console.log(responseHabilidad)
+        window.location.reload()
       }
     },
     async test() {

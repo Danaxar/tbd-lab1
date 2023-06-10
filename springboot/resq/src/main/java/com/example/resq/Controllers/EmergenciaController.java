@@ -43,6 +43,7 @@ public class EmergenciaController {
         String gravedad = (String) json.get("gravedad");
         LocalDate fecha = LocalDate.parse((String) json.get("fecha"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         String institucion = (String) json.get("institucion");
+        String estado = (String) json.get("estado");
         ArrayList<String> habilidades = (ArrayList<String>) json.get("habilidades");
         System.out.println("Nombre: " + nombre);
         System.out.println("Gravedad: " + gravedad);
@@ -58,6 +59,7 @@ public class EmergenciaController {
         salida.setGravedad(gravedad);
         salida.setFecha(fecha);
         salida.setIdInstitucion(idInstitucion);
+        salida.setEstado(estado);
         return emergenciaService.saveEmergencia(salida);
     }
 

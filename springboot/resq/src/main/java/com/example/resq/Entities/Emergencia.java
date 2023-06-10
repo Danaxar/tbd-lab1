@@ -16,6 +16,7 @@ public class Emergencia{
     private String nombre;
     private String gravedad;
     private LocalDate fecha;
+    private String estado;
 
     // FK
     private Integer idInstitucion;

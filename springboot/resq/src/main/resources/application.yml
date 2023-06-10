@@ -1,0 +1,14 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: resq
+  jpa:
+    hibernate:
+      ddl-auto: create
+#      ddl-auto: update
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/resq
+    username: postgres
+    password: 1212

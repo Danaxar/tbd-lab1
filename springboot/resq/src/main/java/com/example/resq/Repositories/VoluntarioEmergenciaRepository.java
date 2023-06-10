@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface VoluntarioEmergenciaRepository extends JpaRepository<VoluntarioEmergencia, Integer> {
     // Puedes agregar consultas personalizadas si es necesario
     public Integer countByIdEmergencia(Integer idEmergencia);
+    public Boolean existsByIdEmergenciaAndIdVoluntario(Integer idEmergencia, Integer idVoluntario);
 }

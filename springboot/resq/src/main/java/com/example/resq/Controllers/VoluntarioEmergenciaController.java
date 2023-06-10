@@ -35,6 +35,16 @@ public class VoluntarioEmergenciaController {
         return ResponseEntity.ok(salida);
     }
 
+    @GetMapping("/emergencia/{idEmergencia}/voluntario/{idVoluntario}")
+    public ResponseEntity<Boolean> verificarRegistro(@PathVariable("idEmergencia") String emergencia,
+                                                     @PathVariable("idVoluntario") String voluntario){
+        System.out.println("Verificando registro de " + voluntario + "en " + emergencia);
+        Integer idEmergencia = Integer.parseInt(emergencia);
+        Integer idVoluntario = Integer.parseInt(voluntario);
+        Boolean salida = voluntarioEmergenciaService.verificarRegistro(idEmergencia, idVoluntario);
+        return ResponseEntity.ok(salida);
+    }
+
     @PostMapping
     public ResponseEntity<VoluntarioEmergencia> crearVoluntarioEmergencia(@RequestBody VoluntarioEmergencia voluntarioEmergencia) {
         VoluntarioEmergencia nuevoVoluntarioEmergencia = voluntarioEmergenciaService.guardarVoluntarioEmergencia(voluntarioEmergencia);

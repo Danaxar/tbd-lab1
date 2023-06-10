@@ -23,6 +23,10 @@ public class VoluntarioEmergenciaService {
         return salida;
     }
 
+    public Boolean verificarRegistro(Integer idEmergencia, Integer idVoluntario){
+        return voluntarioEmergenciaRepository.existsByIdEmergenciaAndIdVoluntario(idEmergencia, idVoluntario);
+    }
+
     public Optional<VoluntarioEmergencia> obtenerVoluntarioEmergenciaPorId(Integer id) {
         return voluntarioEmergenciaRepository.findById(id);
     }

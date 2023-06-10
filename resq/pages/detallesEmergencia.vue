@@ -76,6 +76,21 @@ export default {
       } catch (error) {}
     },
     async registrarse() {
+      // Verificar que no esté registrado
+      try {
+        const idUsuario = JSON.parse(localStorage.getItem('client')).id
+        const respuestaRegistrado = await axios.get(
+          `http://localhost:8080/api/voluntario-emergencias/emergencia/${this.emergencia.idEmergencia}/voluntario/${idUsuario}`
+        )
+        const registrado = respuestaRegistrado.data
+        if (registrado) {
+          alert('Usted ya se encuentra registrado en la emergencia')
+          return
+        }
+      } catch (error) {
+        console.log(error)
+      }
+
       const voluntario_emergencia = {
         idVoluntario: JSON.parse(localStorage.getItem('client')).id,
         idEmergencia: this.emergencia.idEmergencia,
@@ -95,7 +110,7 @@ export default {
           '🚀 ~ file: detallesEmergencia.vue:80 ~ registrarse ~ response:',
           response
         )
-        window.location.reload()
+        // window.location.reload()
       } catch (error) {
         console.log(error)
       }

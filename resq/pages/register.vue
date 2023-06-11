@@ -137,11 +137,6 @@
               <!-- Mapa -->
               <label for="Mapa" class="form-label">Ubicación:</label>
               <MapaRegistro @coordinatesSelected="handleCoordinatesSelected" />
-              <div v-if="selectedCoordinates">
-                <h2>Coordenadas seleccionadas:</h2>
-                <p>Latitud: {{ selectedCoordinates.lat }}</p>
-                <p>Longitud: {{ selectedCoordinates.lng }}</p>
-              </div>
             </div>
           </div>
         </form>

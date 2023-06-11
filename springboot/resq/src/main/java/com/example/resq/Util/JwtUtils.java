@@ -22,6 +22,7 @@ public class JwtUtils {
     }
 
     public void verify(String autorization) throws Exception {
+        System.out.println("JwtUtils.java: verify() -> autorization = " + autorization);
         try{
             Jwts.parser().parseClaimsJwt(autorization);
         }catch(Exception e){

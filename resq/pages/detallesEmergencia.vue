@@ -32,6 +32,56 @@
       <button class="btn btn-success" @click="registrarse">
         Registrarse 🫱🏻‍🫲🏻
       </button>
+      <div>
+        <h1>Voluntarios registrados</h1>
+        <table>
+          <tr>
+            <td>
+              <label for="exampleInputNumber">Número</label>
+            </td>
+            <td>
+              <input
+                v-model="numeroVoluntarios"
+                type="number"
+                class="form-control col-6"
+                id="exampleInputNumber"
+                value="0"
+              />
+            </td>
+            <td>
+              <button
+                class="btn btn-success"
+                @click="cargarVoluntariosProximos"
+              >
+                Cargar Voluntarios
+              </button>
+            </td>
+          </tr>
+        </table>
+
+        <table>
+          <tr>
+            <td>Id</td>
+            <td>Rut</td>
+            <td>Nombres</td>
+            <td>Apellidos</td>
+            <td>Fecha Nac</td>
+            <td>Disponibilidad</td>
+            <td>Telefono</td>
+            <td>Region</td>
+          </tr>
+          <tr v-for="(objeto, indice) in voluntarios">
+            <td>{{ objeto.id }}</td>
+            <td>{{ objeto.rut }}</td>
+            <td>{{ objeto.nombres }}</td>
+            <td>{{ objeto.apellidos }}</td>
+            <td>{{ objeto.fecha_nac.slice(0, 10) }}</td>
+            <td>{{ objeto.disponibilidad }}</td>
+            <td>{{ objeto.telefono }}</td>
+            <td>{{ objeto.region }}</td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 </template>
@@ -46,6 +96,8 @@ export default {
       emergencia: null,
       institucion: null,
       registrados: 0,
+      voluntarios: [],
+      numeroVoluntarios: 0,
     }
   },
   methods: {
@@ -115,11 +167,47 @@ export default {
         console.log(error)
       }
     },
+    async cargarVoluntariosProximos() {
+      try {
+        const response = await axios.get(
+          `http://localhost:8080/api/voluntarios/${this.emergencia.idEmergencia}/${this.numeroVoluntarios}`
+        )
+        console.log('Numero volunarios: ', response.data)
+        this.voluntarios = response.data
+      } catch (error) {
+        console.log(error)
+      }
+    },
   },
   created() {
     this.emergencia = this.obtenerEmergencia()
     this.obtenerInstitucion()
     this.obtenerRegistrados()
+    this.cargarVoluntariosProximos()
   },
 }
 </script>
+
+<style scoped>
+table {
+  margin: auto;
+  border-collapse: collapse;
+  width: 75%;
+  overflow: hidden;
+}
+
+table + h2 {
+  margin-top: 15px;
+}
+
+h2 + table {
+  margin-top: 5px;
+}
+
+table th,
+table td {
+  padding: 5px;
+  background-color: rgba(30, 86, 101, 0.5);
+  text-align: center;
+}
+</style>

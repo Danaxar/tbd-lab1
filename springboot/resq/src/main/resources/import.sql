@@ -36,17 +36,4 @@ INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (1, 8);
 INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (1, 9);
 INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (1, 12);
 
-INSERT INTO estado(nombre) VALUES ('Pendiente');
-INSERT INTO estado(nombre) VALUES ('En progreso');
-INSERT INTO estado(nombre) VALUES ('Completada');
-
-INSERT INTO tarea(nombre, descripcion, id_estado, region, longitud, latitud, geom) VALUES ('Remover escombros', 'Se necesita remover escombros', 1, 'Metropolitana', -70.6480, -33.4550, ST_PointFromText('POINT(' || '-70.6480' || ' ' || '-33.4550' || ')'));
-INSERT INTO tarea(nombre, descripcion, id_estado, region, longitud, latitud, geom) VALUES ('Ayudar heridos','Se necesita Ayudar heridos', 2, 'Metropolitana', -70.6482, -33.4565, ST_PointFromText('POINT(' || '-70.6482' || ' ' || '-33.4565' || ')'));
-INSERT INTO tarea(nombre, descripcion, id_estado, region, longitud, latitud, geom) VALUES ('Entregar suministros','Se necesita Entregar suministros', 3, 'Metropolitana', -70.6400, -33.4500, ST_PointFromText('POINT(' || '-70.6400' || ' ' || '-33.4500' || ')'));
-INSERT INTO tarea(nombre, descripcion, id_estado, region, longitud, latitud, geom) VALUES ('Chofer de retroescavadora','Se necesita Chofer de retroescavadora', 1, 'Metropolitana', -70.6475, -33.4575, ST_PointFromText('POINT(' || '-70.6475' || ' ' || '-33.4575' || ')'));
-INSERT INTO tarea(nombre, descripcion, id_estado, region, longitud, latitud, geom) VALUES ('Coordinación de voluntarios','Se necesita Coordinación de voluntarios', 2, 'Metropolitana', -70.6405, -33.4505, ST_PointFromText('POINT(' || '-70.6405' || ' ' || '-33.4505' || ')'));
-INSERT INTO tarea(nombre, descripcion, id_estado, region, longitud, latitud, geom) VALUES ('Evaluación de daños','Se necesita Evaluación de daños', 3, 'Metropolitana', -70.6484, -33.4568, ST_PointFromText('POINT(' || '-70.6484' || ' ' || '-33.4568' || ')'));
-INSERT INTO tarea(nombre, descripcion, id_estado, region, longitud, latitud, geom) VALUES ('Apoyo logístico','Se necesita Apoyo logístico', 1, 'Metropolitana', -70.6450, -33.4540, ST_PointFromText('POINT(' || '-70.6450' || ' ' || '-33.4540' || ')'));
-INSERT INTO tarea(nombre, descripcion, id_estado, region, longitud, latitud, geom) VALUES ('Apoyo emocional','Se necesita Apoyo emocional', 2, 'Metropolitana', -70.6400, -33.4501, ST_PointFromText('POINT(' || '-70.6400' || ' ' || '-33.4501' || ')'));
-INSERT INTO tarea(nombre, descripcion, id_estado, region, longitud, latitud, geom) VALUES ('Busqueda y rescate','Se necesita Busqueda y rescate', 3, 'Metropolitana', -70.6487, -33.4570, ST_PointFromText('POINT(' || '-70.6487' || ' ' || '-33.4570' || ')'));
-
+INSERT INTO habilidad (nombre) VALUES ('Primeros auxilios'),('Rescate y evacuación'),('Extinción de incendios'),('Búsqueda y rescate'),('Manejo de crisis y gestión de incidentes'),('Evaluación de daños y necesidades'),('Comunicación de emergencia'),('Conocimientos de construcción y estructuras'),('Gestión de logística y suministros'),('Habilidades de navegación y orientación');

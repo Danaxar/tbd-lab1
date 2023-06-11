@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -48,6 +49,17 @@ public class VoluntarioController {
     public void createVoluntario(@RequestBody Voluntario voluntario) {
         voluntarioService.saveVoluntario(voluntario);
     }
+
+    @GetMapping("/{id_emergencia}/{limite}")
+    public ResponseEntity<List<Voluntario>> traerVolCercano(@PathVariable Integer id_emergencia, @PathVariable Integer limite) {
+        List<Voluntario> voluntario = voluntarioService.traerVoluntariosCercanos(id_emergencia, limite);
+        if (voluntario != null) {
+            return ResponseEntity.ok(voluntario);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteVoluntario(@PathVariable Integer id) {

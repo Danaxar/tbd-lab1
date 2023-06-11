@@ -3,6 +3,8 @@ INSERT INTO institucion(nombre) VALUES ('Bomberos');
 INSERT INTO institucion(nombre) VALUES ('Carabineros');
 INSERT INTO institucion(nombre) VALUES ('Cruz roja');
 
+INSERT INTO emergencia(nombre, gravedad, fecha, estado, region, longitud, latitud, geom, id_institucion) VALUES ('Terremoto', 'Alta', '2022-11-01', 'Activa', 'Metropolitana', -70.6483, -33.4567, ST_PointFromText('POINT(' || '-70.6483' || ' ' || '-33.4567' || ')'), 1);
+
 INSERT INTO voluntario(rut, nombres, apellidos, fecha_nac, disponibilidad, telefono, rol, contrasena, region, longitud, latitud, geom) VALUES('22222222-2', 'Maria', 'Lopez', '1985-09-20', 'Todos los dias', '+56987654321', 'Coordinador', 'password2', 'Valparaiso', -71.5393, -33.0458, ST_PointFromText('POINT(' || '-71.5393' || ' ' || '-33.0458' || ')'));
 INSERT INTO voluntario(rut, nombres, apellidos, fecha_nac, disponibilidad, telefono, rol, contrasena, region, longitud, latitud, geom) VALUES('33333333-3', 'Pedro', 'Gonzalez', '1992-02-10', 'Todos los dias', '+56955555555', 'Voluntario', 'password3', 'Biobio', -73.1415, -36.8262, ST_PointFromText('POINT(' || '-73.1415' || ' ' || '-36.8262' || ')'));
 INSERT INTO voluntario(rut, nombres, apellidos, fecha_nac, disponibilidad, telefono, rol, contrasena, region, longitud, latitud, geom) VALUES('44444444-4', 'Carolina', 'Rojas', '1988-07-02', 'Todos los dias', '+56977777777', 'Voluntario', 'password4', 'Araucania', -72.9435, -38.7396, ST_PointFromText('POINT(' || '-72.9435' || ' ' || '-38.7396' || ')'));
@@ -21,4 +23,15 @@ INSERT INTO voluntario(rut, nombres, apellidos, fecha_nac, disponibilidad, telef
 INSERT INTO voluntario(rut, nombres, apellidos, fecha_nac, disponibilidad, telefono, rol, contrasena, region, longitud, latitud, geom) VALUES('18181818-1', 'Felipe', 'Navarro', '1988-05-27', 'Todos los dias', '+569222777888', 'Voluntario', 'password17', 'Antofagasta', -69.5296, -24.1616, ST_PointFromText('POINT(' || '-69.5296' || ' ' || '-24.1616' || ')'));
 INSERT INTO voluntario(rut, nombres, apellidos, fecha_nac, disponibilidad, telefono, rol, contrasena, region, longitud, latitud, geom) VALUES('19191919-1', 'Natalia', 'Cortes', '1994-12-10', 'Todos los dias', '+569666888999', 'Voluntario', 'password18', 'Magallanes', -70.8972, -53.1631, ST_PointFromText('POINT(' || '-70.8972' || ' ' || '-53.1631' || ')'));
 INSERT INTO voluntario(rut, nombres, apellidos, fecha_nac, disponibilidad, telefono, rol, contrasena, region, longitud, latitud, geom) VALUES('20202020-1', 'Diego', 'Cruz', '1992-03-23', 'Todos los dias', '+569444888777', 'Voluntario', 'password19', 'Metropolitana', -70.6413, -33.0476, ST_PointFromText('POINT(' || '-70.6413' || ' ' || '-33.0476' || ')'));
-INSERT INTO voluntario(rut, nombres, apellidos, fecha_nac, disponibilidad, telefono, rol, contrasena, region, longitud, latitud, geom) VALUES('21212121-1', 'Carla', 'Gonzalez', '1986-10-06', 'Todos los dias', '+569333888999', 'Voluntario', 'password20', 'Atacama', -70.2490, -26.3663, ST_PointFromText('POINT(' || '--70.2490' || ' ' || '-26.3663' || ')'));
+INSERT INTO voluntario(rut, nombres, apellidos, fecha_nac, disponibilidad, telefono, rol, contrasena, region, longitud, latitud, geom) VALUES('21212121-1', 'Carla', 'Gonzalez', '1986-10-06', 'Todos los dias', '+569333888999', 'Voluntario', 'password20', 'Atacama', -70.2490, -26.3663, ST_PointFromText('POINT(' || '-70.2490' || ' ' || '-26.3663' || ')'));
+
+INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (1, 1);
+INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (1, 2);
+INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (1, 3);
+INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (1, 4);
+INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (1, 5);
+INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (1, 6);
+INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (1, 7);
+INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (1, 8);
+INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (1, 9);
+INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (1, 12);

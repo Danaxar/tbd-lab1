@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,6 +40,10 @@ public class VoluntarioService {
 
     public void deleteVoluntario(Integer id) {
         voluntarioRepository.deleteById(id);
+    }
+
+    public ArrayList<Voluntario> traerVoluntariosCercanos(Integer id_emergencia, Integer limite){
+        return voluntarioRepository.traerVoluntariosCercanos(id_emergencia, limite);
     }
 
     public Optional<Voluntario> findByRut(String rut){

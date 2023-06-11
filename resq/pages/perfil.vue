@@ -22,7 +22,7 @@
         </tr>
         <tr>
           <th>Fecha de Nacimiento</th>
-          <td>{{ voluntario.fecha_nac }}</td>
+          <td>{{ voluntario.fecha_nac.slice(0, 10) }}</td>
         </tr>
         <tr>
           <th>Disponibilidad</th>

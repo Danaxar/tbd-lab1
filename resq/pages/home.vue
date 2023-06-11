@@ -37,7 +37,7 @@
             </tr>
           </table>
         </div>
-        <Mapa :puntos="markers" />
+        <MapaHome :puntos="markers" />
       </div>
     </div>
   </div>
@@ -45,13 +45,13 @@
 
 <script>
 import axios from 'axios'
-import Mapa from '~/components/Mapa.vue'
+import MapaHome from '~/components/MapaHome.vue'
 import NavBar from '../components/NavBar.vue'
 
 export default {
   components: {
     NavBar,
-    Mapa,
+    MapaHome,
   },
   data() {
     return {
@@ -73,7 +73,7 @@ export default {
         // Cargar markers
         for (let i = 0; i < this.emergencias.length; i++) {
           var emergencia = this.emergencias[i]
-          console.log(`emergencia[${i}]`, emergencia[i])
+          // console.log(`emergencia[${i}]`, emergencia[i])
           var mark = {
             latLng: [emergencia.latitud, emergencia.longitud],
             name: emergencia.nombre,

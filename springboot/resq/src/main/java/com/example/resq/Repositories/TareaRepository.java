@@ -11,9 +11,9 @@ import org.springframework.stereotype.Repository;
 public interface TareaRepository extends JpaRepository<Tarea, Integer> {
 
     @Modifying
-    @Query(value = "INSERT INTO Tarea (nombre, descripcion, region, longitud, latitud, geom, id_estado) " +
-            "VALUES (:nombre, :descripcion, :region, :longitud, :latitud, ST_PointFromText('POINT(' || :longitud || ' ' || :latitud || ')'), :id_estado)", nativeQuery = true)
+    @Query(value = "INSERT INTO Tarea (nombre, descripcion, region, longitud, latitud, geom, id_estado, id_emergencia) " +
+            "VALUES (:nombre, :descripcion, :region, :longitud, :latitud, ST_PointFromText('POINT(' || :longitud || ' ' || :latitud || ')'), :id_estado, :id_emergencia)", nativeQuery = true)
     void crearTarea(@Param("nombre") String nombre, @Param("descripcion") String descripcion,
                     @Param("region") String region, @Param("longitud") Double longitud,
-                    @Param("latitud") Double latitud, @Param("id_estado") Integer id_estado);
+                    @Param("latitud") Double latitud, @Param("id_estado") Integer id_estado, @Param("id_emergencia") Integer id_emergencia);
 }

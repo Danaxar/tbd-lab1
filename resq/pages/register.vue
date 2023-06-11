@@ -38,18 +38,20 @@
                 />
               </div>
               <div class="mb-3">
-                <label for="fechaNacimiento" class="form-label">Fecha de nacimiento:</label>
+                <label for="fechaNacimiento" class="form-label"
+                  >Fecha de nacimiento:</label
+                >
                 <input
                   v-model="fechaNacimiento"
                   id="fecha_nac"
                   class="form-control"
                   value="2000-01-25"
                   type="date"
-                  
                 />
               </div>
               <div class="mb-3">
-                <label for="disponibilidad" class="form-label">Disponibilidad:</label
+                <label for="disponibilidad" class="form-label"
+                  >Disponibilidad:</label
                 >
                 <input
                   v-model="disponibilidad"
@@ -83,10 +85,10 @@
                     v-for="(objeto, indice) in regionesChile"
                     :key="indice"
                   >
-                    {{ objeto}}
+                    {{ objeto }}
                   </option>
                 </select>
-              </div> 
+              </div>
               <div class="mb-2">
                 <label for="password" class="form-label">Contraseña:</label>
                 <input
@@ -98,7 +100,9 @@
                 />
               </div>
               <div class="mb-2">
-                <label for="password2" class="form-label">Repita su contraseña:</label>
+                <label for="password2" class="form-label"
+                  >Repita su contraseña:</label
+                >
                 <input
                   v-model="contrasena2"
                   id="password2"
@@ -116,7 +120,9 @@
                   id="voluntario"
                   value="voluntario"
                 />
-                <label class="form-check-label" for="voluntario">Voluntario</label>
+                <label class="form-check-label" for="voluntario"
+                  >Voluntario</label
+                >
               </div>
               <div class="form-check">
                 <input
@@ -144,7 +150,11 @@
     </div>
     <div class="row mt-4">
       <div class="col text-center">
-        <button id="enviarRegister" class="btn btn-primary" @click="enviarRegistro">
+        <button
+          id="enviarRegister"
+          class="btn btn-primary"
+          @click="enviarRegistro"
+        >
           Registrarse
         </button>
       </div>
@@ -180,7 +190,7 @@ export default {
         'Coquimbo',
         'Valparaíso',
         'Metropolitana de Santiago',
-        'Libertador General Bernardo O\'Higgins',
+        "Libertador General Bernardo O'Higgins",
         'Maule',
         'Ñuble',
         'Biobío',
@@ -188,7 +198,7 @@ export default {
         'Los Ríos',
         'Los Lagos',
         'Aysén del General Carlos Ibáñez del Campo',
-        'Magallanes y de la Antártica Chilena'
+        'Magallanes y de la Antártica Chilena',
       ],
     }
   },
@@ -209,16 +219,16 @@ export default {
         var value = input.value
         valores[id] = value
       }
-      
+
       valores.rol = rol
       console.log(valores)
-      
+
       return valores
     },
-    
+
     handleCoordinatesSelected(coordinates) {
-      this.selectedCoordinates = coordinates;
-      console.log('Coordenadas seleccionadas:', this.selectedCoordinates);
+      this.selectedCoordinates = coordinates
+      console.log('Coordenadas seleccionadas:', this.selectedCoordinates)
     },
 
     async register() {
@@ -248,13 +258,13 @@ export default {
       if (this.contrasena != this.contrasena2) {
         alert('Las contraseñas no coinciden')
         return -1
-      }else if (this.rol == '') {
+      } else if (this.rol == '') {
         alert('Debe escoger un rol')
         return -1
-      }else if (this.region == '') {
+      } else if (this.region == '') {
         alert('Debe escoger una región')
         return -1
-      }else if (this.selectedCoordinates == null) {
+      } else if (this.selectedCoordinates == null) {
         alert('Debe escoger una ubicación')
         return -1
       }
@@ -280,17 +290,13 @@ export default {
         )
         alert('Registrado con exito')
         window.location.href = '/'
-        
       } catch (error) {
         alert('Error al registrar')
         console.log(error)
       }
-
-      
     },
   },
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

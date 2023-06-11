@@ -29,7 +29,7 @@ public class TareaService {
     public void crearTarea(Tarea tarea) {
 
         tareaRepository.crearTarea(tarea.getNombre(), tarea.getDescripcion(), tarea.getRegion(),
-                    tarea.getLongitud(), tarea.getLatitud(), tarea.getIdEstado());
+                    tarea.getLongitud(), tarea.getLatitud(), tarea.getIdEstado(), tarea.getIdEmergencia());
     }
 
     public void deleteTarea(Integer id) {

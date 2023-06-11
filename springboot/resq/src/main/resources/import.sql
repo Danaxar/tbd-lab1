@@ -37,3 +37,5 @@ INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (1, 9);
 INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (1, 12);
 
 INSERT INTO habilidad (nombre) VALUES ('Primeros auxilios'),('Rescate y evacuación'),('Extinción de incendios'),('Búsqueda y rescate'),('Manejo de crisis y gestión de incidentes'),('Evaluación de daños y necesidades'),('Comunicación de emergencia'),('Conocimientos de construcción y estructuras'),('Gestión de logística y suministros'),('Habilidades de navegación y orientación');
+
+INSERT INTO estado (nombre) VALUES ('Activa'),('Finalizada');

@@ -21,4 +21,5 @@ public class Tarea {
 
     // FK
     private Integer idEstado;
+    private Integer idEmergencia;
 }

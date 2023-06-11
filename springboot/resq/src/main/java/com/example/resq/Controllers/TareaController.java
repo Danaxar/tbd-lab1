@@ -41,12 +41,14 @@ public class TareaController {
         String region = (String) json.get("region");
         Double longitud = (Double) json.get("longitud");
         Double latitud = (Double) json.get("latitud");
+        Integer idEmergencia = (Integer) json.get("idEmergencia");
 
         System.out.println("Nombre: " + nombre);
         System.out.println("Descripcion: " + descripcion);
         System.out.println("Region: " + region);
         System.out.println("Longitud: " + longitud);
         System.out.println("Latitud: " + latitud);
+        System.out.println("idEmergencia: "+ idEmergencia);
 
         Integer idEstado = estadoService.getByNombre(estado).getIdEstado();
 
@@ -57,6 +59,9 @@ public class TareaController {
         salida.setIdEstado(idEstado);
         salida.setLongitud(longitud);
         salida.setLatitud(latitud);
+        salida.setIdEmergencia(idEmergencia);
+
+        System.out.println(salida);
         tareaService.crearTarea(salida);
     }
 

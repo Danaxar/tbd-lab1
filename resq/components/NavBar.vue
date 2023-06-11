@@ -22,6 +22,9 @@
             <a class="nav-link" href="/emergencia">Emergencias</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/tarea">Tareas</a>
+          </li>
+          <li class="nav-item">
             <button @click="logout" class="btn btn-danger">
               Cerrar sesión
             </button>

@@ -32,6 +32,10 @@ public class TareaService {
                     tarea.getLongitud(), tarea.getLatitud(), tarea.getIdEstado(), tarea.getIdEmergencia());
     }
 
+    public List<Tarea> getTareasbyEmergencia(Integer id_emergencia) {
+        return tareaRepository.getTareasbyEmergencia(id_emergencia);
+    }
+
     public void deleteTarea(Integer id) {
         tareaRepository.deleteById(id);
     }

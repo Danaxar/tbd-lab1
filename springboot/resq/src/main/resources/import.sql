@@ -55,6 +55,16 @@ INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (7, 8);
 INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (9, 9);
 INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (9, 12);
 
-INSERT INTO habilidad (nombre) VALUES ('Primeros auxilios'),('Rescate y evacuación'),('Extinción de incendios'),('Búsqueda y rescate'),('Manejo de crisis y gestión de incidentes'),('Evaluación de daños y necesidades'),('Comunicación de emergencia'),('Conocimientos de construcción y estructuras'),('Gestión de logística y suministros'),('Habilidades de navegación y orientación');
+INSERT INTO tarea(nombre, descripcion, region, longitud, latitud, geom, id_estado, id_emergencia) VALUES ('Remover escombros', 'Se necesita Remover escombros', 'Metropolitana', -70.6480, -33.4550, ST_PointFromText('POINT(' || '-70.2490' || ' ' || '-26.3663' || ')'), 1, 1);
+INSERT INTO tarea(nombre, descripcion, region, longitud, latitud, geom, id_estado, id_emergencia) VALUES ('Ayudar heridos', 'Se necesita Ayudar heridos','Metropolitana', -70.6482, -33.4565, ST_PointFromText('POINT(' || '-70.6482' || ' ' || '-33.4565' || ')'), 1, 1);
+INSERT INTO tarea(nombre, descripcion, region, longitud, latitud, geom, id_estado, id_emergencia) VALUES ('Entregar suministros', 'Se necesita Entregar suministros', 'Metropolitana', -70.6400, -33.4500, ST_PointFromText('POINT(' || '-70.6400' || ' ' || '-33.4500' || ')'), 2, 1);
+INSERT INTO tarea(nombre, descripcion, region, longitud, latitud, geom, id_estado, id_emergencia) VALUES ('Chofer de retroescavadora', 'Se necesita Chofer de retroescavadora', 'Metropolitana', -70.6475, -33.4575, ST_PointFromText('POINT(' || '-70.6475' || ' ' || '-33.4575' || ')'), 2, 1);
+INSERT INTO tarea(nombre, descripcion, region, longitud, latitud, geom, id_estado, id_emergencia) VALUES ('Coordinación de voluntarios', 'Se necesita Coordinación de voluntarios', 'Valparaíso', -71.6330, -33.0470, ST_PointFromText('POINT(' || '-71.6330' || ' ' || '-33.0470' || ')'), 1, 2);
+INSERT INTO tarea(nombre, descripcion, region, longitud, latitud, geom, id_estado, id_emergencia) VALUES ('Evaluación de daños', 'Se necesita Evaluación de daños', 'Valparaíso', -71.6329, -33.0473, ST_PointFromText('POINT(' || '-71.6329' || ' ' || '-33.0473' || ')'), 1, 2);
+INSERT INTO tarea(nombre, descripcion, region, longitud, latitud, geom, id_estado, id_emergencia) VALUES ('Apoyo logístico', 'Se necesita Apoyo logístico', 'Valparaíso', -71.6328, -33.0475, ST_PointFromText('POINT(' || '-71.6328' || ' ' || '-33.0475' || ')'), 2, 2);
+INSERT INTO tarea(nombre, descripcion, region, longitud, latitud, geom, id_estado, id_emergencia) VALUES ('Apoyo emocional', 'Se necesita Apoyo emocional', 'Valparaíso', -71.6328, -33.0474, ST_PointFromText('POINT(' || '-71.6328' || ' ' || '-33.0474' || ')'), 2, 2);
+INSERT INTO tarea(nombre, descripcion, region, longitud, latitud, geom, id_estado, id_emergencia) VALUES ('Busqueda y rescate', 'Se necesita Busqueda y rescate', 'Valparaíso', -71.6327, -33.0471, ST_PointFromText('POINT(' || '-71.6327' || ' ' || '-33.0471' || ')'), 1, 2);
 
-INSERT INTO estado (nombre) VALUES ('Activa'),('Finalizada');
+INSERT INTO habilidad(nombre) VALUES ('Primeros auxilios'),('Rescate y evacuación'),('Extinción de incendios'),('Búsqueda y rescate'),('Manejo de crisis y gestión de incidentes'),('Evaluación de daños y necesidades'),('Comunicación de emergencia'),('Conocimientos de construcción y estructuras'),('Gestión de logística y suministros'),('Habilidades de navegación y orientación');
+
+INSERT INTO estado(nombre) VALUES ('Activa'),('Finalizada');

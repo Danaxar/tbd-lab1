@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { LMap, LTileLayer, LMarker } from 'vue2-leaflet'
+import { LMap, LTileLayer, LMarker, LPopup } from 'vue2-leaflet'
 
 export default {
   components: {

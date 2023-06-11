@@ -38,8 +38,8 @@ public class TareaController {
         return tareaService.getTareasbyEmergencia(id_emergencia);
     }
 
-    @GetMapping("/region/{region}")
-    public List<Tarea> getTareasByRegion(@PathVariable String region) {
+    @GetMapping("/region")
+    public List<Tarea> getTareasByRegion(@RequestParam("region") String region) {
         return tareaService.getTareasbyRegion(region);
     }
 

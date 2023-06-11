@@ -60,6 +60,16 @@ public class VoluntarioController {
         }
     }
 
+    @GetMapping("/emergencia/{id_emergencia}")
+    public ResponseEntity<List<Voluntario>> getVoluntarioByEmergencia(@PathVariable Integer id_emergencia) {
+        List<Voluntario> voluntarios = voluntarioService.getVoluntarioByEmergencia(id_emergencia);
+        if (voluntarios != null) {
+            return ResponseEntity.ok(voluntarios);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteVoluntario(@PathVariable Integer id) {

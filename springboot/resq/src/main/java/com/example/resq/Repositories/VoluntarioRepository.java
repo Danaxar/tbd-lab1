@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -33,5 +33,12 @@ public interface VoluntarioRepository extends JpaRepository<Voluntario, Integer>
             "ORDER BY distancias ASC " +
             "LIMIT :limite" +
             ") AS vol;", nativeQuery = true)
-    ArrayList<Voluntario> traerVoluntariosCercanos(@Param("id_emergencia") Integer id_emergencia, @Param("limite") Integer limite);
+    List<Voluntario> traerVoluntariosCercanos(@Param("id_emergencia") Integer id_emergencia, @Param("limite") Integer limite);
+
+    @Query(value = "SELECT vol.id, vol.rut, vol.nombres, vol.apellidos, vol.fecha_nac, vol.disponibilidad, vol.telefono, vol.rol, vol.contrasena, vol.region, vol.longitud, vol.latitud, vol.geom " +
+            "FROM emergencia eme " +
+            "INNER JOIN voluntario_emergencia as volEme ON eme.id_emergencia = volEme.id_emergencia " +
+            "INNER JOIN voluntario as vol ON vol.id = volEme.id_voluntario " +
+            "WHERE eme.id_emergencia = :id_emergencia", nativeQuery = true)
+    List<Voluntario> getVoluntariosByEmergencia(@Param("id_emergencia") Integer id_emergencia);
 }

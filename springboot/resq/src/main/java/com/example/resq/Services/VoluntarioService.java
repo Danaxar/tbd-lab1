@@ -42,8 +42,12 @@ public class VoluntarioService {
         voluntarioRepository.deleteById(id);
     }
 
-    public ArrayList<Voluntario> traerVoluntariosCercanos(Integer id_emergencia, Integer limite){
+    public List<Voluntario> traerVoluntariosCercanos(Integer id_emergencia, Integer limite){
         return voluntarioRepository.traerVoluntariosCercanos(id_emergencia, limite);
+    }
+
+    public List<Voluntario> getVoluntarioByEmergencia(Integer id_emergencia){
+        return voluntarioRepository.getVoluntariosByEmergencia(id_emergencia);
     }
 
     public Optional<Voluntario> findByRut(String rut){

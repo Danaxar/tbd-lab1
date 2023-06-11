@@ -1,6 +1,8 @@
 package com.example.resq.Controllers;
 
 import com.example.resq.Entities.Tarea;
+import com.example.resq.Services.EstadoService;
+import com.example.resq.Services.InstitucionService;
 import com.example.resq.Services.TareaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +14,9 @@ import java.util.Map;
 @RequestMapping("/api/tareas")
 public class TareaController {
     private final TareaService tareaService;
+
+    @Autowired
+    private EstadoService estadoService;
 
     @Autowired
     public TareaController(TareaService tareaService) {
@@ -32,6 +37,7 @@ public class TareaController {
     public void crearTareas(@RequestBody Map<String, Object> json) {
         String nombre = (String) json.get("nombre");
         String descripcion = (String) json.get("descripcion");
+        String estado = (String) json.get("estado");
         String region = (String) json.get("region");
         Double longitud = (Double) json.get("longitud");
         Double latitud = (Double) json.get("latitud");
@@ -42,10 +48,13 @@ public class TareaController {
         System.out.println("Longitud: " + longitud);
         System.out.println("Latitud: " + latitud);
 
+        Integer idEstado = estadoService.getByNombre(estado).getIdEstado();
+
         Tarea salida = new Tarea();
         salida.setNombre(nombre);
         salida.setDescripcion(descripcion);
         salida.setRegion(region);
+        salida.setIdEstado(idEstado);
         salida.setLongitud(longitud);
         salida.setLatitud(latitud);
         tareaService.crearTarea(salida);

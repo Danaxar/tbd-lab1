@@ -38,6 +38,11 @@ public class TareaController {
         return tareaService.getTareasbyEmergencia(id_emergencia);
     }
 
+    @GetMapping("/region/{region}")
+    public List<Tarea> getTareasByRegion(@PathVariable String region) {
+        return tareaService.getTareasbyRegion(region);
+    }
+
     @PostMapping
     public void crearTareas(@RequestBody Map<String, Object> json) {
         String nombre = (String) json.get("nombre");

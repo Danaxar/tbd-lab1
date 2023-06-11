@@ -36,6 +36,10 @@ public class TareaService {
         return tareaRepository.getTareasbyEmergencia(id_emergencia);
     }
 
+    public List<Tarea> getTareasbyRegion(String region) {
+        return tareaRepository.getTareasbyRegion(region);
+    }
+
     public void deleteTarea(Integer id) {
         tareaRepository.deleteById(id);
     }

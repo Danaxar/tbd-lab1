@@ -22,4 +22,8 @@ public interface TareaRepository extends JpaRepository<Tarea, Integer> {
     @Query(value = "SELECT tarea.id_tarea, tarea.nombre, tarea.descripcion, tarea.region, tarea.longitud, tarea.latitud, tarea.geom, tarea.id_estado, tarea.id_emergencia " +
             "FROM emergencia as eme INNER JOIN tarea ON tarea.id_emergencia = eme.id_emergencia WHERE eme.id_emergencia = :id_emergencia", nativeQuery = true)
     List<Tarea> getTareasbyEmergencia(@Param("id_emergencia") Integer id_emergencia);
+
+    @Query(value = "SELECT tarea.id_tarea, tarea.nombre, tarea.descripcion, tarea.region, tarea.longitud, tarea.latitud, tarea.geom, tarea.id_estado, tarea.id_emergencia" +
+            " FROM tarea WHERE tarea.region = :region", nativeQuery = true)
+    List<Tarea> getTareasbyRegion(@Param("region") String region);
 }

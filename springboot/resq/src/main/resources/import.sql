@@ -4,6 +4,25 @@ INSERT INTO institucion(nombre) VALUES ('Carabineros');
 INSERT INTO institucion(nombre) VALUES ('Cruz roja');
 
 INSERT INTO emergencia(nombre, gravedad, fecha, estado, region, longitud, latitud, geom, id_institucion) VALUES ('Terremoto', 'Alta', '2022-11-01', 'Activa', 'Metropolitana', -70.6483, -33.4567, ST_PointFromText('POINT(' || '-70.6483' || ' ' || '-33.4567' || ')'), 1);
+INSERT INTO emergencia(nombre, gravedad, fecha, estado, region, longitud, latitud, geom, id_institucion) VALUES ('Inundación', 'Media', '2022-12-10', 'Finalizada', 'Valparaíso', -71.6328, -33.0472, ST_PointFromText('POINT(' || '-71.6328' || ' ' || '-33.0472' || ')'), 3);
+INSERT INTO emergencia(nombre, gravedad, fecha, estado, region, longitud, latitud, geom, id_institucion) VALUES ('Incendio forestal', 'Alta', '2023-01-15', 'Activa', 'Araucanía', -72.9352, -38.7414, ST_PointFromText('POINT(' || '-72.9352' || ' ' || '-38.7414' || ')'), 1);
+INSERT INTO emergencia(nombre, gravedad, fecha, estado, region, longitud, latitud, geom, id_institucion) VALUES ('Deslizamiento de tierra', 'Baja', '2023-02-20', 'Finalizada', 'OHiggins', -70.9667, -34.6633, ST_PointFromText('POINT(' || '-70.9667' || ' ' || '-34.6633' || ')'), 2);
+INSERT INTO emergencia(nombre, gravedad, fecha, estado, region, longitud, latitud, geom, id_institucion) VALUES ('Sequía', 'Media', '2023-03-25', 'Activa', 'Maule', -71.5375, -35.675, ST_PointFromText('POINT(' || '-71.5375' || ' ' || '-35.675' || ')'), 3);
+INSERT INTO emergencia(nombre, gravedad, fecha, estado, region, longitud, latitud, geom, id_institucion) VALUES ('Temporal de viento', 'Alta', '2023-04-30', 'Finalizada', 'Biobío', -73.0503, -36.7789, ST_PointFromText('POINT(' || '-73.0503' || ' ' || '-36.7789' || ')'), 1);
+INSERT INTO emergencia(nombre, gravedad, fecha, estado, region, longitud, latitud, geom, id_institucion) VALUES ('Accidente de tránsito', 'Media', '2023-05-05', 'Activa', 'Los Ríos', -72.6361, -39.8383, ST_PointFromText('POINT(' || '-72.636' || ' ' || '-39.8383' || ')'), 2);
+INSERT INTO emergencia(nombre, gravedad, fecha, estado, region, longitud, latitud, geom, id_institucion) VALUES ('Incendio estructural', 'Alta', '2023-01-20', 'Finalizada', 'Aysén', -72.7095, -45.5714, ST_PointFromText('POINT(' || '-72.7095' || ' ' || '-45.5714' || ')'), 3);
+INSERT INTO emergencia(nombre, gravedad, fecha, estado, region, longitud, latitud, geom, id_institucion) VALUES ('Erupción volcánica', 'Alta', '2022-12-26', 'Activa', 'Magallanes', -72.9322, -53.1639, ST_PointFromText('POINT(' ||'-72.9322' || ' ' || '-53.1639' || ')'), 1);
+INSERT INTO emergencia(nombre, gravedad, fecha, estado, region, longitud, latitud, geom, id_institucion) VALUES ('Desbordamiento de río', 'Media', '2023-05-08', 'Finalizada', 'Antofagasta', -70.3133, -23.6519, ST_PointFromText('POINT(' || '-70.3133' || ' ' || '-23.6519' || ')'), 2);
+INSERT INTO emergencia(nombre, gravedad, fecha, estado, region, longitud, latitud, geom, id_institucion) VALUES ('Nevada', 'Baja', '2023-02-13', 'Activa', 'Atacama', -69.6706, -27.3667, ST_PointFromText('POINT(' || '-69.6706' || ' ' || '-27.3667' || ')'), 3);
+INSERT INTO emergencia(nombre, gravedad, fecha, estado, region, longitud, latitud, geom, id_institucion) VALUES ('Incidente químico', 'Media', '2023-02-01', 'Finalizada', 'Coquimbo', -71.3381, -29.9592, ST_PointFromText('POINT(' || '-71.3381' || ' ' || '-29.9592' || ')'), 1);
+INSERT INTO emergencia(nombre, gravedad, fecha, estado, region, longitud, latitud, geom, id_institucion) VALUES ('Tsunami', 'Alta', '2023-01-30', 'Activa', 'Tarapacá', -70.145, -20.2275, ST_PointFromText('POINT(' || '-70.145' || ' ' || '-20.2275' || ')'), 2);
+INSERT INTO emergencia(nombre, gravedad, fecha, estado, region, longitud, latitud, geom, id_institucion) VALUES ('Derrame de petróleo', 'Alta', '2023-02-10', 'Finalizada', 'Los Lagos', -73.045, -41.4719, ST_PointFromText('POINT(' || '-73.045' || ' ' || '-41.4719' || ')'), 3);
+INSERT INTO emergencia(nombre, gravedad, fecha, estado, region, longitud, latitud, geom, id_institucion) VALUES ('Colapso estructural', 'Media', '2023-04-19', 'Activa', 'Valparaíso', -71.6428, -33.0453, ST_PointFromText('POINT(' || '-71.6428' || ' ' || '-33.0453' || ')'), 1);
+INSERT INTO emergencia(nombre, gravedad, fecha, estado, region, longitud, latitud, geom, id_institucion) VALUES ('Ciclón', 'Alta', '2023-04-01', 'Finalizada', 'Maule', -71.5397, -35.6769, ST_PointFromText('POINT(' || '-71.5397' || ' ' || '-35.6769' || ')'), 2);
+INSERT INTO emergencia(nombre, gravedad, fecha, estado, region, longitud, latitud, geom, id_institucion) VALUES ('Fuga de gas', 'Media', '2023-01-05', 'Activa', 'Biobío', -73.0503, -36.7789, ST_PointFromText('POINT(' || '-73.0503' || ' ' || '-36.7789 '|| ')'), 3);
+INSERT INTO emergencia(nombre, gravedad, fecha, estado, region, longitud, latitud, geom, id_institucion) VALUES ('Incidente eléctrico', 'Baja', '2023-01-24', 'Finalizada', 'Los Ríos', -72.6361, -39.8383, ST_PointFromText('POINT(' || '-72.6361' || ' ' || '-39.8383' || ')'), 1);
+INSERT INTO emergencia(nombre, gravedad, fecha, estado, region, longitud, latitud, geom, id_institucion) VALUES ('Deslave', 'Alta', '2023-02-27', 'Activa', 'Aysén', -72.7095, -45.5714, ST_PointFromText('POINT(' || '-72.7095' || ' ' || '-45.5714' || ')'), 2);
+INSERT INTO emergencia(nombre, gravedad, fecha, estado, region, longitud, latitud, geom, id_institucion) VALUES ('Explosión', 'Alta', '2023-04-04', 'Finalizada', 'Magallanes', -72.9322, -53.1639, ST_PointFromText('POINT(' || '-72.9322' || ' ' || '-53.1639' || ')'), 3);
 
 INSERT INTO voluntario(rut, nombres, apellidos, fecha_nac, disponibilidad, telefono, rol, contrasena, region, longitud, latitud, geom) VALUES('22222222-2', 'Maria', 'Lopez', '1985-09-20', 'Todos los dias', '+56987654321', 'Coordinador', 'password2', 'Valparaiso', -71.5393, -33.0458, ST_PointFromText('POINT(' || '-71.5393' || ' ' || '-33.0458' || ')'));
 INSERT INTO voluntario(rut, nombres, apellidos, fecha_nac, disponibilidad, telefono, rol, contrasena, region, longitud, latitud, geom) VALUES('33333333-3', 'Pedro', 'Gonzalez', '1992-02-10', 'Todos los dias', '+56955555555', 'Voluntario', 'password3', 'Biobio', -73.1415, -36.8262, ST_PointFromText('POINT(' || '-73.1415' || ' ' || '-36.8262' || ')'));
@@ -27,14 +46,14 @@ INSERT INTO voluntario(rut, nombres, apellidos, fecha_nac, disponibilidad, telef
 
 INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (1, 1);
 INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (1, 2);
-INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (1, 3);
-INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (1, 4);
-INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (1, 5);
-INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (1, 6);
-INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (1, 7);
-INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (1, 8);
-INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (1, 9);
-INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (1, 12);
+INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (3, 3);
+INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (3, 4);
+INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (5, 5);
+INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (5, 6);
+INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (7, 7);
+INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (7, 8);
+INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (9, 9);
+INSERT INTO voluntario_emergencia(id_emergencia, id_voluntario) VALUES (9, 12);
 
 INSERT INTO habilidad (nombre) VALUES ('Primeros auxilios'),('Rescate y evacuación'),('Extinción de incendios'),('Búsqueda y rescate'),('Manejo de crisis y gestión de incidentes'),('Evaluación de daños y necesidades'),('Comunicación de emergencia'),('Conocimientos de construcción y estructuras'),('Gestión de logística y suministros'),('Habilidades de navegación y orientación');
 

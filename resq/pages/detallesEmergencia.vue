@@ -3,35 +3,38 @@
     <NavBar />
     <h1>Detalles de {{ emergencia.nombre }}</h1>
     <div class="container">
-      <table class="table table-bordered mx-auto">
-        <tr>
-          <td>Nombre:</td>
-          <td>{{ emergencia.nombre }}</td>
-        </tr>
-        <tr>
-          <td>Fecha:</td>
-          <td>{{ emergencia.fecha }}</td>
-        </tr>
-        <tr>
-          <td>Gravedad:</td>
-          <td>{{ emergencia.gravedad }}</td>
-        </tr>
-        <tr>
-          <td>Institucion:</td>
-          <td>{{ institucion }}</td>
-        </tr>
-        <tr>
-          <td>Estado:</td>
-          <td>{{ emergencia.estado }}</td>
-        </tr>
-        <tr>
-          <td>Voluntarios registrados:</td>
-          <td>{{ registrados }}</td>
-        </tr>
-      </table>
-      <button class="btn btn-success" @click="registrarse">
-        Registrarse 🫱🏻‍🫲🏻
-      </button>
+      <div>
+        <table class="table table-bordered mx-auto">
+          <tr>
+            <td>Nombre:</td>
+            <td>{{ emergencia.nombre }}</td>
+          </tr>
+          <tr>
+            <td>Fecha:</td>
+            <td>{{ emergencia.fecha }}</td>
+          </tr>
+          <tr>
+            <td>Gravedad:</td>
+            <td>{{ emergencia.gravedad }}</td>
+          </tr>
+          <tr>
+            <td>Institucion:</td>
+            <td>{{ institucion }}</td>
+          </tr>
+          <tr>
+            <td>Estado:</td>
+            <td>{{ emergencia.estado }}</td>
+          </tr>
+          <tr>
+            <td>Voluntarios registrados:</td>
+            <td>{{ registrados }}</td>
+          </tr>
+        </table>
+        <button class="btn btn-success" @click="registrarse">
+          Registrarse 🫱🏻‍🫲🏻
+        </button>
+      </div>
+
       <div>
         <h1>Voluntarios registrados</h1>
         <table>
@@ -83,6 +86,39 @@
         </table>
       </div>
     </div>
+    <div>
+      <h2>Crear una tarea</h2>
+      <form @sumbit.prevent="sumbitForm">
+        <table>
+          <tr>
+            <td>Nombre:</td>
+            <td><input type="text" v-model="nombre" /></td>
+          </tr>
+          <tr>
+            <td>Descripción:</td>
+            <td><input type="text" v-model="descripcion" /></td>
+          </tr>
+          <tr>
+            <td>Region:</td>
+            <td>
+              <select v-model="regionRegister">
+                <option disabled selected hidden>Seleccione una región</option>
+                <option v-for="objeto in regionesChile">
+                  {{ objeto }}
+                </option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <MapaRegistro @coordinatesSelected="handleCoordinatesSelected" />
+          </tr>
+          <tr></tr>
+        </table>
+      </form>
+      <button class="btn btn-success" @click="enviarTarea">
+        Enviar Tarea 🎯
+      </button>
+    </div>
   </div>
 </template>
 
@@ -93,11 +129,38 @@ export default {
   components: { NavBar },
   data() {
     return {
+      // Enviar tarea
+      nombre: '',
+      descripcion: '',
+      regionRegister: '',
+      selectedCoordinates: null,
+      //
+
       emergencia: null,
       institucion: null,
       registrados: 0,
       voluntarios: [],
       numeroVoluntarios: 0,
+
+      // Select de regiones
+      regionesChile: [
+        'Arica y Parinacota',
+        'Tarapacá',
+        'Antofagasta',
+        'Atacama',
+        'Coquimbo',
+        'Valparaíso',
+        'Metropolitana de Santiago',
+        "Libertador General Bernardo O'Higgins",
+        'Maule',
+        'Ñuble',
+        'Biobío',
+        'La Araucanía',
+        'Los Ríos',
+        'Los Lagos',
+        'Aysén del General Carlos Ibáñez del Campo',
+        'Magallanes y de la Antártica Chilena',
+      ],
     }
   },
   methods: {
@@ -174,6 +237,46 @@ export default {
         )
         console.log('Numero volunarios: ', response.data)
         this.voluntarios = response.data
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    handleCoordinatesSelected(coordinates) {
+      this.selectedCoordinates = coordinates
+      console.log(
+        'Coordenadas seleccionadas:',
+        this.selectedCoordinates.lng,
+        this.selectedCoordinates.lat
+      )
+    },
+    async enviarTarea() {
+      try {
+        if (this.selectedCoordinates.lng && this.selectedCoordinates.lat) {
+        }
+      } catch (error) {
+        alert('Seleccione un punto en el mapa')
+        return
+      }
+
+      const tarea = {
+        nombre: this.nombre,
+        descripcion: this.descripcion,
+        region: this.regionRegister,
+        longitud: this.selectedCoordinates.lng,
+        latitud: this.selectedCoordinates.lat,
+        estado: 'Activa',
+        idEmergencia: this.emergencia.idEmergencia,
+      }
+
+      console.log('Enviando tarea: ', tarea)
+
+      // Enviar al backend
+      try {
+        const response = await axios.post(
+          'http://localhost:8080/api/tareas',
+          tarea
+        )
+        console.log('Tarea enviada: ', response)
       } catch (error) {
         console.log(error)
       }

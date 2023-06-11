@@ -8,13 +8,9 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 @Repository
 public interface EmergenciaRepository extends JpaRepository<Emergencia, Integer> {
-
-    @Query(value = "SELECT eme FROM Emergencia eme")
-    ArrayList<Emergencia> findAll();
 
     @Modifying
     @Query(value = "INSERT INTO Emergencia (nombre, gravedad, fecha, estado, region, longitud, latitud, geom, id_institucion) " +

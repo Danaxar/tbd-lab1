@@ -33,6 +33,11 @@ public class EmergenciaController {
         return emergenciaService.getEmergenciaById(id);
     }
 
+    @GetMapping("/estado/{estado}")
+    public List<Emergencia> getEmergenciaByEstado(@PathVariable String estado) {
+        return emergenciaService.getEmergenciasByEstado(estado);
+    }
+
     @PostMapping
     public void saveEmergencia(@RequestBody Map<String, Object> json) {
         String nombre = (String) json.get("nombre");

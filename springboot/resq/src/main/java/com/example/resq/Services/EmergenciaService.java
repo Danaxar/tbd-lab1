@@ -35,4 +35,8 @@ public class EmergenciaService {
     public void deleteEmergencia(Integer id) {
         emergenciaRepository.deleteById(id);
     }
+
+    public List<Emergencia> getEmergenciasByEstado(String estado) {
+        return emergenciaRepository.getEmergenciasByEstado(estado);
+    }
 }

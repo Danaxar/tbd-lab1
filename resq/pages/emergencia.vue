@@ -112,11 +112,6 @@
             <MapaRegistro
             @coordinatesSelected="handleCoordinatesSelected"
             ></MapaRegistro>
-            <div v-if="selectedCoordinates">
-              <h2>Coordenadas seleccionadas:</h2>
-              <p>Latitud: {{ selectedCoordinates.lat }}</p>
-              <p>Longitud: {{ selectedCoordinates.lng }}</p>
-            </div>
           </div>
         </div>
         

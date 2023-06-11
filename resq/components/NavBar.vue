@@ -1,7 +1,11 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="/home">ResQ</a>
+      <a class="navbar-brand" href="/home">
+        <img id="logo" src="@/static/logo.png" />
+        esQ</a
+      >
+      <a class="navbar-brand" href="/home">home</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -19,7 +23,7 @@
             <a class="nav-link" href="/perfil">Perfil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/emergencia">Emergencias</a>
+            <a class="nav-link" href="/emergencia">Crear emergencia</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/tarea">Tareas</a>
@@ -47,5 +51,10 @@ export default {
 <style scoped>
 nav {
   background-color: aqua;
+}
+
+#logo {
+  width: 25px;
+  padding-bottom: 10%;
 }
 </style>

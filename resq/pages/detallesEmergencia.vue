@@ -151,7 +151,7 @@ export default {
         'Coquimbo',
         'Valparaíso',
         'Metropolitana',
-        'O\'Higgins',
+        "O'Higgins",
         'Maule',
         'Ñuble',
         'Biobío',
@@ -159,7 +159,7 @@ export default {
         'Los Ríos',
         'Los Lagos',
         'Aysén',
-        'Magallanes'
+        'Magallanes',
       ],
     }
   },

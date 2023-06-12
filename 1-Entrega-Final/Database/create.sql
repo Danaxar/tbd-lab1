@@ -18,6 +18,8 @@ DROP TABLE IF EXISTS emergencia;
 
 DROP TABLE IF EXISTS institucion;
 
+DROP TABLE IF EXISTS queries_log;
+
 CREATE TABLE institucion (
     id_institucion SERIAL PRIMARY KEY,
     nombre VARCHAR(255)
@@ -107,4 +109,13 @@ CREATE TABLE ranking (
     id_tarea INTEGER,
     FOREIGN KEY (id_voluntario) REFERENCES voluntario (id),
     FOREIGN KEY (id_tarea) REFERENCES tarea (id_tarea)
+);
+
+CREATE TABLE queries_log (
+	id SERIAL PRIMARY KEY,
+	usuario varchar(255),
+	query TEXT,
+	tipo_operacion varchar(255),
+	tabla varchar(255),
+	tiempo TIMESTAMP
 );

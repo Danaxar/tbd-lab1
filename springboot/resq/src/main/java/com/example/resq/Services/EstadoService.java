@@ -29,7 +29,7 @@ public class EstadoService {
         return estadoRepository.save(estado);
     }
 
-    public Estado updateEstado(Integer id, Estado estadoDetails) {
+    public Estado   updateEstado(Integer id, Estado estadoDetails) {
         Optional<Estado> estado = estadoRepository.findById(id);
         if (estado.isPresent()) {
             Estado updatedEstado = estado.get();

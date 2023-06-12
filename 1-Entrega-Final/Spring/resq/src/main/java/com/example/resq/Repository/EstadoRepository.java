@@ -8,6 +8,8 @@ public interface EstadoRepository {
     List<Estado> findAllEstado();
     Estado findByIdEstado(Integer id);
     List<Estado> findByNombreEstado(String nombre);
+
+    Integer getIdEstado(String nombre);
     Estado saveEstado(Estado estado);
     void deleteEstado(Integer id);
     Estado updateEstado(Estado estado);

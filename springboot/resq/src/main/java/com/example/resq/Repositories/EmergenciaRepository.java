@@ -20,7 +20,5 @@ public interface EmergenciaRepository extends JpaRepository<Emergencia, Integer>
                          @Param("estado") String estado, @Param("region") String region, @Param("longitud") Double longitud,
                          @Param("latitud") Double latitud, @Param("id_institucion") Integer id_institucion);
 
-    @Query(value = "SELECT eme.id_emergencia, eme.gravedad, eme.fecha, eme.estado, eme.region, eme.longitud, eme.longitud, eme.geom, tarea.id_institucion" +
-            " FROM emergencia eme WHERE eme.estado = :estado", nativeQuery = true)
-    List<Emergencia> getEmergenciasByEstado(String estado);
+    List<Emergencia> getEmergenciasByEstado(@Param("estado") String estado);
 }

@@ -49,12 +49,26 @@ public class EstadoRepositorylmp implements EstadoRepository{
     @Override
     public List<Estado> findByNombreEstado(String nombre) {
         List<Estado> estados;
-        String query = "SELECT * FROM Estado WHERE nombre_estado = :nombre";
+        String query = "SELECT * FROM Estado WHERE nombre = :nombre";
         try (Connection con = sql2o.open()) {
             estados = con.createQuery(query)
                     .addParameter("nombre", nombre)
                     .executeAndFetch(Estado.class);
             return estados;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    @Override
+    public Integer getIdEstado(String nombre) {
+        String query = "SELECT id_estado FROM Estado WHERE nombre = :nombre";
+        try (Connection con = sql2o.open()) {
+            String id = con.createQuery(query)
+                    .addParameter("nombre", nombre)
+                    .executeAndFetchFirst(String.class);
+            return Integer.parseInt(id);
         } catch (Exception e) {
             System.out.println(e);
         }

@@ -21,6 +21,17 @@ public class JwtUtils {
         return Jwts.builder().setClaims(claims).compact();
     }
 
+    public String generateJwt2(String id){
+        Date issuedAt = new Date();
+        // Claims
+        Claims claims = Jwts.claims()
+                .setIssuer(id)
+                .setIssuedAt(issuedAt);
+
+        // Generate jwt using claims
+        return Jwts.builder().setClaims(claims).compact();
+    }
+
     public void verify(String autorization) throws Exception {
         System.out.println("JwtUtils.java: verify() -> autorization = " + autorization);
         try{

@@ -86,7 +86,7 @@ Con esto ya estamos listos con todo lo que es la instalación del proyecto y se 
 1. En PgAdmin, seleccionar la opción "Query tool" y copiar la primera parte del script dbCreate.sql para solo crear la Base de Datos.
 2. Abrir la opción Query tool nuevamente, pero dentro de VoluntariadoDB (La Base de Datos que se crea en el paso 1) y copiar el resto de dbCreate
 3. Copiar todo el contenido de loadData.sql y ejecutarlo dentro de Query tool.
-4. Utilizando IntelliJ IDEA Ultimate, asegurarse de que se detecte correctamente Spring Boot y Gradle. Ejecutar la aplicación haciendo click en la opción "Run" dentro de IntelliJ IDEA.
+4. Utilizando IntelliJ IDEA Ultimate, asegurarse de que se detecte correctamente Spring Boot y Maven. Ejecutar la aplicación haciendo click en la opción "Run" dentro de IntelliJ IDEA.
 5. Dentro de la carpeta Frontend, abrir una consola / terminal. Ejecutar el siguiente comando:
 ```
 npm run dev

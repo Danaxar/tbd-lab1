@@ -71,11 +71,11 @@ public class VoluntarioService {
             // Verificar si las contraseñas son iguales
             if (voluntario.getContrasena().equals(contrasena)) {
                 System.out.println("Autentificado");
-                // Generar jwt
-                // String token = jwtUtils.generateJwt(voluntario);
-                //System.out.println("JWT generado: " + token);
+                //Generar jwt
+                String token = jwtUtils.generateJwt(voluntario);
+                System.out.println("JWT generado: " + token);
                 //return ResponseEntity.ok(voluntario.get());
-                return ResponseEntity.ok("token");
+                return ResponseEntity.ok(token);
             } else {
                 System.out.println("Contrasena incorrecta");
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();

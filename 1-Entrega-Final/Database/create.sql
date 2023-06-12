@@ -1,5 +1,9 @@
 DROP TABLE IF EXISTS voluntario_emergencia;
 
+DROP TABLE IF EXISTS voluntario_habilidad;
+
+DROP TABLE IF EXISTS ranking;
+
 DROP TABLE IF EXISTS voluntario;
 
 DROP TABLE IF EXISTS tarea;
@@ -13,10 +17,6 @@ DROP TABLE IF EXISTS habilidad;
 DROP TABLE IF EXISTS emergencia;
 
 DROP TABLE IF EXISTS institucion;
-
-DROP TABLE IF EXISTS voluntario_habilidad;
-
-DROP TABLE IF EXISTS ranking;
 
 CREATE TABLE institucion (
     id_institucion SERIAL PRIMARY KEY,

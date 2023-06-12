@@ -15,4 +15,8 @@ public class Voluntario {
     private String region;
     private Double longitud;
     private Double latitud;
+
+    public Integer getId(){
+        return id;
+    }
 }

@@ -58,9 +58,9 @@ db.password=[password]
 Es importante que el puerto esté en el 8080 o el frontend no se podrá conectar con el backend.
 
 Donde [username] y [password] son los datos ingresados en la instalación de PostgreSQL. Y [database] es el nombre de la base de datos a utilizar. Para ello debe contar con una base de datos creada en pgadmin4 con dicho nombre:
-![Alt text](image.png)
+[![image.png](https://i.postimg.cc/bwrwHPCL/image.png)](https://postimg.cc/Jsw8MfWB)
 
-![Alt text](image-1.png)
+[![image-1.png](https://i.postimg.cc/L4gkvd79/image-1.png)](https://postimg.cc/8sDrPYN9)
 
 6. Configurar el JDK: Al abrir una clase IntelliJ nos solicitará configurar un JDK. 
 Debemos asegurarnos de seleccionar JDK versión 11. Si no tenemos JDK 11, IntelliJ 

@@ -22,6 +22,7 @@ export default {
     LMap,
     LTileLayer,
     LMarker,
+    LPopup,
   },
   props: {
     puntos: null,

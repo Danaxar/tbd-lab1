@@ -70,7 +70,8 @@ CREATE TABLE voluntario (
     contrasena VARCHAR(255),
     region VARCHAR(255),
     longitud DOUBLE PRECISION,
-    latitud DOUBLE PRECISION
+    latitud DOUBLE PRECISION,
+	geom GEOMETRY(Point,0)
 );
 
 CREATE TABLE voluntario_emergencia (

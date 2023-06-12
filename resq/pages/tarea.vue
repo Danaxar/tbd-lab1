@@ -3,21 +3,20 @@
     <NavBar />
     <div id="tareasContent">
       <div>
-        <h1>Tareas</h1>
+        <h1 class="text-center">Tareas</h1>
         <section>
-          <h2>Filtrar tareas por region</h2>
-          <div>
+          <h2 class="text-center">Filtrar tareas por region</h2>
+          <div class="d-flex justify-content-center mb-3">
             <select class="form-select" v-model="regionFiltrar">
               <option disabled selected hidden>Seleccione una región</option>
               <option v-for="objeto in regionesChile" :key="objeto">
                 {{ objeto }}
               </option>
             </select>
-            <button class="btn btn-primary" @click="cargarTareasFiltradas">
+            <button class="btn btn-primary ml-3" @click="cargarTareasFiltradas">
               Filtrar 🔍
             </button>
           </div>
-
           <MapaHome :puntos="puntos" />
         </section>
       </div>
@@ -65,6 +64,7 @@ export default {
         alert('Debe escoger una región')
       }
       try {
+        this.puntos = []
         const response = await axios.get(
           `http://localhost:8080/api/tareas/region`,
           {

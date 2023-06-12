@@ -24,17 +24,32 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="(objeto, indice) in emergenciasActivasPaginadas" :key="indice">
+                <tr
+                  v-for="(objeto, indice) in emergenciasActivasPaginadas"
+                  :key="indice"
+                >
                   <td>{{ indice + contadorEmergenciaActivas }}</td>
                   <td>{{ objeto.nombre }}</td>
                   <td>{{ objeto.fecha }}</td>
                   <td>{{ objeto.gravedad }}</td>
                   <td>{{ objeto.estado }}</td>
                   <td>
-                    <!-- {{ instituciones[objeto.idInstitucion - 1].nombre }} -->
+                    {{ instituciones[objeto.idInstitucion - 1].nombre }}
                   </td>
-                  <td>{{ tareasEmergenciasActivas[indice+contadorEmergenciaActivas-1] }}</td>
-                  <td>{{ voluntariosEmergenciasActivas[indice+contadorEmergenciaActivas-1] }}</td>
+                  <td>
+                    {{
+                      tareasEmergenciasActivas[
+                        indice + contadorEmergenciaActivas - 1
+                      ]
+                    }}
+                  </td>
+                  <td>
+                    {{
+                      voluntariosEmergenciasActivas[
+                        indice + contadorEmergenciaActivas - 1
+                      ]
+                    }}
+                  </td>
                   <td>
                     <button
                       class="btn btn-info"
@@ -47,8 +62,24 @@
               </tbody>
             </table>
             <div class="pagination">
-              <button class="btn btn-primary mr-2" @click="paginaAnteriorEmergenciaActiva" :disabled="paginasEmergenciasActivas === 0">Anterior</button>
-              <button class="btn btn-primary ml-2" @click="paginaSiguienteEmergenciaActiva" :disabled="(paginasEmergenciasActivas + 1) * numeroEmergenciasPorPagina >= emergenciasActivas.length">Siguiente</button>
+              <button
+                class="btn btn-primary mr-2"
+                @click="paginaAnteriorEmergenciaActiva"
+                :disabled="paginasEmergenciasActivas === 0"
+              >
+                Anterior
+              </button>
+              <button
+                class="btn btn-primary ml-2"
+                @click="paginaSiguienteEmergenciaActiva"
+                :disabled="
+                  (paginasEmergenciasActivas + 1) *
+                    numeroEmergenciasPorPagina >=
+                  emergenciasActivas.length
+                "
+              >
+                Siguiente
+              </button>
             </div>
           </div>
           <!-- <Mapa Emergencias Activas> -->
@@ -59,8 +90,7 @@
           </div>
         </div>
         <!-- Fila relleno -->
-        <div class="row-mb-2">
-        </div>
+        <div class="row-mb-2"></div>
         <!-- Segunda fila -->
         <div class="row mb-5">
           <div class="col-md-6">
@@ -81,17 +111,32 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="(objeto, indice) in emergenciasFinalizadasPaginadas" :key="indice">
-                  <td>{{ indice+contadorEmergenciaFinalizadas }}</td>
+                <tr
+                  v-for="(objeto, indice) in emergenciasFinalizadasPaginadas"
+                  :key="indice"
+                >
+                  <td>{{ indice + contadorEmergenciaFinalizadas }}</td>
                   <td>{{ objeto.nombre }}</td>
                   <td>{{ objeto.fecha }}</td>
                   <td>{{ objeto.gravedad }}</td>
                   <td>{{ objeto.estado }}</td>
                   <td>
-                    <!-- {{ instituciones[objeto.idInstitucion - 1].nombre }} -->
+                    {{ instituciones[objeto.idInstitucion - 1].nombre }}
                   </td>
-                  <td>{{ tareasEmergenciasFinalizadas[indice+contadorEmergenciaFinalizadas-1] }}</td>
-                  <td>{{ voluntariosEmergenciasFinalizadas[indice+contadorEmergenciaFinalizadas-1] }}</td>
+                  <td>
+                    {{
+                      tareasEmergenciasFinalizadas[
+                        indice + contadorEmergenciaFinalizadas - 1
+                      ]
+                    }}
+                  </td>
+                  <td>
+                    {{
+                      voluntariosEmergenciasFinalizadas[
+                        indice + contadorEmergenciaFinalizadas - 1
+                      ]
+                    }}
+                  </td>
                   <td>
                     <button
                       class="btn btn-info"
@@ -104,11 +149,27 @@
               </tbody>
             </table>
             <div class="pagination">
-              <button class="btn btn-primary mr-2" @click="paginaAnteriorEmergenciaFinalizada" :disabled="paginasEmergenciasFinalizadas === 0">Anterior</button>
-              <button class="btn btn-primary ml-2" @click="paginaSiguienteEmergenciaFinalizada" :disabled="(paginasEmergenciasFinalizadas + 1) * numeroEmergenciasPorPagina >= emergenciasFinalizadas.length">Siguiente</button>
+              <button
+                class="btn btn-primary mr-2"
+                @click="paginaAnteriorEmergenciaFinalizada"
+                :disabled="paginasEmergenciasFinalizadas === 0"
+              >
+                Anterior
+              </button>
+              <button
+                class="btn btn-primary ml-2"
+                @click="paginaSiguienteEmergenciaFinalizada"
+                :disabled="
+                  (paginasEmergenciasFinalizadas + 1) *
+                    numeroEmergenciasPorPagina >=
+                  emergenciasFinalizadas.length
+                "
+              >
+                Siguiente
+              </button>
             </div>
           </div>
-          
+
           <!-- <Mapa Emergencias Finalizadas> -->
           <div class="col-md-5">
             <div class="map-container">
@@ -154,21 +215,29 @@ export default {
       voluntariosEmergenciasFinalizadas: [],
     }
   },
-  
+
   computed: {
     emergenciasActivasPaginadas() {
-      const inicioIndex = this.paginasEmergenciasActivas * this.numeroEmergenciasPorPagina;
-      const finIndex = inicioIndex + this.numeroEmergenciasPorPagina;
-      const emergenciaActivasDePagina = this.emergenciasActivas.slice(inicioIndex, finIndex);
-      this.contadorEmergenciaActivas = inicioIndex + 1;
-      return emergenciaActivasDePagina;
+      const inicioIndex =
+        this.paginasEmergenciasActivas * this.numeroEmergenciasPorPagina
+      const finIndex = inicioIndex + this.numeroEmergenciasPorPagina
+      const emergenciaActivasDePagina = this.emergenciasActivas.slice(
+        inicioIndex,
+        finIndex
+      )
+      this.contadorEmergenciaActivas = inicioIndex + 1
+      return emergenciaActivasDePagina
     },
     emergenciasFinalizadasPaginadas() {
-      const inicioIndex = this.paginasEmergenciasFinalizadas * this.numeroEmergenciasPorPagina;
-      const finIndex = inicioIndex + this.numeroEmergenciasPorPagina;
-      const emergenciaFinalizadasDePagina = this.emergenciasFinalizadas.slice(inicioIndex, finIndex);
-      this.contadorEmergenciaFinalizadas = inicioIndex + 1;
-      return emergenciaFinalizadasDePagina;
+      const inicioIndex =
+        this.paginasEmergenciasFinalizadas * this.numeroEmergenciasPorPagina
+      const finIndex = inicioIndex + this.numeroEmergenciasPorPagina
+      const emergenciaFinalizadasDePagina = this.emergenciasFinalizadas.slice(
+        inicioIndex,
+        finIndex
+      )
+      this.contadorEmergenciaFinalizadas = inicioIndex + 1
+      return emergenciaFinalizadasDePagina
     },
   },
 
@@ -226,19 +295,20 @@ export default {
       localStorage.setItem('emergencia', JSON.stringify(objeto))
       window.location.href = '/detallesEmergencia'
     },
-    
+
     async cargarInstituciones() {
       try {
-        const respuesta = axios.get(
+        const respuesta = await axios.get(
           'http://localhost:8080/api/instituciones'
         )
         this.instituciones = respuesta.data
+        console.log('Instituciones cargadas: ', respuesta.data)
       } catch (error) {
         console.log(error)
       }
     },
 
-    async cantidadTareasEmergenciasActivas(){
+    async cantidadTareasEmergenciasActivas() {
       try {
         for (let i = 0; i < this.emergenciasActivas.length; i++) {
           var emergencia = this.emergenciasActivas[i]
@@ -253,7 +323,7 @@ export default {
       }
     },
 
-    async cantidadVoluntariosEmergenciasActivas(){
+    async cantidadVoluntariosEmergenciasActivas() {
       try {
         for (let i = 0; i < this.emergenciasActivas.length; i++) {
           var emergencia = this.emergenciasActivas[i]
@@ -308,24 +378,24 @@ export default {
     },
     paginaAnteriorEmergenciaActiva() {
       if (this.paginasEmergenciasActivas > 0) {
-        this.paginasEmergenciasActivas--;
+        this.paginasEmergenciasActivas--
       }
     },
     paginaSiguienteEmergenciaActiva() {
-      const paginasTotales = Math.ceil(this.emergenciasActivas.length / 6);
+      const paginasTotales = Math.ceil(this.emergenciasActivas.length / 6)
       if (this.paginasEmergenciasActivas < paginasTotales - 1) {
-        this.paginasEmergenciasActivas++;
+        this.paginasEmergenciasActivas++
       }
     },
     paginaAnteriorEmergenciaFinalizada() {
       if (this.paginasEmergenciasFinalizadas > 0) {
-        this.paginasEmergenciasFinalizadas--;
+        this.paginasEmergenciasFinalizadas--
       }
     },
     paginaSiguienteEmergenciaFinalizada() {
-      const paginasTotales = Math.ceil(this.emergenciasFinalizadas.length / 6);
+      const paginasTotales = Math.ceil(this.emergenciasFinalizadas.length / 6)
       if (this.paginasEmergenciasFinalizadas < paginasTotales - 1) {
-        this.paginasEmergenciasFinalizadas++;
+        this.paginasEmergenciasFinalizadas++
       }
     },
   },
@@ -368,12 +438,9 @@ table {
   border-collapse: collapse;
   width: 44vw;
   border-radius: 10px;
-  
 }
 
-
-
-table tbody tr:nth-of-type(even){
+table tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;
 }
 

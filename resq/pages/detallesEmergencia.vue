@@ -1,7 +1,7 @@
 <template>
   <div class="text-center">
     <NavBar />
-    <h1>Detalles de {{ emergencia.nombre }}</h1>
+    <h1>Detalles de '{{ emergencia.nombre }}'</h1>
     <div class="container">
       <div>
         <table class="table table-bordered mx-auto">
@@ -37,6 +37,8 @@
 
       <div>
         <h1>Voluntarios registrados</h1>
+        <table></table>
+
         <table>
           <tr>
             <td>
@@ -51,7 +53,7 @@
                 value="0"
               />
             </td>
-            <td>
+            <td colspan="6">
               <button
                 class="btn btn-success"
                 @click="cargarVoluntariosProximos"
@@ -60,9 +62,6 @@
               </button>
             </td>
           </tr>
-        </table>
-
-        <table>
           <tr>
             <td>Id</td>
             <td>Rut</td>
@@ -332,6 +331,7 @@ table {
   border-collapse: collapse;
   width: 75%;
   overflow: hidden;
+  border-radius: 10px;
 }
 
 table + h2 {

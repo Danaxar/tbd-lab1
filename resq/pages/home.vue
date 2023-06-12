@@ -23,7 +23,7 @@
                   <th></th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody v-if="emergenciasActivasPaginadas">
                 <tr
                   v-for="(objeto, indice) in emergenciasActivasPaginadas"
                   :key="indice"
@@ -33,8 +33,8 @@
                   <td>{{ objeto.fecha }}</td>
                   <td>{{ objeto.gravedad }}</td>
                   <td>{{ objeto.estado }}</td>
-                  <td>
-                    {{ instituciones[objeto.idInstitucion - 1].nombre }}
+                  <td v-if="instituciones">
+                    {{ instituciones[objeto.idInstitucion - 1]?.nombre }}
                   </td>
                   <td>
                     {{
@@ -120,8 +120,8 @@
                   <td>{{ objeto.fecha }}</td>
                   <td>{{ objeto.gravedad }}</td>
                   <td>{{ objeto.estado }}</td>
-                  <td>
-                    {{ instituciones[objeto.idInstitucion - 1].nombre }}
+                  <td v-if="instituciones">
+                    {{ instituciones[objeto.idInstitucion - 1]?.nombre }}
                   </td>
                   <td>
                     {{

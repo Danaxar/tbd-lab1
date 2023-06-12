@@ -1,10 +1,17 @@
 DROP TABLE IF EXISTS voluntario_emergencia;
+
 DROP TABLE IF EXISTS voluntario;
+
 DROP TABLE IF EXISTS tarea;
+
 DROP TABLE IF EXISTS estado;
+
 DROP TABLE IF EXISTS emergencia_habilidad;
+
 DROP TABLE IF EXISTS habilidad;
+
 DROP TABLE IF EXISTS emergencia;
+
 DROP TABLE IF EXISTS institucion;
 
 CREATE TABLE institucion (
@@ -71,7 +78,7 @@ CREATE TABLE voluntario (
     region VARCHAR(255),
     longitud DOUBLE PRECISION,
     latitud DOUBLE PRECISION,
-	geom GEOMETRY(Point,0)
+    geom GEOMETRY(Point, 0)
 );
 
 CREATE TABLE voluntario_emergencia (
@@ -80,4 +87,20 @@ CREATE TABLE voluntario_emergencia (
     id_emergencia INTEGER,
     FOREIGN KEY (id_voluntario) REFERENCES voluntario (id),
     FOREIGN KEY (id_emergencia) REFERENCES emergencia (id_emergencia)
+);
+
+CREATE TABLE voluntario_habilidad (
+    id_voluntario_habilidad SERIAL PRIMARY KEY,
+    id_voluntario INTEGER,
+    id_habilidad INTEGER,
+    FOREIGN KEY (id_voluntario) REFERENCES voluntario (id),
+    FOREIGN KEY (id_habilidad) REFERENCES habilidad (id_habilidad)
+);
+
+CREATE TABLE ranking (
+    id_ranking SERIAL PRIMARY KEY,
+    id_voluntario INTEGER,
+    id_tarea INTEGER,
+    FOREIGN KEY (id_voluntario) REFERENCES voluntario (id),
+    FOREIGN KEY (id_tarea) REFERENCES tarea (id_tarea)
 );

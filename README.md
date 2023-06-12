@@ -1,5 +1,6 @@
 # TBD entrga 1 + 2
-
+Precaución: en la ruta /home puede que el componente no reciba los datos a tiempo y pueda marcar
+un mensaje de error, si esto sucede no dude en recargar la página.
 
 ## Integrantes
 - Daniel Catalán

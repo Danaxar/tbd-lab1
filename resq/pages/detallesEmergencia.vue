@@ -88,36 +88,71 @@
     </div>
     <div>
       <h2>Crear una tarea</h2>
-      <form @sumbit.prevent="sumbitForm">
-        <table>
-          <tr>
-            <td>Nombre:</td>
-            <td><input type="text" v-model="nombre" /></td>
-          </tr>
-          <tr>
-            <td>Descripción:</td>
-            <td><input type="text" v-model="descripcion" /></td>
-          </tr>
-          <tr>
-            <td>Region:</td>
-            <td>
-              <select v-model="regionRegister">
-                <option disabled selected hidden>Seleccione una región</option>
-                <option v-for="objeto in regionesChile">
-                  {{ objeto }}
-                </option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <MapaRegistro @coordinatesSelected="handleCoordinatesSelected" />
-          </tr>
-          <tr></tr>
-        </table>
+      <form>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nombre"
+                  v-model="nombre"
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="descripcion">Descripción:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="descripcion"
+                  v-model="descripcion"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <!-- Modificado el ancho de la columna a col-md-12 -->
+              <div class="form-group">
+                <label for="region">Región:</label>
+                <select
+                  class="form-control"
+                  id="region"
+                  v-model="regionRegister"
+                >
+                  <option disabled selected hidden>
+                    Seleccione una región
+                  </option>
+                  <option v-for="objeto in regionesChile" :key="objeto">
+                    {{ objeto }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-md-6">
+              <div class="form-group">
+                <MapaRegistro
+                  @coordinatesSelected="handleCoordinatesSelected"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- <div class="row">
+            <div class="col-md-12">
+              <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+          </div> -->
+        </div>
+        <button class="btn btn-success" @click="enviarTarea">
+          Enviar Tarea 🎯
+        </button>
       </form>
-      <button class="btn btn-success" @click="enviarTarea">
-        Enviar Tarea 🎯
-      </button>
     </div>
   </div>
 </template>
@@ -312,5 +347,14 @@ table td {
   padding: 5px;
   background-color: rgba(30, 86, 101, 0.5);
   text-align: center;
+}
+
+form .container {
+  background-color: rgba(30, 86, 101, 0.5);
+  border-radius: 30px 30px;
+}
+
+form .container #mapaRegistro {
+  margin: auto;
 }
 </style>

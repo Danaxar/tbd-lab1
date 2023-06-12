@@ -7,28 +7,38 @@ import org.springframework.stereotype.Repository;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
+
+import static com.fasterxml.jackson.databind.type.LogicalType.DateTime;
+
 @Repository
 public class EmergenciaRepositoryImp implements EmergenciaRepository{
     @Autowired
-    private final Sql2o sql2o;
+    private Sql2o sql2o;
 
-    @Autowired
-    public EmergenciaRepositoryImp(Sql2o sql2o) {
-        this.sql2o = sql2o;
-    }
 
     @Override
     public List<Emergencia> getAllEmergencias() {
+        List<Emergencia> salida;
+        System.out.println("Obteniendo todas las emergencias...");
         String query = "SELECT * FROM Emergencia";
         try (Connection connection = sql2o.open()) {
-            return connection.createQuery(query).executeAndFetch(Emergencia.class);
+            salida = connection.createQuery(query).executeAndFetch(Emergencia.class);
+            return salida;
+        }catch(Exception e){
+            System.out.println(e);
+            return null;
         }
     }
 
     @Override
     public Emergencia getEmergenciaById(Integer id) {
-        String query = "SELECT * FROM Emergencia WHERE id = :id";
+        String query = "SELECT * FROM Emergencia WHERE id_emergencia = :id";
         try (Connection connection = sql2o.open()) {
             return connection.createQuery(query)
                     .addParameter("id", id)
@@ -38,25 +48,27 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository{
 
     @Override
     public void saveEmergencia(Emergencia emergencia) {
-        String query = "INSERT INTO Emergencia (nombre, gravedad, fecha, estado, region, longitud, latitud, idInstitucion) " +
-                "VALUES (:nombre, :gravedad, :fecha, :estado, :region, :longitud, :latitud, :idInstitucion)";
+        DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate fecha = LocalDate.parse(emergencia.getFecha(), formatoFecha);
+        String query = "INSERT INTO Emergencia (nombre, gravedad, fecha, estado, region, longitud, latitud, id_institucion, geom) " +
+                "VALUES (:nombre, :gravedad, :fecha, :estado, :region, :longitud, :latitud, :id_institucion, ST_PointFromText('POINT(' || :longitud || ' ' || :latitud || ')'))";
         try (Connection connection = sql2o.open()) {
             connection.createQuery(query)
                     .addParameter("nombre", emergencia.getNombre())
                     .addParameter("gravedad", emergencia.getGravedad())
-                    .addParameter("fecha", emergencia.getFecha())
+                    .addParameter("fecha",fecha)
                     .addParameter("estado", emergencia.getEstado())
                     .addParameter("region", emergencia.getRegion())
                     .addParameter("longitud", emergencia.getLongitud())
                     .addParameter("latitud", emergencia.getLatitud())
-                    .addParameter("idInstitucion", emergencia.getIdInstitucion())
+                    .addParameter("id_institucion", emergencia.getIdInstitucion())
                     .executeUpdate();
         }
     }
 
     @Override
     public void deleteEmergencia(Integer id) {
-        String query = "DELETE FROM Emergencia WHERE id = :id";
+        String query = "DELETE FROM Emergencia WHERE id_emergencia = :id";
         try (Connection connection = sql2o.open()) {
             connection.createQuery(query)
                     .addParameter("id", id)

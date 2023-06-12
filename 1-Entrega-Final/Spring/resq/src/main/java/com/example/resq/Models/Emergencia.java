@@ -1,25 +1,29 @@
 package com.example.resq.Models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.cglib.core.Local;
+
 import java.time.LocalDate;
 
 public class Emergencia {
-    private Integer idEmergencia;
+    @JsonProperty("id_emergencia")
+    private Integer id_emergencia;
     private String nombre;
     private String gravedad;
-    private LocalDate fecha;
+    private String fecha;
     private String estado;
     private String region;
     private Double longitud;
     private Double latitud;
     private String geom;
-    private Integer idInstitucion;
+    private Integer id_institucion;
 
     public Integer getIdEmergencia() {
-        return idEmergencia;
+        return id_emergencia;
     }
 
     public void setIdEmergencia(Integer idEmergencia) {
-        this.idEmergencia = idEmergencia;
+        this.id_emergencia = idEmergencia;
     }
 
     public String getNombre() {
@@ -38,11 +42,11 @@ public class Emergencia {
         this.gravedad = gravedad;
     }
 
-    public LocalDate getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -87,10 +91,10 @@ public class Emergencia {
     }
 
     public Integer getIdInstitucion() {
-        return idInstitucion;
+        return id_institucion;
     }
 
     public void setIdInstitucion(Integer idInstitucion) {
-        this.idInstitucion = idInstitucion;
+        this.id_institucion = idInstitucion;
     }
 }

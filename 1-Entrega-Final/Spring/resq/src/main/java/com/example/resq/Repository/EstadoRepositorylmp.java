@@ -77,7 +77,7 @@ public class EstadoRepositorylmp implements EstadoRepository{
 
     @Override
     public Estado saveEstado(Estado estado) {
-        String query = "INSERT INTO Estado (nombre_estado) " +
+        String query = "INSERT INTO Estado (nombre) " +
                 "VALUES (:nombre)";
         try (Connection conn = sql2o.open()) {
             Integer id = (Integer) conn.createQuery(query, true)
@@ -92,7 +92,7 @@ public class EstadoRepositorylmp implements EstadoRepository{
     }
 
     public Estado updateEstado(Estado estado) {
-        String query = "UPDATE Estado SET nombre_estado = :nombre " +
+        String query = "UPDATE Estado SET nombre = :nombre " +
                 "WHERE id_estado = :id";
         try (Connection conn = sql2o.open()) {
             conn.createQuery(query)

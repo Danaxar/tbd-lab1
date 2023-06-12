@@ -2,6 +2,7 @@ package com.example.resq.Services;
 
 import com.example.resq.Models.Estado;
 import com.example.resq.Repository.EstadoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,6 +13,7 @@ public class EstadoService {
 
     private final EstadoRepository estadoRepository;
 
+    @Autowired
     EstadoService(EstadoRepository estadoRepository){
         this.estadoRepository = estadoRepository;
     }

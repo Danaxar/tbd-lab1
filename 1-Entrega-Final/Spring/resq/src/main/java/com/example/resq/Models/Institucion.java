@@ -1,15 +1,20 @@
 package com.example.resq.Models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Institucion {
-    private Integer idInstitucion;
+
+    @JsonProperty("id_institucion")
+    private Integer id_Institucion;
+    @JsonProperty("nombre")
     private String nombre;
 
-    public Integer getIdInstitucion() {
-        return idInstitucion;
+    public Integer getId_Institucion() {
+        return id_Institucion;
     }
 
-    public void setIdInstitucion(Integer idInstitucion) {
-        this.idInstitucion = idInstitucion;
+    public void setId_Institucion(Integer id_Institucion) {
+        this.id_Institucion = id_Institucion;
     }
 
     public String getNombre() {

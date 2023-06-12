@@ -48,12 +48,12 @@ public class InstitucionRepositorylmp implements InstitucionRepository {
 
     @Override
     public Institucion saveInstitucion(Institucion institucion) {
-        String query = "INSERT INTO institucion (nombre_institucion) VALUES (:nombre)";
+        String query = "INSERT INTO institucion (nombre) VALUES (:nombre)";
         try (org.sql2o.Connection conn = sql2o.open()) {
             Integer id = conn.createQuery(query, true)
                     .addParameter("nombre", institucion.getNombre())
                     .executeUpdate().getKey(Integer.class);
-            institucion.setIdInstitucion(id);
+            institucion.setId_Institucion(id);
             return institucion;
         } catch (Exception e) {
             System.out.println(e);
@@ -63,13 +63,13 @@ public class InstitucionRepositorylmp implements InstitucionRepository {
 
     @Override
     public Institucion updateInstitucion(Institucion institucion) {
-        String query = "UPDATE institucion SET nombre_institucion = :nombre WHERE id_institucion = :id";
+        String query = "UPDATE institucion SET nombre = :nombre WHERE id_institucion = :id";
         try (org.sql2o.Connection conn = sql2o.open()) {
             Integer id = conn.createQuery(query, true)
                     .addParameter("nombre", institucion.getNombre())
-                    .addParameter("id", institucion.getIdInstitucion())
+                    .addParameter("id", institucion.getId_Institucion())
                     .executeUpdate().getKey(Integer.class);
-            institucion.setIdInstitucion(id);
+            institucion.setId_Institucion(id);
             return institucion;
         } catch (Exception e) {
             System.out.println(e);

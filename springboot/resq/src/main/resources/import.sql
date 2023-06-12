@@ -67,4 +67,15 @@ INSERT INTO tarea(nombre, descripcion, region, longitud, latitud, geom, id_estad
 
 INSERT INTO habilidad(nombre) VALUES ('Primeros auxilios'),('Rescate y evacuación'),('Extinción de incendios'),('Búsqueda y rescate'),('Manejo de crisis y gestión de incidentes'),('Evaluación de daños y necesidades'),('Comunicación de emergencia'),('Conocimientos de construcción y estructuras'),('Gestión de logística y suministros'),('Habilidades de navegación y orientación');
 
+INSERT INTO emergencia_habilidad(id_emergencia, id_habilidad) VALUES (1, 1);
+INSERT INTO emergencia_habilidad(id_emergencia, id_habilidad) VALUES (1, 2);
+INSERT INTO emergencia_habilidad(id_emergencia, id_habilidad) VALUES (3, 3);
+INSERT INTO emergencia_habilidad(id_emergencia, id_habilidad) VALUES (3, 4);
+INSERT INTO emergencia_habilidad(id_emergencia, id_habilidad) VALUES (5, 5);
+INSERT INTO emergencia_habilidad(id_emergencia, id_habilidad) VALUES (5, 6);
+INSERT INTO emergencia_habilidad(id_emergencia, id_habilidad) VALUES (7, 7);
+INSERT INTO emergencia_habilidad(id_emergencia, id_habilidad) VALUES (7, 8);
+INSERT INTO emergencia_habilidad(id_emergencia, id_habilidad) VALUES (9, 9);
+INSERT INTO emergencia_habilidad(id_emergencia, id_habilidad) VALUES (9, 10);
+
 INSERT INTO estado(nombre) VALUES ('Activa'),('Finalizada');

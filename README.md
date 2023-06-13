@@ -1,4 +1,4 @@
-# TBD entrga 1 + 2
+# GRUPO 1 - TBD entrga 1 + 2
 
 ## Integrantes
 - Daniel Catalán

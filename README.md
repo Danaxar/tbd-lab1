@@ -63,6 +63,7 @@ Donde [username] y [password] son los datos ingresados en la instalación de Pos
 
 [![image-1.png](https://i.postimg.cc/L4gkvd79/image-1.png)](https://postimg.cc/8sDrPYN9)
 
+
 6. Configurar el JDK: Al abrir una clase IntelliJ nos solicitará configurar un JDK. 
 Debemos asegurarnos de seleccionar JDK versión 11. Si no tenemos JDK 11, IntelliJ 
 nos proporciona una opción para instalarlo automáticamente.
@@ -92,9 +93,9 @@ Con esto ya estamos listos con todo lo que es la instalación del proyecto y se 
 ## Instrucciones de uso
 1. En PgAdmin, seleccionar la opción "Query tool" y copiar la primera parte del script create.sql para solo crear las tablas.
 2. Abrir la opción Query tool nuevamente, pero dentro de [database] (La Base de Datos que se crea en el paso 1) y copiar el resto de dbCreate
-3. Copiar todo el contenido de import.sql y ejecutarlo dentro de Query tool.
-4. Utilizando IntelliJ IDEA Ultimate, asegurarse de que se detecte correctamente Spring Boot y Maven. Ejecutar la aplicación haciendo click en la opción "Run" dentro de IntelliJ IDEA.
-5. Dentro de la carpeta Frontend, abrir una consola / terminal. Ejecutar el siguiente comando:
+3. Copiar todo el contenido de import.sql y ejecutarlo dentro de Query tool, posteriormente, deberá abrir dos Query Tool adicionales, donde copiará y ejecutará contenido de los archivos TriggersQueries.sql y ProcedimientoAlmacenado.sql en cada Query Tool y en ese mismo orden para evitar errores.
+5. Utilizando IntelliJ IDEA Ultimate, asegurarse de que se detecte correctamente Spring Boot y Maven. Ejecutar la aplicación haciendo click en la opción "Run" dentro de IntelliJ IDEA.
+6. Dentro de la carpeta Frontend, abrir una consola / terminal. Ejecutar el siguiente comando:
 ```
 npm run dev
 ```
